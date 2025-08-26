@@ -1,0 +1,45 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import type { Product } from '../types/product';
+
+interface Props {
+  product?: Product;
+  title?: string;
+  description?: string;
+}
+
+const { product, title, description } = Astro.props;
+
+// Generate SEO data based on product
+const seoTitle = product 
+  ? `${product.name} - ${product.manufacturer} | FigureStore`
+  : title || 'Productos | FigureStore';
+
+const seoDescription = product
+  ? `${product.description.slice(0, 160)}...`
+  : description || 'Descubre nuestra colección de figuras anime de alta calidad.';
+
+const seoImage = product?.image || '/og-image.jpg';
+---
+
+<BaseLayout 
+  title={seoTitle}
+  description={seoDescription}
+  image={seoImage}
+>
+  <Header slot="header" />
+  
+  <div class="product-layout">
+    <slot />
+  </div>
+  
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .product-layout {
+    @apply max-w-7xl mx-auto px-4 py-8;
+  }
+</style>

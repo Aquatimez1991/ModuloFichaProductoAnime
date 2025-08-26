@@ -1,0 +1,25 @@
+---
+import type { Product } from '../../../types/product';
+
+const { product } = Astro.props;
+---
+
+<div class="product-badges">
+  <span class="product-badge product-badge--available">
+    Disponible
+  </span>
+</div>
+
+<style>
+  .product-badges {
+    @apply flex flex-wrap gap-2;
+  }
+  
+  .product-badge {
+    @apply px-2 py-1 text-xs font-medium rounded-full;
+  }
+  
+  .product-badge--available {
+    @apply bg-blue-500 text-white;
+  }
+</style>

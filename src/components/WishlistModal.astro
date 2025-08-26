@@ -1,0 +1,228 @@
+---
+// WishlistModal.astro
+---
+
+<!-- Wishlist Modal -->
+<div id="wishlist-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[80vh] overflow-hidden">
+      <!-- Header -->
+      <div class="flex items-center justify-between p-4 border-b">
+        <h3 class="text-lg font-semibold">Mis Favoritos</h3>
+        <button id="close-wishlist" class="text-gray-500 hover:text-gray-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Wishlist Items -->
+      <div id="wishlist-items" class="p-4 max-h-96 overflow-y-auto">
+        <!-- Items will be dynamically inserted here -->
+      </div>
+
+      <!-- Empty Wishlist Message -->
+      <div id="empty-wishlist" class="p-8 text-center text-gray-500 hidden">
+        <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+        </svg>
+        <p class="text-lg font-medium mb-2">Tu lista de favoritos está vacía</p>
+        <p class="text-sm">Agrega algunos productos a tus favoritos</p>
+      </div>
+
+      <!-- Footer -->
+      <div class="border-t p-4">
+        <div class="flex gap-2">
+          <button id="clear-wishlist" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+            Vaciar Favoritos
+          </button>
+          <button id="add-all-to-cart" class="flex-1 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
+            Agregar Todo al Carrito
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Wishlist modal functionality
+  const wishlistModal = document.getElementById('wishlist-modal');
+  const closeWishlist = document.getElementById('close-wishlist');
+  const wishlistItems = document.getElementById('wishlist-items');
+  const emptyWishlist = document.getElementById('empty-wishlist');
+  const clearWishlistBtn = document.getElementById('clear-wishlist');
+  const addAllToCartBtn = document.getElementById('add-all-to-cart');
+
+  // Figure data for display
+  const figureData = {
+    1: {
+      name: 'Asuka Langley - Evangelion',
+      price: 12800,
+      image: 'https://images.unsplash.com/photo-1667585149954-5beab3e9bdc4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmltZSUyMGNoYXJhY3RlciUyMGZpZ3VyZXxlbnwxfHx8fDE3NTYwODU0NzJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+    },
+    2: {
+      name: 'Miku Hatsune - Racing 2024',
+      price: 16500,
+      image: 'https://images.unsplash.com/photo-1601382270349-49c15bddf738?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWN0aWJsZSUyMHRveSUyMGZpZ3VyZXxlbnwxfHx8fDE3NTYwODU0NzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+    },
+    3: {
+      name: 'Nezuko Kamado - Demon Slayer',
+      price: 14200,
+      image: 'https://images.unsplash.com/photo-1615592389070-bcc97e05ad01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmltZSUyMGZpZ3VyZSUyMGNvbGxlY3RpYmxlfGVufDF8fHx8MTc1NjAzODgyOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+    },
+    4: {
+      name: 'Rem - Re:Zero',
+      price: 15800,
+      image: 'https://images.unsplash.com/photo-1601382270349-49c15bddf738?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWN0aWJsZSUyMHRveSUyMGZpZ3VyZXxlbnwxfHx8fDE3NTYwODU0NzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+    },
+    5: {
+      name: 'Zero Two - Darling in the Franxx',
+      price: 17200,
+      image: 'https://images.unsplash.com/photo-1667585149954-5beab3e9bdc4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmltZSUyMGNoYXJhY3RlciUyMGZpZ3VyZXxlbnwxfHx8fDE3NTYwODU0NzJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+    }
+  };
+
+  // Open wishlist modal
+  function openWishlist() {
+    wishlistModal?.classList.remove('hidden');
+    updateWishlistDisplay();
+  }
+
+  // Close wishlist modal
+  function closeWishlistModal() {
+    wishlistModal?.classList.add('hidden');
+  }
+
+  // Update wishlist display
+  function updateWishlistDisplay() {
+    const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
+    const wishlist = store.wishlist;
+    
+    if (wishlist.length === 0) {
+      emptyWishlist?.classList.remove('hidden');
+      wishlistItems?.classList.add('hidden');
+      return;
+    }
+
+    emptyWishlist?.classList.add('hidden');
+    wishlistItems?.classList.remove('hidden');
+    
+    let itemsHTML = '';
+
+    wishlist.forEach((figureId) => {
+      const figure = figureData[figureId];
+      if (figure) {
+        itemsHTML += `
+          <div class="flex items-center gap-3 py-3 border-b last:border-b-0">
+            <img src="${figure.image}" alt="${figure.name}" class="w-16 h-16 object-cover rounded-lg">
+            <div class="flex-1">
+              <h4 class="font-medium text-sm">${figure.name}</h4>
+              <p class="text-gray-500 text-sm">¥${figure.price.toLocaleString('en-US')}</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="addToCartFromWishlist(${figureId})" class="px-3 py-1 bg-primary text-primary-foreground rounded text-xs hover:bg-primary/90 transition-colors">
+                Agregar
+              </button>
+              <button onclick="removeFromWishlist(${figureId})" class="text-red-500 hover:text-red-700">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        `;
+      }
+    });
+
+    if (wishlistItems) {
+      wishlistItems.innerHTML = itemsHTML;
+    }
+  }
+
+  // Add to cart from wishlist
+  function addToCartFromWishlist(figureId) {
+    const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
+    
+    // Add to cart
+    store.cart[figureId] = (store.cart[figureId] || 0) + 1;
+    
+    localStorage.setItem('figure-store', JSON.stringify(store));
+    window.dispatchEvent(new CustomEvent('cartUpdated'));
+    
+    // Show notification
+    showNotification('¡Producto agregado al carrito!');
+  }
+
+  // Remove from wishlist
+  function removeFromWishlist(figureId) {
+    const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
+    store.wishlist = store.wishlist.filter(id => id !== figureId);
+    localStorage.setItem('figure-store', JSON.stringify(store));
+    window.dispatchEvent(new CustomEvent('wishlistUpdated'));
+    updateWishlistDisplay();
+  }
+
+  // Clear wishlist
+  function clearWishlist() {
+    const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
+    store.wishlist = [];
+    localStorage.setItem('figure-store', JSON.stringify(store));
+    window.dispatchEvent(new CustomEvent('wishlistUpdated'));
+    updateWishlistDisplay();
+  }
+
+  // Add all to cart
+  function addAllToCart() {
+    const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
+    const wishlist = store.wishlist;
+    
+    if (wishlist.length === 0) {
+      alert('Tu lista de favoritos está vacía');
+      return;
+    }
+
+    // Add all wishlist items to cart
+    wishlist.forEach(figureId => {
+      store.cart[figureId] = (store.cart[figureId] || 0) + 1;
+    });
+    
+    localStorage.setItem('figure-store', JSON.stringify(store));
+    window.dispatchEvent(new CustomEvent('cartUpdated'));
+    
+    // Show notification
+    showNotification(`¡${wishlist.length} productos agregados al carrito!`);
+    
+    // Close modal
+    closeWishlistModal();
+  }
+
+  // Show notification
+  function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.remove();
+    }, 2000);
+  }
+
+  // Event listeners
+  closeWishlist?.addEventListener('click', closeWishlistModal);
+  clearWishlistBtn?.addEventListener('click', clearWishlist);
+  addAllToCartBtn?.addEventListener('click', addAllToCart);
+
+  // Close modal when clicking outside
+  wishlistModal?.addEventListener('click', (e) => {
+    if (e.target === wishlistModal) {
+      closeWishlistModal();
+    }
+  });
+
+  // Make functions globally available
+  window.openWishlist = openWishlist;
+  window.addToCartFromWishlist = addToCartFromWishlist;
+  window.removeFromWishlist = removeFromWishlist;
+</script>

@@ -1,0 +1,78 @@
+---
+import type { ProductCardProps } from '../../../types/product';
+import ProductBadges from './ProductBadges.astro';
+import ProductRating from './ProductRating.astro';
+import ProductActions from './ProductActions.astro';
+
+const { product, showBadges = true, showRating = true } = Astro.props;
+---
+
+<article class="product-card">
+  <div class="product-card__image">
+    <img 
+      src={product.image} 
+      alt={product.name}
+      loading="lazy"
+      class="product-card__img"
+    />
+  </div>
+  
+  <div class="product-card__content">
+    <h3 class="product-card__title">{product.name}</h3>
+    <p class="product-card__manufacturer">{product.manufacturer}</p>
+    
+    <div class="product-card__price">
+      <span class="product-card__current-price">
+        S/. {product.price.toLocaleString()}
+      </span>
+      {product.originalPrice > product.price && (
+        <span class="product-card__original-price">
+          S/. {product.originalPrice.toLocaleString()}
+        </span>
+      )}
+    </div>
+    
+    {showRating && <ProductRating rating={product.rating} reviews={product.reviews} />}
+    {showBadges && <ProductBadges product={product} />}
+    
+    <ProductActions product={product} />
+  </div>
+</article>
+
+<style>
+  .product-card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105;
+  }
+  
+  .product-card__image {
+    @apply relative aspect-square overflow-hidden;
+  }
+  
+  .product-card__img {
+    @apply w-full h-full object-cover;
+  }
+  
+  .product-card__content {
+    @apply p-4 space-y-3;
+  }
+  
+  .product-card__title {
+    @apply text-lg font-semibold text-gray-900 line-clamp-2;
+  }
+  
+  .product-card__manufacturer {
+    @apply text-sm text-gray-600;
+  }
+  
+  .product-card__price {
+    @apply flex items-center gap-2;
+  }
+  
+  .product-card__current-price {
+    @apply text-xl font-bold text-primary;
+  }
+  
+  .product-card__original-price {
+    @apply text-sm text-gray-500 line-through;
+  }
+</style>

@@ -1,0 +1,138 @@
+---
+interface Props {
+  id: string;
+  title?: string;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  closeOnBackdrop?: boolean;
+}
+
+const { 
+  id, 
+  title, 
+  size = 'md',
+  closeOnBackdrop = true 
+} = Astro.props;
+---
+
+<div 
+  id={id}
+  class="modal"
+  data-size={size}
+  data-close-on-backdrop={closeOnBackdrop}
+>
+  <div class="modal__backdrop"></div>
+  
+  <div class="modal__container">
+    <div class="modal__header">
+      {title && <h2 class="modal__title">{title}</h2>}
+      <button class="modal__close" data-modal-close>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="modal__content">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal {
+    @apply fixed inset-0 z-50 hidden;
+  }
+  
+  .modal[data-open="true"] {
+    @apply flex items-center justify-center;
+  }
+  
+  .modal__backdrop {
+    @apply absolute inset-0 bg-black bg-opacity-50;
+  }
+  
+  .modal__container {
+    @apply relative bg-white rounded-lg shadow-xl max-h-[90vh] overflow-hidden;
+  }
+  
+  .modal[data-size="sm"] .modal__container {
+    @apply w-full max-w-sm;
+  }
+  
+  .modal[data-size="md"] .modal__container {
+    @apply w-full max-w-md;
+  }
+  
+  .modal[data-size="lg"] .modal__container {
+    @apply w-full max-w-lg;
+  }
+  
+  .modal[data-size="xl"] .modal__container {
+    @apply w-full max-w-xl;
+  }
+  
+  .modal__header {
+    @apply flex items-center justify-between p-4 border-b;
+  }
+  
+  .modal__title {
+    @apply text-lg font-semibold text-gray-900;
+  }
+  
+  .modal__close {
+    @apply p-1 text-gray-400 hover:text-gray-600 transition-colors;
+  }
+  
+  .modal__content {
+    @apply p-4 overflow-y-auto;
+  }
+</style>
+
+<script>
+  // Modal functionality
+  class Modal {
+    constructor(element: HTMLElement) {
+      this.element = element;
+      this.backdrop = element.querySelector('.modal__backdrop') as HTMLElement;
+      this.closeBtn = element.querySelector('[data-modal-close]') as HTMLElement;
+      this.closeOnBackdrop = element.dataset.closeOnBackdrop === 'true';
+      
+      this.init();
+    }
+    
+    init() {
+      this.closeBtn?.addEventListener('click', () => this.close());
+      
+      if (this.closeOnBackdrop) {
+        this.backdrop?.addEventListener('click', () => this.close());
+      }
+      
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.isOpen()) {
+          this.close();
+        }
+      });
+    }
+    
+    open() {
+      this.element.dataset.open = 'true';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    close() {
+      this.element.dataset.open = 'false';
+      document.body.style.overflow = '';
+    }
+    
+    isOpen() {
+      return this.element.dataset.open === 'true';
+    }
+  }
+  
+  // Initialize all modals
+  document.addEventListener('DOMContentLoaded', () => {
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => new Modal(modal as HTMLElement));
+  });
+</script>

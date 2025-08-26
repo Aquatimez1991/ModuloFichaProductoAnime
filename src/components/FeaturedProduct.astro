@@ -1,0 +1,250 @@
+---
+// FeaturedProduct.astro
+---
+
+<section class="py-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Product Images -->
+      <div class="space-y-4">
+        <div class="relative group">
+          <div class="aspect-square overflow-hidden rounded-2xl cursor-pointer" id="main-image">
+            <img
+              src="https://images.unsplash.com/photo-1601382270349-49c15bddf738?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWN0aWJsZSUyMHRveSUyMGZpZ3VyZXxlbnwxfHx8fDE3NTYwODU0NzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+              alt="Miku Hatsune - Racing 2024"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          
+
+          
+
+        </div>
+        
+        <!-- Thumbnail Images -->
+        <div class="flex gap-2">
+          <button
+            class="w-20 h-20 rounded-lg overflow-hidden border-2 border-primary scale-105 transition-all thumbnail-btn"
+            data-image="https://images.unsplash.com/photo-1601382270349-49c15bddf738?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWN0aWJsZSUyMHRveSUyMGZpZ3VyZXxlbnwxfHx8fDE3NTYwODU0NzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1601382270349-49c15bddf738?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWN0aWJsZSUyMHRveSUyMGZpZ3VyZXxlbnwxfHx8fDE3NTYwODU0NzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+              alt="Miku Hatsune 1"
+              class="w-full h-full object-cover"
+            />
+          </button>
+          <button
+            class="w-20 h-20 rounded-lg overflow-hidden border-2 border-transparent hover:border-primary/50 transition-all thumbnail-btn"
+            data-image="https://images.unsplash.com/photo-1667585149954-5beab3e9bdc4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmltZSUyMGNoYXJhY3RlciUyMGZpZ3VyZXxlbnwxfHx8fDE3NTYwODU0NzJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1667585149954-5beab3e9bdc4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmltZSUyMGNoYXJhY3RlciUyMGZpZ3VyZXxlbnwxfHx8fDE3NTYwODU0NzJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+              alt="Miku Hatsune 2"
+              class="w-full h-full object-cover"
+            />
+          </button>
+          <button
+            class="w-20 h-20 rounded-lg overflow-hidden border-2 border-transparent hover:border-primary/50 transition-all thumbnail-btn"
+            data-image="https://images.unsplash.com/photo-1615592389070-bcc97e05ad01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmltZSUyMGZpZ3VyZSUyMGNvbGxlY3RpYmxlfGVufDF8fHx8MTc1NjAzODgyOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1615592389070-bcc97e05ad01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmltZSUyMGZpZ3VyZSUyMGNvbGxlY3RpYmxlfGVufDF8fHx8MTc1NjAzODgyOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+              alt="Miku Hatsune 3"
+              class="w-full h-full object-cover"
+            />
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Info -->
+      <div class="space-y-6">
+        <div>
+          <span class="bg-green-500 text-white px-2 py-1 rounded text-sm font-medium mb-3 inline-block">
+            Destacado
+          </span>
+          <h2 class="text-4xl font-bold text-foreground mb-2">
+            Miku Hatsune - Racing 2024
+          </h2>
+          <p class="text-lg text-muted-foreground mb-4">
+            Good Smile Company
+          </p>
+          <div class="flex items-center gap-4 mb-4">
+            <div class="flex items-center">
+              <svg class="w-5 h-5 fill-yellow-400 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <span class="font-medium ml-1">4.9</span>
+              <span class="text-muted-foreground ml-1">(1,247 reseñas)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price -->
+        <div class="space-y-2">
+          <div class="flex items-center gap-3">
+            <span class="text-4xl font-bold text-foreground">
+              ¥16,500
+            </span>
+            <span class="text-xl text-muted-foreground line-through">
+              ¥18,900
+            </span>
+
+          </div>
+          <p class="text-green-600 font-medium">
+            Ahorras ¥2,400 (13% de descuento)
+          </p>
+        </div>
+
+        <!-- Description -->
+        <p class="text-muted-foreground leading-relaxed">
+          La figura más esperada del año. Miku Hatsune en su versión Racing 2024, 
+          con detalles excepcionales y pintura de alta calidad. Incluye base especial 
+          y certificado de autenticidad.
+        </p>
+
+        <!-- Features -->
+        <div class="space-y-2">
+          <h3 class="font-semibold">Características:</h3>
+          <ul class="space-y-1">
+            <li class="flex items-center gap-2 text-sm">
+              <span class="w-2 h-2 bg-primary rounded-full"></span>
+              Escala 1/7 - Altura: 25cm
+            </li>
+            <li class="flex items-center gap-2 text-sm">
+              <span class="w-2 h-2 bg-primary rounded-full"></span>
+              Material: PVC y ABS de alta calidad
+            </li>
+            <li class="flex items-center gap-2 text-sm">
+              <span class="w-2 h-2 bg-primary rounded-full"></span>
+              Base especial con efectos LED
+            </li>
+            <li class="flex items-center gap-2 text-sm">
+              <span class="w-2 h-2 bg-primary rounded-full"></span>
+              Certificado de autenticidad incluido
+            </li>
+          </ul>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex gap-3">
+          <button
+            id="add-to-cart-btn"
+            class="flex-1 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+            </svg>
+            Agregar al Carrito
+          </button>
+          <button
+            id="buy-now-btn"
+            class="flex-1 border border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-primary hover:text-primary-foreground transition-colors"
+          >
+            Comprar Ahora
+          </button>
+        </div>
+
+        <!-- Shipping Info -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="flex items-center gap-3 p-4 bg-white/50 rounded-lg">
+            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+            </svg>
+            <div>
+              <p class="font-medium text-sm">Envío Gratis</p>
+              <p class="text-xs text-muted-foreground">En pedidos superiores a ¥50,000</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-4 bg-white/50 rounded-lg">
+            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+            <div>
+              <p class="font-medium text-sm">Garantía</p>
+              <p class="text-xs text-muted-foreground">100% auténtico</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-4 bg-white/50 rounded-lg">
+            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <div>
+              <p class="font-medium text-sm">Entrega</p>
+              <p class="text-xs text-muted-foreground">15-30 días hábiles</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Thumbnail navigation
+  const thumbnailBtns = document.querySelectorAll('.thumbnail-btn');
+  const mainImage = document.getElementById('main-image')?.querySelector('img');
+  
+  thumbnailBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active class from all thumbnails
+      thumbnailBtns.forEach(b => {
+        b.classList.remove('border-primary', 'scale-105');
+        b.classList.add('border-transparent');
+      });
+      
+      // Add active class to clicked thumbnail
+      btn.classList.remove('border-transparent');
+      btn.classList.add('border-primary', 'scale-105');
+      
+      // Update main image
+      const imageUrl = btn.getAttribute('data-image');
+      if (mainImage && imageUrl) {
+        mainImage.src = imageUrl;
+      }
+    });
+  });
+
+  // Add to cart functionality
+  const addToCartBtn = document.getElementById('add-to-cart-btn');
+  addToCartBtn?.addEventListener('click', () => {
+    // Get current store
+    const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
+    
+    // Add figure ID 2 (Miku Hatsune) to cart
+    store.cart[2] = (store.cart[2] || 0) + 1;
+    
+    // Save to localStorage
+    localStorage.setItem('figure-store', JSON.stringify(store));
+    
+    // Dispatch event to update header
+    window.dispatchEvent(new CustomEvent('cartUpdated'));
+    
+    // Show notification
+    showNotification('¡Producto agregado al carrito!');
+  });
+
+  // Buy now functionality
+  const buyNowBtn = document.getElementById('buy-now-btn');
+  buyNowBtn?.addEventListener('click', () => {
+    // Add to cart first
+    const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
+    store.cart[2] = (store.cart[2] || 0) + 1;
+    localStorage.setItem('figure-store', JSON.stringify(store));
+    window.dispatchEvent(new CustomEvent('cartUpdated'));
+    
+    // Redirect to WhatsApp
+    window.open('https://wa.me/51949799869', '_blank');
+  });
+
+  // Show notification
+  function showNotification(message: string) {
+    const notification = document.createElement('div');
+    notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.remove();
+    }, 2000);
+  }
+</script>

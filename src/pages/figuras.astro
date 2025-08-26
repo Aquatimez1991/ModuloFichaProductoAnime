@@ -1,0 +1,240 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import CartModal from '../components/CartModal.astro';
+
+import { allFigures } from '../data/figures';
+---
+
+<Layout title="Todas las Figuras - FigureStore">
+  <Header />
+  
+  <div class="min-h-screen bg-background">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-primary/10 to-secondary/10 py-16">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center">
+          <h1 class="text-4xl font-bold text-foreground mb-4">
+            Todas las Figuras
+          </h1>
+          <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Descubre nuestra colección completa de figuras anime de alta calidad. 
+            Desde figuras a escala hasta ediciones limitadas.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters and Search -->
+    <div class="max-w-7xl mx-auto px-4 py-8">
+      <div class="flex flex-col sm:flex-row gap-4 mb-8">
+        <!-- Search -->
+        <div class="flex-1">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Buscar figuras..."
+            class="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+        </div>
+        
+        <!-- Category Filter -->
+        <select
+          id="category-filter"
+          class="px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+        >
+          <option value="">Todas las categorías</option>
+          <option value="scale-figures">Figuras a Escala</option>
+          <option value="nendoroid">Nendoroid</option>
+          <option value="figma">Figma</option>
+        </select>
+      </div>
+
+      <!-- Results Count -->
+      <div class="flex justify-between items-center mb-6">
+        <p class="text-muted-foreground">
+          Mostrando <span id="results-count">{allFigures.length}</span> figuras
+        </p>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="products-grid">
+        {allFigures.map((figure) => (
+          <div class="group hover:shadow-lg transition-shadow cursor-pointer border border-border rounded-lg overflow-hidden product-card" data-category={figure.category} data-name={figure.name.toLowerCase()} data-figure-id={figure.id} onclick={`window.location.href='/figura/${figure.id}'`}>
+            <!-- Product Image -->
+            <div class="relative aspect-square overflow-hidden">
+              <img
+                src={figure.image}
+                alt={figure.name}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              
+
+              
+
+              
+              <!-- Available Badge -->
+              <div class="absolute top-2 left-2">
+                <span class="bg-blue-500 text-white px-2 py-1 rounded text-xs font-medium">
+                  Disponible
+                </span>
+              </div>
+              
+
+            </div>
+
+            <!-- Product Info -->
+            <div class="p-4 space-y-3">
+              <!-- Title and Manufacturer -->
+              <div>
+                <h3 class="font-semibold text-foreground group-hover:text-primary transition-colors">
+                  {figure.name}
+                </h3>
+                <p class="text-sm text-muted-foreground">
+                  {figure.manufacturer}
+                </p>
+              </div>
+
+              <!-- Rating -->
+              <div class="flex items-center gap-2">
+                <div class="flex items-center gap-1">
+                  <svg class="w-4 h-4 fill-yellow-400 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span class="text-sm font-medium text-foreground">{figure.rating}</span>
+                </div>
+                <span class="text-sm text-muted-foreground">({figure.reviews} reseñas)</span>
+              </div>
+
+              <!-- Price -->
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="text-lg font-bold text-foreground">
+                    S/. {figure.price.toLocaleString()}
+                  </span>
+                  {figure.originalPrice > figure.price && (
+                    <span class="text-sm text-muted-foreground line-through">
+                      S/. {figure.originalPrice.toLocaleString()}
+                    </span>
+                  )}
+                </div>
+                {figure.originalPrice > figure.price && (
+                  <p class="text-sm text-green-600">
+                    Ahorras S/. {(figure.originalPrice - figure.price).toLocaleString()}
+                  </p>
+                )}
+              </div>
+
+              <!-- Stock Status -->
+              <div class="flex items-center gap-2 text-sm">
+                <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class={figure.stock > 0 ? 'text-green-600' : 'text-red-600'}>
+                  {figure.stock > 0 ? `${figure.stock} en stock` : 'Agotado'}
+                </span>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex gap-2 pt-2">
+                <button
+                  onclick="event.stopPropagation(); addToCart(this.dataset.figureId);"
+                  data-figure-id={figure.id}
+                  class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium"
+                >
+                  Agregar al Carrito
+                </button>
+                <button
+                  onclick="event.stopPropagation(); buyNow(this.dataset.figureId);"
+                  data-figure-id={figure.id}
+                  class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                  Comprar
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <CartModal />
+</Layout>
+
+<script>
+  // Search and filter functionality
+  const searchInput = document.getElementById('search-input');
+  const categoryFilter = document.getElementById('category-filter');
+  const productsGrid = document.getElementById('products-grid');
+  const resultsCount = document.getElementById('results-count');
+  const productCards = document.querySelectorAll('.product-card');
+
+  function filterProducts() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const selectedCategory = categoryFilter.value;
+    let visibleCount = 0;
+
+    productCards.forEach(card => {
+      const name = card.dataset.name;
+      const category = card.dataset.category;
+      
+      const matchesSearch = name.includes(searchTerm);
+      const matchesCategory = !selectedCategory || category === selectedCategory;
+      
+      if (matchesSearch && matchesCategory) {
+        card.style.display = 'block';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    resultsCount.textContent = visibleCount;
+  }
+
+  searchInput?.addEventListener('input', filterProducts);
+  categoryFilter?.addEventListener('change', filterProducts);
+
+  // Add to cart functionality
+  function addToCart(figureId) {
+    const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
+    store.cart[figureId] = (store.cart[figureId] || 0) + 1;
+    localStorage.setItem('figure-store', JSON.stringify(store));
+    window.dispatchEvent(new CustomEvent('cartUpdated'));
+    
+    // Show notification
+    showNotification('¡Producto agregado al carrito!');
+  }
+
+  // Buy now functionality
+  function buyNow(figureId) {
+    // Add to cart first
+    const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
+    store.cart[figureId] = (store.cart[figureId] || 0) + 1;
+    localStorage.setItem('figure-store', JSON.stringify(store));
+    window.dispatchEvent(new CustomEvent('cartUpdated'));
+    
+    // Redirect to WhatsApp
+    window.open('https://wa.me/51949799869', '_blank');
+  }
+
+  // Show notification
+  function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.remove();
+    }, 2000);
+  }
+
+  // Make functions globally available
+  window.addToCart = addToCart;
+  window.buyNow = buyNow;
+</script>

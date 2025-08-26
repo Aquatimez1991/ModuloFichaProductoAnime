@@ -1,0 +1,127 @@
+---
+import type { Product } from '../../../types/product';
+import { STORAGE_KEYS } from '../../../data/constants';
+
+const { product } = Astro.props;
+---
+
+<div class="product-actions">
+  <button 
+    class="product-actions__btn product-actions__btn--primary"
+    data-action="add-to-cart"
+    data-product-id={product.id}
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+    </svg>
+    Agregar al Carrito
+  </button>
+  
+  <button 
+    class="product-actions__btn product-actions__btn--secondary"
+    data-action="add-to-wishlist"
+    data-product-id={product.id}
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+    </svg>
+    Favoritos
+  </button>
+  
+  <button 
+    class="product-actions__btn product-actions__btn--success"
+    data-action="buy-now"
+    data-product-id={product.id}
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+    </svg>
+    Comprar Ahora
+  </button>
+</div>
+
+<style>
+  .product-actions {
+    @apply flex flex-col gap-2 mt-4;
+  }
+  
+  .product-actions__btn {
+    @apply flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors;
+  }
+  
+  .product-actions__btn--primary {
+    @apply bg-primary text-white hover:bg-primary/90;
+  }
+  
+  .product-actions__btn--secondary {
+    @apply bg-gray-100 text-gray-700 hover:bg-gray-200;
+  }
+  
+  .product-actions__btn--success {
+    @apply bg-green-600 text-white hover:bg-green-700;
+  }
+</style>
+
+<script>
+  import { STORAGE_KEYS } from '../../../data/constants';
+  import { showNotification } from '../../../utils/notifications';
+  
+  class ProductActions {
+    constructor(element: HTMLElement) {
+      this.element = element;
+      this.init();
+    }
+    
+    init() {
+      this.element.addEventListener('click', (e) => {
+        const button = e.target.closest('[data-action]');
+        if (!button) return;
+        
+        const action = button.dataset.action;
+        const productId = parseInt(button.dataset.productId);
+        
+        switch (action) {
+          case 'add-to-cart':
+            this.addToCart(productId);
+            break;
+          case 'add-to-wishlist':
+            this.addToWishlist(productId);
+            break;
+          case 'buy-now':
+            this.buyNow(productId);
+            break;
+        }
+      });
+    }
+    
+    addToCart(productId: number) {
+      const cart = JSON.parse(localStorage.getItem(STORAGE_KEYS.CART) || '{}');
+      cart[productId] = (cart[productId] || 0) + 1;
+      localStorage.setItem(STORAGE_KEYS.CART, JSON.stringify(cart));
+      
+      // Dispatch event to update cart count
+      window.dispatchEvent(new CustomEvent('cartUpdated'));
+      showNotification('Producto agregado al carrito');
+    }
+    
+    addToWishlist(productId: number) {
+      const wishlist = JSON.parse(localStorage.getItem(STORAGE_KEYS.WISHLIST) || '[]');
+      if (!wishlist.includes(productId)) {
+        wishlist.push(productId);
+        localStorage.setItem(STORAGE_KEYS.WISHLIST, JSON.stringify(wishlist));
+        showNotification('Producto agregado a favoritos');
+      }
+    }
+    
+    buyNow(productId: number) {
+      this.addToCart(productId);
+      window.open('https://wa.me/51949799869', '_blank');
+    }
+  }
+  
+  // Initialize all product action components
+  document.addEventListener('DOMContentLoaded', () => {
+    const productActions = document.querySelectorAll('.product-actions');
+    productActions.forEach(actions => new ProductActions(actions as HTMLElement));
+  });
+</script>
