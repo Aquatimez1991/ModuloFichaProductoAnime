@@ -17,13 +17,14 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "astro": "3.6.0",
+    "@astrojs/vercel": "^8.2.7",
+    "astro": "^5.13.5",
     "clsx": "2.0.0",
     "tailwind-merge": "2.0.0",
     "typescript": "^5.9.2"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "5.0.0",
+    "@astrojs/tailwind": "^6.0.2",
     "@types/node": "20.10.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
