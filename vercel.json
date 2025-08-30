@@ -1,12 +1,8 @@
 {
+  "name": "rabbitvault-anime-store",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "astro",
   "installCommand": "npm install",
-  "devCommand": "npm run dev",
-  "functions": {
-    "src/pages/**/*.astro": {
-      "runtime": "@vercel/node"
-    }
-  }
+  "devCommand": "npm run dev"
 }
