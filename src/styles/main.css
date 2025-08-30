@@ -1,49 +1,50 @@
-/* Estilos principales para RabbitVault */
-:root {
-  --background: 45 100% 98%;
-  --foreground: 20 14% 4%;
-  --card: 0 0% 100%;
-  --card-foreground: 20 14% 4%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 20 14% 4%;
-  --primary: 160 84% 39%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 45 93% 94%;
-  --secondary-foreground: 20 14% 4%;
-  --muted: 45 93% 94%;
-  --muted-foreground: 25 10% 27%;
-  --accent: 45 93% 94%;
-  --accent-foreground: 20 14% 4%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 45 93% 94%;
-  --input: 45 93% 94%;
-  --ring: 160 84% 39%;
-  --radius: 0.75rem;
+/* ===== TAILWIND CSS ===== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== VARIABLES CSS ===== */
+@layer base {
+  :root {
+    --background: 45 100% 98%;
+    --foreground: 20 14% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 4%;
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 45 93% 94%;
+    --secondary-foreground: 20 14% 4%;
+    --muted: 45 93% 94%;
+    --muted-foreground: 25 10% 27%;
+    --accent: 45 93% 94%;
+    --accent-foreground: 20 14% 4%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 45 93% 94%;
+    --input: 45 93% 94%;
+    --ring: 160 84% 39%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    color: hsl(var(--foreground));
+    background: hsl(var(--background));
+    font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+  }
 }
 
-* {
-  box-sizing: border-box;
-  border-width: 0;
-  border-style: solid;
-  border-color: hsl(var(--border));
-}
-
-body {
-  color: hsl(var(--foreground));
-  background: hsl(var(--background));
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    Segoe UI,
-    Roboto,
-    sans-serif;
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* Estilos básicos */
+/* ===== ESTILOS BÁSICOS ===== */
 .bg-white {
   background-color: white;
 }
@@ -126,7 +127,7 @@ body {
   height: 1rem;
 }
 
-/* Estilos de botones */
+/* ===== ESTILOS DE BOTONES ===== */
 button {
   background-color: hsl(var(--primary));
   color: white;
@@ -143,7 +144,7 @@ button:hover {
   transform: translateY(-1px);
 }
 
-/* Estilos de texto */
+/* ===== ESTILOS DE TEXTO ===== */
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -166,7 +167,7 @@ button:hover {
   color: hsl(var(--muted-foreground));
 }
 
-/* Estilos de layout */
+/* ===== ESTILOS DE LAYOUT ===== */
 .sticky {
   position: sticky;
 }
@@ -184,9 +185,7 @@ button:hover {
 }
 
 .shadow-soft {
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.04),
-    0 1px 3px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .border-b {
@@ -197,7 +196,7 @@ button:hover {
   border-color: hsl(var(--border) / 0.5);
 }
 
-/* Estilos de navegación */
+/* ===== ESTILOS DE NAVEGACIÓN ===== */
 nav {
   display: flex;
   align-items: center;
@@ -215,7 +214,7 @@ nav a:hover {
   color: hsl(var(--primary));
 }
 
-/* Estilos de formularios */
+/* ===== ESTILOS DE FORMULARIOS ===== */
 input {
   width: 100%;
   padding: 0.5rem 1rem;
@@ -231,16 +230,15 @@ input:focus {
   box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
 }
 
-/* Estilos de iconos */
+/* ===== ESTILOS DE ICONOS ===== */
 svg {
   display: block;
   vertical-align: middle;
 }
 
-/* Estilos de transiciones */
+/* ===== ESTILOS DE TRANSICIONES ===== */
 .transition-colors {
-  transition-property:
-    color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 0.15s;
 }
@@ -251,7 +249,7 @@ svg {
   transition-duration: 0.15s;
 }
 
-/* Estilos de hover */
+/* ===== ESTILOS DE HOVER ===== */
 .hover\:opacity-80:hover {
   opacity: 0.8;
 }
@@ -264,7 +262,7 @@ svg {
   color: hsl(var(--primary));
 }
 
-/* Estilos de posicionamiento */
+/* ===== ESTILOS DE POSICIONAMIENTO ===== */
 .relative {
   position: relative;
 }
@@ -322,7 +320,7 @@ svg {
   display: none;
 }
 
-/* Estilos de gradientes */
+/* ===== ESTILOS DE GRADIENTES ===== */
 .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
@@ -341,19 +339,17 @@ svg {
   border-radius: 0.75rem;
 }
 
-/* Estilos de sombras */
+/* ===== ESTILOS DE SOMBRAS ===== */
 .shadow-soft {
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.04),
-    0 1px 3px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
-/* Estilos de texto */
+/* ===== ESTILOS DE TEXTO ===== */
 .text-primary-foreground {
   color: hsl(var(--primary-foreground));
 }
 
-/* Estilos de responsive */
+/* ===== ESTILOS DE RESPONSIVE ===== */
 @media (min-width: 768px) {
   .md\:flex {
     display: flex;
@@ -364,13 +360,13 @@ svg {
   .lg\:flex {
     display: flex;
   }
-
+  
   .lg\:hidden {
     display: none;
   }
 }
 
-/* Estilos de utilidad */
+/* ===== ESTILOS DE UTILIDAD ===== */
 .hidden {
   display: none;
 }
@@ -391,7 +387,7 @@ svg {
   height: 100%;
 }
 
-/* Estilos de padding y margin */
+/* ===== ESTILOS DE PADDING Y MARGIN ===== */
 .p-2 {
   padding: 0.5rem;
 }
@@ -413,7 +409,7 @@ svg {
   margin-top: 1rem;
 }
 
-/* Estilos de bordes */
+/* ===== ESTILOS DE BORDES ===== */
 .border {
   border-width: 1px;
 }
@@ -422,7 +418,7 @@ svg {
   border-color: hsl(var(--input));
 }
 
-/* Estilos de focus */
+/* ===== ESTILOS DE FOCUS ===== */
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -440,9 +436,7 @@ svg {
   border-color: hsl(var(--primary) / 0.3);
 }
 
-/* ESTILOS ADICIONALES PARA LAYOUT Y TARJETAS */
-
-/* Estilos de secciones */
+/* ===== ESTILOS DE SECCIONES ===== */
 section {
   padding: 4rem 0;
 }
@@ -457,7 +451,7 @@ section {
   padding-bottom: 5rem;
 }
 
-/* Estilos de contenedores */
+/* ===== ESTILOS DE CONTENEDORES ===== */
 .max-w-6xl {
   max-width: 72rem;
 }
@@ -466,7 +460,7 @@ section {
   max-width: 64rem;
 }
 
-/* Estilos de texto */
+/* ===== ESTILOS DE TEXTO ===== */
 .text-center {
   text-align: center;
 }
@@ -491,7 +485,7 @@ section {
   line-height: 1.75rem;
 }
 
-/* Estilos de grid */
+/* ===== ESTILOS DE GRID ===== */
 .grid {
   display: grid;
 }
@@ -524,7 +518,7 @@ section {
   gap: 3rem;
 }
 
-/* Estilos de tarjetas de productos */
+/* ===== ESTILOS DE TARJETAS DE PRODUCTOS ===== */
 .carousel-container {
   display: flex;
   overflow-x: auto;
@@ -542,20 +536,16 @@ section {
   background: white;
   border-radius: 1rem;
   padding: 1.5rem;
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
 }
 
 .product-card:hover {
   transform: translateY(-4px);
-  box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* Estilos de imágenes */
+/* ===== ESTILOS DE IMÁGENES ===== */
 .product-image {
   width: 100%;
   height: 18rem;
@@ -572,7 +562,7 @@ section {
   height: 18rem;
 }
 
-/* Estilos de badges */
+/* ===== ESTILOS DE BADGES ===== */
 .badge {
   display: inline-block;
   padding: 0.25rem 0.75rem;
@@ -588,7 +578,7 @@ section {
   color: white;
 }
 
-/* Estilos de precios */
+/* ===== ESTILOS DE PRECIOS ===== */
 .price {
   font-size: 1.5rem;
   font-weight: 700;
@@ -607,7 +597,7 @@ section {
   font-size: 0.875rem;
 }
 
-/* Estilos de botones de acción */
+/* ===== ESTILOS DE BOTONES DE ACCIÓN ===== */
 .action-buttons {
   display: flex;
   gap: 0.75rem;
@@ -645,7 +635,7 @@ section {
   color: white;
 }
 
-/* Estilos de navegación del carrusel */
+/* ===== ESTILOS DE NAVEGACIÓN DEL CARRUSEL ===== */
 .carousel-nav {
   display: flex;
   justify-content: center;
@@ -666,7 +656,7 @@ section {
   background-color: hsl(var(--primary));
 }
 
-/* Estilos de filtros y búsqueda */
+/* ===== ESTILOS DE FILTROS Y BÚSQUEDA ===== */
 .filters {
   display: flex;
   gap: 1rem;
@@ -694,7 +684,7 @@ section {
   background-color: white;
 }
 
-/* Estilos de responsive para tarjetas */
+/* ===== ESTILOS DE RESPONSIVE PARA TARJETAS ===== */
 @media (min-width: 640px) {
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -711,13 +701,13 @@ section {
   .lg\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
-
+  
   .lg\:grid-cols-5 {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 
-/* Estilos de espaciado adicional */
+/* ===== ESTILOS DE ESPACIADO ADICIONAL ===== */
 .space-y-4 > * + * {
   margin-top: 1rem;
 }
@@ -730,7 +720,7 @@ section {
   margin-top: 2rem;
 }
 
-/* Estilos de colores adicionales */
+/* ===== ESTILOS DE COLORES ADICIONALES ===== */
 .text-green-600 {
   color: #16a34a;
 }
@@ -743,7 +733,7 @@ section {
   fill: #facc15;
 }
 
-/* Estilos de overflow */
+/* ===== ESTILOS DE OVERFLOW ===== */
 .overflow-hidden {
   overflow: hidden;
 }
@@ -752,11 +742,9 @@ section {
   overflow-y: auto;
 }
 
-/* Estilos de transformaciones */
+/* ===== ESTILOS DE TRANSFORMACIONES ===== */
 .transform {
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-    rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y))
-    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .scale-105 {
@@ -764,7 +752,7 @@ section {
   --tw-scale-y: 1.05;
 }
 
-/* Estilos de animaciones */
+/* ===== ESTILOS DE ANIMACIONES ===== */
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -780,17 +768,17 @@ section {
   animation: fade-in 0.3s ease-out;
 }
 
-/* Estilos de cursor */
+/* ===== ESTILOS DE CURSOR ===== */
 .cursor-pointer {
   cursor: pointer;
 }
 
-/* Estilos de aspect ratio */
+/* ===== ESTILOS DE ASPECT RATIO ===== */
 .aspect-square {
   aspect-ratio: 1 / 1;
 }
 
-/* Estilos de min/max width/height */
+/* ===== ESTILOS DE MIN/MAX WIDTH/HEIGHT ===== */
 .min-w-full {
   min-width: 100%;
 }
@@ -803,17 +791,17 @@ section {
   min-height: 100vh;
 }
 
-/* Estilos de line-through */
+/* ===== ESTILOS DE LINE-THROUGH ===== */
 .line-through {
   text-decoration-line: line-through;
 }
 
-/* Estilos de placeholder */
+/* ===== ESTILOS DE PLACEHOLDER ===== */
 .placeholder-muted-foreground::placeholder {
   color: hsl(var(--muted-foreground));
 }
 
-/* Estilos de opacity */
+/* ===== ESTILOS DE OPACITY ===== */
 .opacity-50 {
   opacity: 0.5;
 }
@@ -822,43 +810,35 @@ section {
   opacity: 0.9;
 }
 
-/* Estilos de shadow adicionales */
+/* ===== ESTILOS DE SHADOW ADICIONALES ===== */
 .shadow {
-  box-shadow:
-    0 1px 3px 0 rgba(0, 0, 0, 0.1),
-    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 .shadow-lg {
-  box-shadow:
-    0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .shadow-xl {
-  box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* Estilos de outline */
+/* ===== ESTILOS DE OUTLINE ===== */
 .outline {
   outline-style: solid;
 }
 
-/* Estilos de filter */
+/* ===== ESTILOS DE FILTER ===== */
 .filter {
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
-    var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate)
-    var(--tw-sepia) var(--tw-drop-shadow);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-/* Estilos de backdrop */
+/* ===== ESTILOS DE BACKDROP ===== */
 .backdrop-blur-md {
   backdrop-filter: blur(12px);
 }
 
-/* Estilos de transiciones adicionales */
+/* ===== ESTILOS DE TRANSICIONES ADICIONALES ===== */
 .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -871,7 +851,7 @@ section {
   transition-duration: 0.15s;
 }
 
-/* Estilos de duración */
+/* ===== ESTILOS DE DURACIÓN ===== */
 .duration-300 {
   transition-duration: 0.3s;
 }
@@ -884,7 +864,7 @@ section {
   transition-duration: 1s;
 }
 
-/* Estilos de easing */
+/* ===== ESTILOS DE EASING ===== */
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
@@ -893,20 +873,16 @@ section {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Estilos de hover adicionales */
+/* ===== ESTILOS DE HOVER ADICIONALES ===== */
 .hover\:shadow-xl:hover {
-  box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .hover\:shadow-medium:hover {
-  box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.06),
-    0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-/* Estilos de group hover */
+/* ===== ESTILOS DE GROUP HOVER ===== */
 .group:hover .group-hover\:scale-105 {
   transform: scale(1.05);
 }
@@ -915,17 +891,17 @@ section {
   color: hsl(var(--primary));
 }
 
-/* Estilos de focus adicionales */
+/* ===== ESTILOS DE FOCUS ADICIONALES ===== */
 .focus\:border-primary\/30:focus {
   border-color: hsl(var(--primary) / 0.3);
 }
 
-/* Estilos de last child */
+/* ===== ESTILOS DE LAST CHILD ===== */
 .last\:border-b-0:last-child {
   border-bottom-width: 0px;
 }
 
-/* Estilos de animaciones adicionales */
+/* ===== ESTILOS DE ANIMACIONES ADICIONALES ===== */
 @keyframes pulse {
   50% {
     opacity: 0.5;
@@ -946,7 +922,7 @@ section {
   animation: spin 1s linear infinite;
 }
 
-/* ESTILOS ESPECÍFICOS PARA PULIR EL LAYOUT */
+/* ===== ESTILOS ESPECÍFICOS PARA PULIR EL LAYOUT ===== */
 
 /* Estilos de layout principal */
 .main-content {
@@ -1081,9 +1057,7 @@ section {
 
 .product-card:hover {
   transform: translateY(-8px);
-  box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* Estilos de imágenes de productos */
@@ -1308,16 +1282,16 @@ section {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-
+  
   .products-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
   }
-
+  
   .section-title {
     font-size: 2rem;
   }
-
+  
   .action-buttons {
     grid-template-columns: 1fr;
   }
@@ -1327,11 +1301,11 @@ section {
   .products-grid {
     grid-template-columns: 1fr;
   }
-
+  
   .product-card {
     padding: 1rem;
   }
-
+  
   .main-image {
     height: 200px;
   }
