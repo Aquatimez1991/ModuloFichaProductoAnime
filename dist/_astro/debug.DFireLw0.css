@@ -4272,12 +4272,12 @@ section.py-16 {
 
 /* Estilos específicos para imágenes del carrusel */
 .carousel-slide img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 1rem;
-  transition: transform 0.3s ease;
+  width: 100% !important;
+  height: 100% !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+  border-radius: 1rem !important;
+  transition: transform 0.3s ease !important;
 }
 
 .carousel-slide img:hover {
