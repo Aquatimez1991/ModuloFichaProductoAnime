@@ -1,23 +1,5 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": ".vercel/output/static",
-  "framework": "astro",
-  "routes": [
-    {
-      "src": "/placeholder-figure.svg",
-      "dest": "/placeholder-figure.svg"
-    },
-    {
-      "src": "/favicon.svg",
-      "dest": "/favicon.svg"
-    },
-    {
-      "src": "/(.*\\.(jpg|jpeg|png|gif|svg|ico|webp))",
-      "dest": "/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ]
+  "framework": "astro"
 }

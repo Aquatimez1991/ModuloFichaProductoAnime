@@ -6,7 +6,7 @@ export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
   adapter: vercel({
-    includeFiles: ['./public/**'],
+    includeFiles: ['./src/assets/**'],
     maxDuration: 30,
   }),
   outDir: 'dist',
