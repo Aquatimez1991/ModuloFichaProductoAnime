@@ -11,20 +11,19 @@ export const allFigures: Product[] = [
     rating: 4.8,
     reviews: 0,
     status: 'Disponible',
-    category: 'scale-figures',
-    scale: '1/7',
+    category: 'figma',
+    scale: 'Figma',
     height: '18cm',
     material: 'PVC & ABS',
-    image:
-      '/yotsuba/yotsuba-1.jpg',
+    image: '/yotsuba/yotsuba-1.jpg',
     isNew: false,
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/7 de Yotsuba Koiwai en excelente estado 'como nuevo'. La figura captura perfectamente la energia y personalidad alegre de Yotsuba con su caracteristico cabello verde y expresiones faciales adorables. Incluye base tematica y detalles de alta calidad que hacen justicia al personaje iconico del manga.",
+      "Figma de Yotsuba Koiwai en excelente estado 'como nuevo'. Esta figura articulada captura perfectamente la energia y personalidad alegre de Yotsuba con su caracteristico cabello verde y expresiones faciales adorables. Incluye articulacion completa y accesorios intercambiables que hacen justicia al personaje iconico del manga.",
     features: [
-      'Pintura de alta calidad',
-      'Base tematica incluida',
+      'Articulacion completa',
+      'Accesorios intercambiables',
       'Detalles faciales expresivos',
       'Cabello verde caracteristico',
       'Poses dinamicas',
@@ -50,8 +49,7 @@ export const allFigures: Product[] = [
     scale: '1/8',
     height: '22cm',
     material: 'PVC & ABS',
-    image:
-      '/gundam-haman/gundam-haman-1.jpg',
+    image: '/gundam-haman/gundam-haman-1.jpg',
     isNew: false,
     isPopular: true,
     stock: 1,
@@ -86,8 +84,7 @@ export const allFigures: Product[] = [
     scale: '1/8',
     height: '23cm',
     material: 'PVC & ABS',
-    image:
-      '/gundam-anavel/gundam-anavel-1.jpg',
+    image: '/gundam-anavel/gundam-anavel-1.jpg',
     isNew: false,
     isPopular: true,
     stock: 1,
@@ -625,8 +622,7 @@ export const allFigures: Product[] = [
     scale: '1/8',
     height: '23cm',
     material: 'PVC & ABS',
-    image:
-      '/shinra-asmodies/shinra-asmodies-1.jpg',
+    image: '/shinra-asmodies/shinra-asmodies-1.jpg',
     isNew: false,
     isPopular: true,
     stock: 1,
@@ -662,8 +658,7 @@ export const allFigures: Product[] = [
     scale: '1/8',
     height: '24cm',
     material: 'PVC & ABS',
-    image:
-      '/shinra-astaroth/shinra-astaroth-1.jpg',
+    image: '/shinra-astaroth/shinra-astaroth-1.jpg',
     isNew: false,
     isPopular: true,
     stock: 1,
@@ -699,8 +694,7 @@ export const allFigures: Product[] = [
     scale: '1/8',
     height: '22cm',
     material: 'PVC & ABS',
-    image:
-      '/cinderella-sachiko/cinderella-sachiko-1.jpg',
+    image: '/cinderella-sachiko/cinderella-sachiko-1.jpg',
     isNew: false,
     isPopular: true,
     stock: 1,
@@ -737,8 +731,7 @@ export const allFigures: Product[] = [
     scale: 'Nendoroid',
     height: '10cm',
     material: 'PVC & ABS',
-    image:
-      '/nendoroid-snow-miku/nendoroid-snow-miku-1.jpg',
+    image: '/nendoroid-snow-miku/nendoroid-snow-miku-1.jpg',
     isNew: false,
     isPopular: true,
     stock: 1,
@@ -847,8 +840,7 @@ export const allFigures: Product[] = [
     scale: '1/7',
     height: '24cm',
     material: 'PVC',
-    image:
-      '/orchid-leviathan/orchid-leviathan-1.jpg',
+    image: '/orchid-leviathan/orchid-leviathan-1.jpg',
     isNew: false,
     isPopular: true,
     stock: 1,
@@ -992,8 +984,7 @@ export const allFigures: Product[] = [
     scale: '1/8',
     height: '22cm',
     material: 'PVC & ABS',
-    image:
-      '/idolmaster-riina/idolmaster-riina-1.jpg',
+    image: '/idolmaster-riina/idolmaster-riina-1.jpg',
     isNew: false,
     isPopular: true,
     stock: 1,
@@ -1017,4 +1008,3 @@ export const allFigures: Product[] = [
     releaseDate: '2016-11-20',
   },
 ];
-

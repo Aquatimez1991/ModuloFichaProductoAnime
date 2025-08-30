@@ -11,7 +11,7 @@ const categoryFilter = url.searchParams.get('category');
 
 // Filtrar productos por categoría si se especifica
 const filteredFigures = categoryFilter 
-  ? allFigures.filter(figure => figure.category === categoryFilter)
+  ? (categoryFilter === 'accessories' ? [] : allFigures.filter(figure => figure.category === categoryFilter))
   : allFigures;
 ---
 
@@ -63,6 +63,7 @@ const filteredFigures = categoryFilter
           <option value="figma">🤖 Figma</option>
           <option value="pop-up-parade">🏆 Pop Up Parade</option>
           <option value="model-kits">🔧 Model Kits</option>
+          <option value="accessories">🎒 Accesorios</option>
         </select>
 
         <!-- Status Filter -->
@@ -87,7 +88,18 @@ const filteredFigures = categoryFilter
 
       <!-- Products Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="products-grid">
-        {filteredFigures.map((figure) => (
+        {filteredFigures.length === 0 ? (
+          <div class="col-span-full text-center py-12">
+            <div class="text-muted-foreground">
+              <svg class="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
+              </svg>
+              <h3 class="text-xl font-semibold mb-2">No se encontraron productos</h3>
+              <p class="text-sm">Intenta con otros términos de búsqueda o filtros</p>
+            </div>
+          </div>
+        ) : (
+        filteredFigures.map((figure) => (
           <div class="group hover:shadow-medium transition-all duration-300 cursor-pointer border border-border rounded-xl overflow-hidden product-card bg-white/50 backdrop-blur-sm hover:bg-white/80" data-category={figure.category} data-name={figure.name.toLowerCase()} data-figure-id={figure.id} data-status={figure.status} onclick={`window.location.href='/figura/${figure.id}'`}>
             <!-- Product Image -->
             <div class="relative aspect-square overflow-hidden">
@@ -190,7 +202,7 @@ const filteredFigures = categoryFilter
               </div>
             </div>
           </div>
-        ))}
+        )))}
       </div>
     </div>
   </div>
