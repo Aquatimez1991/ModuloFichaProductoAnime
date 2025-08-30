@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import { allFigures } from '../data/products';
+---
+
+<Layout title="Debug - RabbitVault">
+  <div class="p-8">
+    <h1 class="text-3xl font-bold mb-8">Debug - Verificación de Imágenes</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {allFigures.slice(0, 10).map((figure) => (
+        <div class="border rounded-lg p-4">
+          <h3 class="font-bold mb-2">{figure.name}</h3>
+          <p class="text-sm text-gray-600 mb-2">ID: {figure.id}</p>
+          <p class="text-sm text-gray-600 mb-2">Ruta: {figure.image}</p>
+          
+          <div class="w-full h-48 bg-gray-100 rounded-lg overflow-hidden mb-2">
+            <img 
+              src={figure.image} 
+              alt={figure.name}
+              class="w-full h-full object-cover"
+              onerror="this.style.backgroundColor='red'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='❌ Error cargando imagen';"
+              onload="this.style.backgroundColor='green'; console.log('✅ Imagen cargada:', this.src);"
+            />
+          </div>
+          
+          <div class="text-xs">
+            <p>Estado: <span id="status-{figure.id}">Cargando...</span></p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Verificar todas las imágenes
+  document.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('img');
+    
+    images.forEach((img, index) => {
+      const figureId = img.closest('.border')?.querySelector('p')?.textContent?.match(/ID: (\d+)/)?.[1];
+      
+      img.addEventListener('load', () => {
+        const statusElement = document.getElementById(`status-${figureId}`);
+        if (statusElement) {
+          statusElement.textContent = '✅ Cargada correctamente';
+          statusElement.style.color = 'green';
+        }
+        console.log(`✅ Imagen ${index + 1} cargada:`, img.src);
+      });
+      
+      img.addEventListener('error', () => {
+        const statusElement = document.getElementById(`status-${figureId}`);
+        if (statusElement) {
+          statusElement.textContent = '❌ Error al cargar';
+          statusElement.style.color = 'red';
+        }
+        console.error(`❌ Error en imagen ${index + 1}:`, img.src);
+      });
+    });
+  });
+</script>

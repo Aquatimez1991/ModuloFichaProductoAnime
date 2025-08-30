@@ -949,6 +949,61 @@ section {
   background: linear-gradient(135deg, rgba(236, 253, 245, 0.5) 0%, rgba(240, 253, 250, 0.3) 50%, rgba(236, 254, 255, 0.5) 100%) !important;
 }
 
+/* Forzar fondo degradado en secciones */
+section.py-16 {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%) !important;
+}
+
+/* Estilos específicos para el contenedor del carrusel */
+.carousel-container {
+  display: flex !important;
+  overflow-x: hidden !important;
+  scroll-snap-type: x mandatory !important;
+  -webkit-overflow-scrolling: touch !important;
+  transition: transform 1s ease-in-out !important;
+  width: 100% !important;
+}
+
+.carousel-slide {
+  flex: 0 0 100% !important;
+  scroll-snap-align: start !important;
+  padding: 0 1rem !important;
+  min-width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+/* Asegurar que las imágenes se muestren */
+.carousel-slide img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 1rem !important;
+  transition: transform 0.3s ease !important;
+  display: block !important;
+}
+
+/* Contenedores de imágenes específicos */
+.w-72 {
+  width: 18rem !important;
+  min-width: 18rem !important;
+}
+
+.h-72 {
+  height: 18rem !important;
+  min-height: 18rem !important;
+}
+
+.lg\:w-80 {
+  width: 20rem !important;
+  min-width: 20rem !important;
+}
+
+.lg\:h-80 {
+  height: 20rem !important;
+  min-height: 20rem !important;
+}
+
 /* Estilos de secciones mejoradas */
 .section-container {
   max-width: 1200px;
