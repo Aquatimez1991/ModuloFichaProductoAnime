@@ -1,4 +1,4 @@
----
+﻿---
 // CartModal.astro
 ---
 
@@ -26,7 +26,7 @@
         <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
         </svg>
-        <p class="text-lg font-medium mb-2">Tu carrito está vacío</p>
+        <p class="text-lg font-medium mb-2">Tu carrito estÃ¡ vacÃ­o</p>
         <p class="text-sm">Agrega algunos productos para comenzar</p>
       </div>
 
@@ -59,42 +59,42 @@
   const clearCartBtn = document.getElementById('clear-cart');
   const checkoutCartBtn = document.getElementById('checkout-cart');
 
-  // Figure data for display - Actualizado con imágenes locales correctas
+  // Figure data for display - Actualizado con imÃ¡genes locales correctas
   const figureData = {
     1: {
       name: 'Yotsuba Koiwai',
       price: 500,
-      image: '/YotsubaActionFigureYotsubaKoiwai/YotsubaActionFigureYotsubaKoiwai1.jpg'
+      image: '/yotsuba/yotsuba-1.jpg'
     },
     2: {
       name: 'GGG Series Mobile Suit Zeta Gundam Haman Karn 1/8',
       price: 500,
-      image: '/GGGSeriesMobileSuitZetaGundamHamanKarn/GGGSeriesMobileSuitZetaGundamHamanKarn1.jpg'
+      image: '/gundam-haman/gundam-haman-1.jpg'
     },
     3: {
       name: 'Nendoroid Petite - B.G.M Festival Set Vol.0',
       price: 100,
-      image: '/Nendoroidpetite/Nendoroidpetite1.jpg'
+      image: '/nendoroid-petite/nendoroid-petite-1.jpg'
     },
     4: {
       name: 'Granblue Fantasy - Charlotta - 1/8',
       price: 1000,
-      image: '/GRANBLUEFANTASYCharlotta/GRANBLUEFANTASYCharlotta1.jpg'
+      image: '/granblue-charlotta/granblue-charlotta-1.jpg'
     },
     5: {
       name: 'Odin Sphere - Gwendolyn 1/8 Complete Figure',
       price: 500,
-      image: '/OdinSphereGwendolyn/OdinSphereGwendolyn1.jpg'
+      image: '/odin-gwendolyn/odin-gwendolyn-1.jpg'
     },
     6: {
       name: 'Odin Sphere - Mercedes 1/8 Complete Figure',
       price: 500,
-      image: '/OdinSphereMercedes/OdinSphereMercedes1.jpg'
+      image: '/odin-mercedes/odin-mercedes-1.jpg'
     },
     7: {
       name: 'Odin Sphere - Velvet with Cornelius 1/8 Complete Figure',
       price: 500,
-      image: '/OdinSphereVelvetwithCornelius/OdinSphereVelvetwithCornelius1.jpg'
+      image: '/odin-velvet/odin-velvet-1.jpg'
     },
     8: {
       name: 'GGG Series Mobile Suit Gundam 0083 STARDUST MEMORY - Anavel Gato 1/8',
@@ -104,112 +104,112 @@
     9: {
       name: 'Excellent Model RAHDX G.A.NEO Mobile Suit Gundam Ramba Ral 1/8',
       price: 500,
-      image: '/MobileSuitGundamRambaRal/MobileSuitGundamRambaRal1.jpg'
+      image: '/gundam-ramba/gundam-ramba-1.jpg'
     },
     10: {
       name: 'Yamato Guys Collection - Space Battleship Yamato 2199: Juzo Okita 1/8 Complete Figure',
       price: 500,
-      image: '/Yamato2199JuzoOkita/Yamato2199JuzoOkita1.jpg'
+      image: '/yamato-okita/yamato-okita-1.jpg'
     },
     11: {
       name: '1/100 MG MS-07B-3 Gouf Custom',
       price: 200,
-      image: '/1100MGMSGoufCustom/1100MGMSGoufCustom1.jpg'
+      image: '/gouf-custom/gouf-custom-1.jpg'
     },
     12: {
       name: '1/100 MG Qubeley',
       price: 300,
-      image: '/1100MGQubeley/1100MGQubeley1.jpg'
+      image: '/qubeley/qubeley-1.jpg'
     },
     13: {
       name: 'THE iDOLM@STER Cinderella Girls - Anastasia - 1/8 - Memories Ver. (Alter)',
       price: 500,
-      image: '/CinderellaGirlsAnastasia/CinderellaGirlsAnastasia1.jpg'
+      image: '/cinderella-anastasia/cinderella-anastasia-1.jpg'
     },
     14: {
       name: 'THE iDOLM@STER Cinderella Girls - Nitta Minami - 1/8 - Memories Ver. (Alter)',
       price: 500,
-      image: '/CinderellaGirlsNittaMinami/CinderellaGirlsNittaMinami1.jpg'
+      image: '/cinderella-minami/cinderella-minami-1.jpg'
     },
     15: {
       name: 'THE iDOLM@STER Cinderella Girls - Kanzaki Ranko - 1/8 - Memories Ver. (Alter)',
       price: 500,
-      image: '/CinderellaGirlsKanzakiRanko/CinderellaGirlsKanzakiRanko1.jpg'
+      image: '/cinderella-ranko/cinderella-ranko-1.jpg'
     },
     16: {
       name: 'GRANBLUE FANTASY - Danua 1/8 Complete Figure',
       price: 500,
-      image: '/GRANBLUEFANTASYDanua/GRANBLUEFANTASYDanua1.jpg'
+      image: '/granblue-danua/granblue-danua-1.jpg'
     },
     17: {
       name: 'GUILTY GEAR Xrd -SIGN- Elphelt Valentine 1/7 Complete Figure',
       price: 500,
-      image: '/GUILTYGEARElpheltValentine/GUILTYGEARElpheltValentine1.jpg'
+      image: '/guilty-elphelt/guilty-elphelt-1.jpg'
     },
     18: {
       name: 'Excellent Model Shinra Bansho Choco - Masenki Asmodies 1/8 Complete Figure',
       price: 500,
-      image: '/ShinraBanshoChocoMasenkiAsmodies/ShinraBanshoChocoMasenkiAsmodies1.jpg'
+      image: '/shinra-asmodies/shinra-asmodies-1.jpg'
     },
     19: {
       name: 'Excellent Model - Shinra Bansho Choco: Mashougun Astaroth 1/8 Complete Figure',
       price: 500,
-      image: '/ShinraBanshoChocoMashougunAstaroth/ShinraBanshoChocoMashougunAstaroth1.jpg'
+      image: '/shinra-astaroth/shinra-astaroth-1.jpg'
     },
     20: {
       name: 'THE IDOLM@STER Cinderella Girls - Sachiko Koshimizu Self-Proclaimed Cute Ver. (Regular Edition) 1/8 Complete Figure',
       price: 300,
-      image: '/CinderellaGirlsSachikoKoshimizu/CinderellaGirlsSachikoKoshimizu1.jpg'
+      image: '/cinderella-sachiko/cinderella-sachiko-1.jpg'
     },
     21: {
       name: 'Nendoroid - Snow Miku Magical Snow 2014',
       price: 500,
-      image: '/NendoroidSnowMikuMagicalSnow2014/NendoroidSnowMikuMagicalSnow1.jpg'
+      image: '/nendoroid-snow-miku/nendoroid-snow-miku-1.jpg'
     },
     22: {
       name: 'Golgo 13 - Duke Togo - Figma (#042) (Max Factory)',
       price: 500,
-      image: '/figmaGolgo/figmaGolgo1.jpg'
+      image: '/figma-golgo/figma-golgo-1.jpg'
     },
     23: {
       name: 'Triggerheart Exelica - Exelica 1/8 Complete Figure',
       price: 800,
-      image: '/TriggerheartExelicaExelica/TriggerheartExelicaExelica1.jpg'
+      image: '/triggerheart-exelica/triggerheart-exelica-1.jpg'
     },
     24: {
       name: 'Orchid Seed Seven Deadly Sins Leviathan 1/7 PVC',
       price: 500,
-      image: '/OrchidSeedSevenDeadlySinsLeviathan/OrchidSeedSevenDeadlySinsLeviathan1.jpg'
+      image: '/orchid-leviathan/orchid-leviathan-1.jpg'
     },
     25: {
       name: 'Nendoroid - Hatsune Miku Halloween 2014',
       price: 500,
-      image: '/NendoroidHatsuneMikuHalloween/NendoroidHatsuneMikuHalloween1.jpg'
+      image: '/nendoroid-halloween-miku/nendoroid-halloween-miku-1.jpg'
     },
     26: {
       name: 'Character Vocal Series 01 Hatsune Miku Tell Your World Ver. 1/8 Complete Figure',
       price: 750,
-      image: '/HatsuneMikuTellYourWorld/HatsuneMikuTellYourWorld1.jpg'
+      image: '/miku-tell-world/miku-tell-world-1.jpg'
     },
     27: {
       name: 'Grimoire of Zero - Zero 1/8 Complete Figure',
       price: 800,
-      image: '/GrimoireofZeroZero/GrimoireofZeroZero1.jpg'
+      image: '/grimoire-zero/grimoire-zero-1.jpg'
     },
     28: {
       name: 'THE IDOLM@STER Cinderella Girls - Riina Tada 1/8 Complete Figure',
       price: 500,
-      image: '/THEiDOLMASTERCinderellaGirlsTadaRiina/THEiDOLMASTERCinderellaGirlsTadaRiina1.jpg'
+      image: '/idolmaster-riina/idolmaster-riina-1.jpg'
     },
     101: {
       name: 'Nendoroid Hatsune Miku: Sailor Uniform',
       price: 500,
-      image: '/NendoroidHatsuneMikuSailorUniform/NendoroidHatsuneMikuSailorUniform1.jpg'
+      image: '/nendoroid-sailor-miku/nendoroid-sailor-miku-1.jpg'
     },
     102: {
       name: 'Nendoroid - UTAU: Teto Kasane',
       price: 500,
-      image: '/NendoroidUTAUTetoKasane/NendoroidUTAUTetoKasane1.jpg'
+      image: '/nendoroid-teto/nendoroid-teto-1.jpg'
     }
   };
 
@@ -327,7 +327,7 @@
     const cart = store.cart;
     
     if (Object.keys(cart).length === 0) {
-      alert('Tu carrito está vacío');
+      alert('Tu carrito estÃ¡ vacÃ­o');
       return;
     }
 
@@ -339,7 +339,7 @@
       if (figure) {
         const itemTotal = figure.price * quantity;
         total += itemTotal;
-        message += `• ${figure.name} x${quantity} - S/${itemTotal.toLocaleString('en-US')}\n`;
+        message += `â€¢ ${figure.name} x${quantity} - S/${itemTotal.toLocaleString('en-US')}\n`;
       }
     });
 
@@ -370,3 +370,4 @@
   window.updateQuantity = updateQuantity;
   window.removeFromCart = removeFromCart;
 </script>
+
