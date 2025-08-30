@@ -15,8 +15,7 @@ export const allNendoroids: Product[] = [
     scale: 'Nendoroid',
     height: '10cm',
     material: 'PVC & ABS',
-    image:
-      '/nendoroid-sailor-miku/nendoroid-sailor-miku-1.jpg',
+    image: '/nendoroid-sailor-miku/nendoroid-sailor-miku-1.jpg',
     isNew: false,
     isPopular: true,
     stock: 1,
@@ -34,8 +33,8 @@ export const allNendoroids: Product[] = [
     ],
     images: [
       '/nendoroid-sailor-miku/nendoroid-sailor-miku-1.jpg',
-      '/NendoroidHatsuneMikuSailorUniform/NendoroidHatsuneMikuSailorUniform2.jpg',
-      '/NendoroidHatsuneMikuSailorUniform/NendoroidHatsuneMikuSailorUniform3.jpg',
+      '/nendoroid-sailor-miku/nendoroid-sailor-miku-2.jpg',
+      '/nendoroid-sailor-miku/nendoroid-sailor-miku-3.jpg',
     ],
     releaseDate: '2011-08-25',
   },
@@ -70,10 +69,9 @@ export const allNendoroids: Product[] = [
     ],
     images: [
       '/nendoroid-teto/nendoroid-teto-1.jpg',
-      '/NendoroidUTAUTetoKasane/NendoroidUTAUTetoKasane2.jpg',
-      '/NendoroidUTAUTetoKasane/NendoroidUTAUTetoKasane3.jpg',
+      '/nendoroid-teto/nendoroid-teto-2.jpg',
+      '/nendoroid-teto/nendoroid-teto-3.jpg',
     ],
     releaseDate: '2012-06-28',
   },
 ];
-

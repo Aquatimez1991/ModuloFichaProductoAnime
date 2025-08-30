@@ -1,5 +1,6 @@
 ﻿---
 // CartModal.astro
+import { allFigures } from '../data/products';
 ---
 
 <!-- Cart Modal -->
@@ -59,159 +60,19 @@
   const clearCartBtn = document.getElementById('clear-cart');
   const checkoutCartBtn = document.getElementById('checkout-cart');
 
-  // Figure data for display - Actualizado con imagenes locales correctas
-  const figureData = {
-    1: {
-      name: 'Yotsuba Koiwai',
-      price: 500,
-      image: '/yotsuba/yotsuba-1.jpg'
-    },
-    2: {
-      name: 'GGG Series Mobile Suit Zeta Gundam Haman Karn 1/8',
-      price: 500,
-      image: '/gundam-haman/gundam-haman-1.jpg'
-    },
-    3: {
-      name: 'Nendoroid Petite - B.G.M Festival Set Vol.0',
-      price: 100,
-      image: '/nendoroid-petite/nendoroid-petite-1.jpg'
-    },
-    4: {
-      name: 'Granblue Fantasy - Charlotta - 1/8',
-      price: 1000,
-      image: '/granblue-charlotta/granblue-charlotta-1.jpg'
-    },
-    5: {
-      name: 'Odin Sphere - Gwendolyn 1/8 Complete Figure',
-      price: 500,
-      image: '/odin-gwendolyn/odin-gwendolyn-1.jpg'
-    },
-    6: {
-      name: 'Odin Sphere - Mercedes 1/8 Complete Figure',
-      price: 500,
-      image: '/odin-mercedes/odin-mercedes-1.jpg'
-    },
-    7: {
-      name: 'Odin Sphere - Velvet with Cornelius 1/8 Complete Figure',
-      price: 500,
-      image: '/odin-velvet/odin-velvet-1.jpg'
-    },
-    8: {
-      name: 'GGG Series Mobile Suit Gundam 0083 STARDUST MEMORY - Anavel Gato 1/8',
-      price: 500,
-      image: '/GGGSeriesMobileSuitGundam0083AnavelGato/GGGSeriesMobileSuitGundam0083Anavel Gato1.jpg'
-    },
-    9: {
-      name: 'Excellent Model RAHDX G.A.NEO Mobile Suit Gundam Ramba Ral 1/8',
-      price: 500,
-      image: '/gundam-ramba/gundam-ramba-1.jpg'
-    },
-    10: {
-      name: 'Yamato Guys Collection - Space Battleship Yamato 2199: Juzo Okita 1/8 Complete Figure',
-      price: 500,
-      image: '/yamato-okita/yamato-okita-1.jpg'
-    },
-    11: {
-      name: '1/100 MG MS-07B-3 Gouf Custom',
-      price: 200,
-      image: '/gouf-custom/gouf-custom-1.jpg'
-    },
-    12: {
-      name: '1/100 MG Qubeley',
-      price: 300,
-      image: '/qubeley/qubeley-1.jpg'
-    },
-    13: {
-      name: 'THE iDOLM@STER Cinderella Girls - Anastasia - 1/8 - Memories Ver. (Alter)',
-      price: 500,
-      image: '/cinderella-anastasia/cinderella-anastasia-1.jpg'
-    },
-    14: {
-      name: 'THE iDOLM@STER Cinderella Girls - Nitta Minami - 1/8 - Memories Ver. (Alter)',
-      price: 500,
-      image: '/cinderella-minami/cinderella-minami-1.jpg'
-    },
-    15: {
-      name: 'THE iDOLM@STER Cinderella Girls - Kanzaki Ranko - 1/8 - Memories Ver. (Alter)',
-      price: 500,
-      image: '/cinderella-ranko/cinderella-ranko-1.jpg'
-    },
-    16: {
-      name: 'GRANBLUE FANTASY - Danua 1/8 Complete Figure',
-      price: 500,
-      image: '/granblue-danua/granblue-danua-1.jpg'
-    },
-    17: {
-      name: 'GUILTY GEAR Xrd -SIGN- Elphelt Valentine 1/7 Complete Figure',
-      price: 500,
-      image: '/guilty-elphelt/guilty-elphelt-1.jpg'
-    },
-    18: {
-      name: 'Excellent Model Shinra Bansho Choco - Masenki Asmodies 1/8 Complete Figure',
-      price: 500,
-      image: '/shinra-asmodies/shinra-asmodies-1.jpg'
-    },
-    19: {
-      name: 'Excellent Model - Shinra Bansho Choco: Mashougun Astaroth 1/8 Complete Figure',
-      price: 500,
-      image: '/shinra-astaroth/shinra-astaroth-1.jpg'
-    },
-    20: {
-      name: 'THE IDOLM@STER Cinderella Girls - Sachiko Koshimizu Self-Proclaimed Cute Ver. (Regular Edition) 1/8 Complete Figure',
-      price: 300,
-      image: '/cinderella-sachiko/cinderella-sachiko-1.jpg'
-    },
-    21: {
-      name: 'Nendoroid - Snow Miku Magical Snow 2014',
-      price: 500,
-      image: '/nendoroid-snow-miku/nendoroid-snow-miku-1.jpg'
-    },
-    22: {
-      name: 'Golgo 13 - Duke Togo - Figma (#042) (Max Factory)',
-      price: 500,
-      image: '/figma-golgo/figma-golgo-1.jpg'
-    },
-    23: {
-      name: 'Triggerheart Exelica - Exelica 1/8 Complete Figure',
-      price: 800,
-      image: '/triggerheart-exelica/triggerheart-exelica-1.jpg'
-    },
-    24: {
-      name: 'Orchid Seed Seven Deadly Sins Leviathan 1/7 PVC',
-      price: 500,
-      image: '/orchid-leviathan/orchid-leviathan-1.jpg'
-    },
-    25: {
-      name: 'Nendoroid - Hatsune Miku Halloween 2014',
-      price: 500,
-      image: '/nendoroid-halloween-miku/nendoroid-halloween-miku-1.jpg'
-    },
-    26: {
-      name: 'Character Vocal Series 01 Hatsune Miku Tell Your World Ver. 1/8 Complete Figure',
-      price: 750,
-      image: '/miku-tell-world/miku-tell-world-1.jpg'
-    },
-    27: {
-      name: 'Grimoire of Zero - Zero 1/8 Complete Figure',
-      price: 800,
-      image: '/grimoire-zero/grimoire-zero-1.jpg'
-    },
-    28: {
-      name: 'THE IDOLM@STER Cinderella Girls - Riina Tada 1/8 Complete Figure',
-      price: 500,
-      image: '/idolmaster-riina/idolmaster-riina-1.jpg'
-    },
-    101: {
-      name: 'Nendoroid Hatsune Miku: Sailor Uniform',
-      price: 500,
-      image: '/nendoroid-sailor-miku/nendoroid-sailor-miku-1.jpg'
-    },
-    102: {
-      name: 'Nendoroid - UTAU: Teto Kasane',
-      price: 500,
-      image: '/nendoroid-teto/nendoroid-teto-1.jpg'
-    }
-  };
+  // Figure data from imported products
+  const figureData = {};
+  
+  // Populate figure data from imported products
+  const allFiguresData = JSON.parse(document.body.getAttribute('data-figures') || '[]');
+  allFiguresData.forEach(figure => {
+    figureData[figure.id] = {
+      name: figure.name,
+      price: figure.price,
+      image: figure.image,
+      stock: figure.stock
+    };
+  });
 
   // Open cart modal
   function openCart() {
@@ -248,21 +109,25 @@
         const itemTotal = figure.price * quantity;
         total += itemTotal;
         
+        const isStockLimited = figure.stock === 1;
+        const canIncrease = quantity < figure.stock;
+        
         itemsHTML += `
           <div class="flex items-center gap-3 py-3 border-b last:border-b-0">
             <img src="${figure.image}" alt="${figure.name}" class="w-16 h-16 object-cover rounded-lg" onerror="this.src='/placeholder-figure.svg'; this.onerror=null;">
             <div class="flex-1">
               <h4 class="font-medium text-sm">${figure.name}</h4>
               <p class="text-gray-500 text-sm">S/${figure.price.toLocaleString('en-US')}</p>
+              ${isStockLimited ? '<p class="text-orange-500 text-xs">Stock limitado: 1 unidad</p>' : ''}
             </div>
             <div class="flex items-center gap-2">
-              <button onclick="updateQuantity(${figureId}, ${quantity - 1})" class="w-6 h-6 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50">
+              <button onclick="updateQuantity(${figureId}, ${quantity - 1})" class="w-6 h-6 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50 ${isStockLimited ? 'opacity-50 cursor-not-allowed' : ''}" ${isStockLimited ? 'disabled' : ''}>
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
                 </svg>
               </button>
               <span class="w-8 text-center text-sm">${quantity}</span>
-              <button onclick="updateQuantity(${figureId}, ${quantity + 1})" class="w-6 h-6 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50">
+              <button onclick="updateQuantity(${figureId}, ${quantity + 1})" class="w-6 h-6 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50 ${!canIncrease ? 'opacity-50 cursor-not-allowed' : ''}" ${!canIncrease ? 'disabled' : ''}>
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
@@ -290,6 +155,14 @@
   // Update quantity
   function updateQuantity(figureId: number, newQuantity: number) {
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
+    const figure = figureData[figureId];
+    
+    if (!figure) return;
+    
+    // Check stock limit
+    if (newQuantity > figure.stock) {
+      newQuantity = figure.stock;
+    }
     
     if (newQuantity <= 0) {
       delete store.cart[figureId];
@@ -331,7 +204,7 @@
       return;
     }
 
-    let message = 'Hola! Quiero comprar los siguientes productos:\n\n';
+    let message = `¡Hola Elias! Quiero comprar las siguientes figuras anime\n\n`;
     let total = 0;
 
     Object.entries(cart).forEach(([figureId, quantity]) => {
@@ -339,11 +212,13 @@
       if (figure) {
         const itemTotal = figure.price * quantity;
         total += itemTotal;
-        message += `â€¢ ${figure.name} x${quantity} - S/${itemTotal.toLocaleString('en-US')}\n`;
+        message += `• ${figure.name} x${quantity} - S/${itemTotal.toLocaleString('en-US')}\n`;
       }
     });
 
-          message += `\nTotal: S/${total.toLocaleString('en-US')}`;
+    message += `\nTotal: S/${total.toLocaleString('en-US')}\n\n`;
+    message += `¿Podrías confirmarme disponibilidad y opciones de entrega?\n\n`;
+    message += `¡Gracias!`;
     
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/51949799869?text=${encodedMessage}`, '_blank');

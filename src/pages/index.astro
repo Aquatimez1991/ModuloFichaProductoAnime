@@ -9,6 +9,82 @@ import WishlistModal from '../components/WishlistModal.astro';
 
 <Layout title="RabbitVault - Figuras Anime de Calidad">
   <Header />
+  
+  <!-- Notificación Modal - Venta Contra Entrega -->
+  <div id="delivery-notification" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-500">
+    <div class="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 rounded-3xl p-8 max-w-2xl w-full mx-4 shadow-2xl border border-white/20 transform scale-95 transition-all duration-500">
+      <!-- Botón de cerrar -->
+      <button id="close-notification" class="absolute top-4 right-4 text-white/80 hover:text-white transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      
+      <div class="text-center">
+        <!-- Icono principal -->
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full mb-6 backdrop-blur-sm">
+          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+        </div>
+        
+        <!-- Título principal -->
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+          ¡VENTA CONTRA ENTREGA!
+        </h2>
+        
+        <!-- Subtítulo -->
+        <p class="text-xl text-blue-100 mb-6">
+          Paga solo cuando recibas tu figura
+        </p>
+        
+        <!-- Información de entrega -->
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-6 border border-white/20">
+          <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+            <!-- Entrega en estaciones -->
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <div class="text-left">
+                <p class="text-white font-semibold">Entrega en Estaciones</p>
+                <p class="text-blue-100 text-sm">Tren y Metropolitano</p>
+              </div>
+            </div>
+            
+            <!-- Separador -->
+            <div class="hidden md:block w-px h-10 bg-white/30"></div>
+            
+            <!-- Sin riesgo -->
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+              </div>
+              <div class="text-left">
+                <p class="text-white font-semibold">100% Seguro</p>
+                <p class="text-blue-100 text-sm">Revisa antes de pagar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Botones de acción -->
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <button id="view-products" class="bg-white text-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            Ver Figuras
+          </button>
+          <button id="close-notification-btn" class="border-2 border-white/30 text-white px-6 py-3 rounded-xl font-bold hover:bg-white/10 transition-all duration-300">
+            Entendido
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <ProductCarousel />
   <Categories />
   
@@ -63,6 +139,57 @@ import WishlistModal from '../components/WishlistModal.astro';
 </Layout>
 
 <script>
+  // Delivery notification functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const notification = document.getElementById('delivery-notification');
+    const closeBtn = document.getElementById('close-notification');
+    const closeBtnAlt = document.getElementById('close-notification-btn');
+    const viewProductsBtn = document.getElementById('view-products');
+    
+    // Show notification after a short delay
+    setTimeout(() => {
+      notification.classList.remove('opacity-0', 'pointer-events-none');
+      notification.querySelector('div').classList.remove('scale-95');
+      notification.querySelector('div').classList.add('scale-100');
+    }, 500);
+    
+    // Close notification function
+    function closeNotification() {
+      notification.classList.add('opacity-0', 'pointer-events-none');
+      notification.querySelector('div').classList.remove('scale-100');
+      notification.querySelector('div').classList.add('scale-95');
+    }
+    
+    // Event listeners
+    closeBtn.addEventListener('click', closeNotification);
+    closeBtnAlt.addEventListener('click', closeNotification);
+    
+    // View products button
+    viewProductsBtn.addEventListener('click', function() {
+      closeNotification();
+      setTimeout(() => {
+        document.getElementById('productos').scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 300);
+    });
+    
+    // Close on background click
+    notification.addEventListener('click', function(e) {
+      if (e.target === notification) {
+        closeNotification();
+      }
+    });
+    
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !notification.classList.contains('opacity-0')) {
+        closeNotification();
+      }
+    });
+  });
+
   // Add to cart functionality
   function addToCart(figureId) {
     // Get current store

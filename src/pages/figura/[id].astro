@@ -17,6 +17,8 @@ const { figure } = Astro.props;
 <Layout title={`${figure.name} - FigureStore`}>
   <Header />
   
+  <body data-stock={figure.stock}>
+  
   <div class="min-h-screen bg-background">
     <!-- Breadcrumb -->
     <div class="max-w-7xl mx-auto px-4 py-4">
@@ -167,7 +169,8 @@ const { figure } = Astro.props;
               <div class="flex items-center border border-border rounded-lg">
                 <button
                   id="quantity-minus"
-                  class="px-3 py-2 hover:bg-muted transition-colors"
+                  class={`px-3 py-2 hover:bg-muted transition-colors ${figure.stock === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  disabled={figure.stock === 1}
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
@@ -176,13 +179,17 @@ const { figure } = Astro.props;
                 <span id="quantity-display" class="px-4 py-2 font-medium">1</span>
                 <button
                   id="quantity-plus"
-                  class="px-3 py-2 hover:bg-muted transition-colors"
+                  class={`px-3 py-2 hover:bg-muted transition-colors ${figure.stock === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  disabled={figure.stock === 1}
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                   </svg>
                 </button>
               </div>
+              {figure.stock === 1 && (
+                <span class="text-sm text-muted-foreground">(Stock limitado: 1 unidad)</span>
+              )}
             </div>
 
             <!-- Action Buttons -->
@@ -241,17 +248,31 @@ const { figure } = Astro.props;
   const quantityDisplay = document.getElementById('quantity-display');
   const quantityMinus = document.getElementById('quantity-minus');
   const quantityPlus = document.getElementById('quantity-plus');
+  
+  // Get stock from data attribute
+  const stock = parseInt(document.body.getAttribute('data-stock') || '1');
+  
+  // Update initial display if stock is 1
+  if (stock === 1 && quantityDisplay) {
+    quantityDisplay.textContent = '1';
+  }
 
   quantityMinus?.addEventListener('click', () => {
     if (quantity > 1) {
       quantity--;
-      quantityDisplay.textContent = quantity.toString();
+      if (quantityDisplay) {
+        quantityDisplay.textContent = quantity.toString();
+      }
     }
   });
 
   quantityPlus?.addEventListener('click', () => {
-    quantity++;
-    quantityDisplay.textContent = quantity.toString();
+    if (quantity < stock) {
+      quantity++;
+      if (quantityDisplay) {
+        quantityDisplay.textContent = quantity.toString();
+      }
+    }
   });
 
   // Add to cart functionality
@@ -286,8 +307,18 @@ const { figure } = Astro.props;
     localStorage.setItem('figure-store', JSON.stringify(store));
     window.dispatchEvent(new CustomEvent('cartUpdated'));
     
-    // Redirect to WhatsApp
-    window.open('https://wa.me/51949799869', '_blank');
+    // Get product name from the page
+    const productName = document.querySelector('h1')?.textContent || 'figura anime';
+    
+    // Create WhatsApp message
+    const message = encodeURIComponent(`¡Hola Elias! Estoy interesado en comprar la figura "${productName}"
+
+¿Podrías darme más información sobre disponibilidad, precio y opciones de entrega? 
+
+¡Gracias!`);
+    
+    // Redirect to WhatsApp with personalized message
+    window.open(`https://wa.me/51949799869?text=${message}`, '_blank');
   });
 
   // Show notification
