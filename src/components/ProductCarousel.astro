@@ -19,9 +19,9 @@ const carouselProducts = allFigures;
 
     <!-- Carousel Container -->
     <div class="relative overflow-hidden rounded-3xl shadow-medium bg-white/80 backdrop-blur-sm border border-white/20">
-      <div class="carousel-container" id="carousel">
+      <div class="carousel-container flex transition-transform duration-1000 ease-in-out" id="carousel">
         {carouselProducts.map((product, index) => (
-          <div class="carousel-slide">
+          <div class="carousel-slide min-w-full flex-shrink-0 flex justify-center">
             <div class="flex flex-col lg:flex-row items-center p-12 max-w-5xl w-full">
               <!-- Product Image -->
               <div class="flex-1 flex justify-center mb-6 lg:mb-0">
@@ -32,8 +32,7 @@ const carouselProducts = allFigures;
                         src={product.image}
                         alt={product.name}
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        onerror="this.src='/placeholder-figure.svg'; this.onerror=null; console.log('Error loading image:', this.src);"
-                        onload="console.log('Image loaded successfully:', this.src);"
+                        onerror="this.src='/placeholder-figure.svg'; this.onerror=null;"
                       />
                     </div>
                   </a>
@@ -148,23 +147,14 @@ const carouselProducts = allFigures;
 
   // Initialize carousel
   function initCarousel() {
-    console.log('Initializing carousel with', totalSlides, 'slides');
-    if (carousel) {
-      carousel.style.transform = `translateX(0)`;
-      console.log('Carousel initialized successfully');
-    } else {
-      console.error('Carousel element not found');
-    }
-    updateDots();
+    updateCarousel();
     startAutoPlay();
   }
 
   // Update carousel position
   function updateCarousel() {
     if (carousel) {
-      const translateX = -currentSlide * 100;
-      carousel.style.transform = `translateX(${translateX}%)`;
-      console.log('Carousel moved to slide', currentSlide, 'translateX:', translateX);
+      carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
     updateDots();
   }
