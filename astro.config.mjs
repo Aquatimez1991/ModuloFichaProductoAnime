@@ -5,25 +5,10 @@ export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
   outDir: 'dist',
-  build: {
-    assets: 'assets',
-  },
   vite: {
     ssr: {
       external: ['svgo'],
     },
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            vendor: ['clsx', 'tailwind-merge'],
-          },
-        },
-      },
-    },
   },
   compressHTML: true,
-  experimental: {
-    optimizeHoistedScript: true,
-  },
 });

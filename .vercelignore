@@ -46,5 +46,10 @@ coverage/
 tmp/
 temp/
 
+# Git
+.git/
+.gitignore
+
 # Keep dist directory for Vercel
 !dist/
+!public/
