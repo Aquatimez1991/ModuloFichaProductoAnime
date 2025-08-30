@@ -154,4 +154,133 @@
     outline: 2px solid hsl(var(--primary));
     outline-offset: 2px;
   }
+
+  /* Estilos específicos para el carrusel */
+  .carousel-container {
+    display: flex !important;
+    overflow-x: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    transition: transform 1s ease-in-out !important;
+    width: 100% !important;
+  }
+
+  .carousel-slide {
+    flex: 0 0 100% !important;
+    scroll-snap-align: start !important;
+    padding: 0 1rem !important;
+    min-width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  /* Asegurar que las imágenes se muestren */
+  .carousel-slide img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 1rem !important;
+    transition: transform 0.3s ease !important;
+    display: block !important;
+  }
+
+  /* Contenedores de imágenes específicos */
+  .w-72 {
+    width: 18rem !important;
+    min-width: 18rem !important;
+  }
+
+  .h-72 {
+    height: 18rem !important;
+    min-height: 18rem !important;
+  }
+
+  .lg\:w-80 {
+    width: 20rem !important;
+    min-width: 20rem !important;
+  }
+
+  .lg\:h-80 {
+    height: 20rem !important;
+    min-height: 20rem !important;
+  }
+
+  /* Forzar fondo degradado en secciones */
+  section.py-16 {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%) !important;
+  }
+
+  /* Estilos específicos para el carrusel */
+  .bg-gradient-to-br {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%) !important;
+  }
+
+  .from-emerald-50\/50 {
+    background: linear-gradient(135deg, rgba(236, 253, 245, 0.5) 0%, rgba(240, 253, 250, 0.3) 50%, rgba(236, 254, 255, 0.5) 100%) !important;
+  }
+
+  .via-teal-50\/30 {
+    background: linear-gradient(135deg, rgba(236, 253, 245, 0.5) 0%, rgba(240, 253, 250, 0.3) 50%, rgba(236, 254, 255, 0.5) 100%) !important;
+  }
+
+  .to-cyan-50\/50 {
+    background: linear-gradient(135deg, rgba(236, 253, 245, 0.5) 0%, rgba(240, 253, 250, 0.3) 50%, rgba(236, 254, 255, 0.5) 100%) !important;
+  }
+
+  /* Estilos de layout principal */
+  .main-content {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  }
+
+  /* Estilos para manejo de errores de imágenes */
+  img[src*="placeholder"] {
+    background-color: #f3f4f6;
+    border: 2px dashed #d1d5db;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+
+  /* Estilos de carrusel mejorado */
+  .carousel-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    background: white;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .carousel-slide {
+    padding: 2rem;
+  }
+
+  .carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+
+  .carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: hsl(var(--muted));
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .carousel-dot:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+
+  .carousel-dot.active {
+    background: hsl(var(--primary));
+    transform: scale(1.2);
+  }
 }
