@@ -1,4 +1,4 @@
-﻿// Importaciones de imÃ¡genes desde src/assets
+﻿// Importaciones de imÃ¡genes desde public/
 export const images = {
   // Placeholder
   placeholder: '/placeholder-figure.svg',
