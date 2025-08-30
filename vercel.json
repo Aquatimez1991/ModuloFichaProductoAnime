@@ -1,8 +1,14 @@
 {
-  "name": "rabbitvault-anime-store",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "astro",
   "installCommand": "npm install",
-  "devCommand": "npm run dev"
+  "devCommand": "npm run dev",
+  "functions": {},
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
