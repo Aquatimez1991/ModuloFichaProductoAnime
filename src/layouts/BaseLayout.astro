@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { allFigures } from '../data/products';
 
 export interface Props {
   title?: string;
@@ -22,7 +23,7 @@ const {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body data-figures={JSON.stringify(allFigures)}>
     <slot />
   </body>
 </html>
