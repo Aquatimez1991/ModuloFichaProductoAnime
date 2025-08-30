@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --ext .js,.ts,.astro --fix",
     "format": "prettier --write .",
     "type-check": "astro check",
-    "clean": "rm -rf dist .astro",
+    "clean": "if exist dist rmdir /s /q dist && if exist .astro rmdir /s /q .astro",
     "vercel-build": "npm run build"
   },
   "dependencies": {
