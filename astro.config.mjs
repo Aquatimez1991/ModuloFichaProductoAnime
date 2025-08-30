@@ -7,6 +7,7 @@ export default defineConfig({
   build: {
     assets: 'assets',
   },
+  base: './',
   vite: {
     ssr: {
       external: ['svgo'],
