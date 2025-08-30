@@ -13,27 +13,27 @@
     --card-foreground: 20 14% 4%;
     --popover: 0 0% 100%;
     --popover-foreground: 20 14% 4%;
-    
+
     /* Primary más suave y relajante - Verde menta */
     --primary: 160 84% 39%;
     --primary-foreground: 0 0% 100%;
-    
+
     /* Secondary más suave */
     --secondary: 45 93% 94%;
     --secondary-foreground: 20 14% 4%;
-    
+
     /* Muted más cálido */
     --muted: 45 93% 94%;
     --muted-foreground: 25 10% 27%;
-    
+
     /* Accent más suave */
     --accent: 45 93% 94%;
     --accent-foreground: 20 14% 4%;
-    
+
     /* Destructive más suave */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    
+
     /* Border más suave */
     --border: 45 93% 94%;
     --input: 45 93% 94%;
@@ -70,7 +70,13 @@
   body {
     color: hsl(var(--foreground));
     background: hsl(var(--background));
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family:
+      'Inter',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      sans-serif;
     line-height: 1.6;
   }
 }
@@ -78,11 +84,15 @@
 @layer components {
   /* Sombras más suaves */
   .shadow-soft {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
+    box-shadow:
+      0 2px 8px rgba(0, 0, 0, 0.04),
+      0 1px 3px rgba(0, 0, 0, 0.06);
   }
 
   .shadow-medium {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.08);
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.06),
+      0 2px 6px rgba(0, 0, 0, 0.08);
   }
 
   /* Transiciones más suaves */
@@ -120,23 +130,42 @@
 @layer utilities {
   /* Animaciones personalizadas */
   @keyframes fade-in {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @keyframes slide-in-right {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
   }
 
   @keyframes pulse-soft {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
   }
 
   @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
   .animate-fade-in {

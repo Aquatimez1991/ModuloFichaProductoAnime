@@ -13,7 +13,8 @@
     "format": "prettier --write .",
     "type-check": "astro check",
     "clean": "if exist dist rmdir /s /q dist && if exist .astro rmdir /s /q .astro",
-    "vercel-build": "npm run build"
+    "vercel-build": "node scripts/build-vercel.js",
+    "build:vercel": "node scripts/build-vercel.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
