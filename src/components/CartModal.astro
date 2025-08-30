@@ -288,7 +288,7 @@
   }
 
   // Update quantity
-  function updateQuantity(figureId, newQuantity) {
+  function updateQuantity(figureId: number, newQuantity: number) {
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
     
     if (newQuantity <= 0) {
@@ -303,7 +303,7 @@
   }
 
   // Remove from cart
-  function removeFromCart(figureId) {
+  function removeFromCart(figureId: number) {
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
     delete store.cart[figureId];
     localStorage.setItem('figure-store', JSON.stringify(store));

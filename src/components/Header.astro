@@ -174,16 +174,18 @@
 
   // Close mobile menu when clicking outside
   document.addEventListener('click', (e) => {
-    if (!mobileMenu?.contains(e.target) && !mobileMenuBtn?.contains(e.target)) {
+    const target = e.target as Node;
+    if (!mobileMenu?.contains(target) && !mobileMenuBtn?.contains(target)) {
       mobileMenu?.classList.add('hidden');
       mobileMenuBtn?.classList.remove('rotate-90');
     }
   });
 
   // Search functionality
-  function handleSearch(event) {
+  function handleSearch(event: Event) {
     event.preventDefault();
-    const searchInput = event.target.querySelector('input');
+    const form = event.target as HTMLFormElement;
+    const searchInput = form.querySelector('input') as HTMLInputElement;
     const query = searchInput?.value.trim();
     
     if (query) {
@@ -199,7 +201,7 @@
     // Get from localStorage
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
     
-    const cartItems = Object.values(store.cart).reduce((sum: number, quantity: number) => sum + quantity, 0);
+    const cartItems = Object.values(store.cart as Record<string, number>).reduce((sum: number, quantity: number) => sum + quantity, 0);
     
     if (cartCount) {
       if (cartItems > 0) {
@@ -226,7 +228,7 @@
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     // Close mobile menu with Escape
-    if (e.key === 'Escape' && !mobileMenu?.classList.contains('hidden')) {
+    if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
       mobileMenu.classList.add('hidden');
       mobileMenuBtn?.classList.remove('rotate-90');
     }
