@@ -1,4 +1,4 @@
-﻿// Importaciones de imÃ¡genes desde public/
+﻿// Importaciones de imagenes desde public/
 export const images = {
   // Placeholder
   placeholder: '/placeholder-figure.svg',
@@ -36,7 +36,7 @@ export const images = {
   tetoKasane: '/nendoroid-teto/nendoroid-teto-1.jpg',
 };
 
-// FunciÃ³n helper para obtener imagen
+// Funcion helper para obtener imagen
 export function getImage(path: string): string {
   return path.startsWith('/') ? path : `/${path}`;
 }

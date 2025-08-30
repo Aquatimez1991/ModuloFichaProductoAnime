@@ -21,13 +21,13 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/7 de Yotsuba Koiwai en excelente estado 'como nuevo'. La figura captura perfectamente la energÃ­a y personalidad alegre de Yotsuba con su caracterÃ­stico cabello verde y expresiones faciales adorables. Incluye base temÃ¡tica y detalles de alta calidad que hacen justicia al personaje icÃ³nico del manga.",
+      "Figura a escala 1/7 de Yotsuba Koiwai en excelente estado 'como nuevo'. La figura captura perfectamente la energia y personalidad alegre de Yotsuba con su caracteristico cabello verde y expresiones faciales adorables. Incluye base tematica y detalles de alta calidad que hacen justicia al personaje iconico del manga.",
     features: [
       'Pintura de alta calidad',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles faciales expresivos',
-      'Cabello verde caracterÃ­stico',
-      'Poses dinÃ¡micas',
+      'Cabello verde caracteristico',
+      'Poses dinamicas',
       'Estado: Usado - Como nuevo',
     ],
     images: [
@@ -61,9 +61,9 @@ export const allFigures: Product[] = [
       'Escala 1/8 - Altura: 22cm',
       'Material: PVC & ABS',
       'Serie GGG',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles de pintura premium',
-      'Accesorios caracterÃ­sticos',
+      'Accesorios caracteristicos',
       'Estado: Usado - Como nuevo',
     ],
     images: [
@@ -97,9 +97,9 @@ export const allFigures: Product[] = [
       'Escala 1/8 - Altura: 23cm',
       'Material: PVC & ABS',
       'Serie GGG',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles de pintura premium',
-      'Accesorios caracterÃ­sticos',
+      'Accesorios caracteristicos',
       'Estado: Usado - Como nuevo',
     ],
     images: [
@@ -132,9 +132,9 @@ export const allFigures: Product[] = [
       'Escala 1/8 - Altura: 21cm',
       'Material: PVC & ABS',
       'Serie Excellent Model RAHDX G.A.NEO',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles de pintura premium',
-      'Accesorios caracterÃ­sticos',
+      'Accesorios caracteristicos',
       'Estado: Usado - Como nuevo',
     ],
     images: [
@@ -162,14 +162,14 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/8 de Juzo Okita de Space Battleship Yamato 2199 en excelente estado 'como nuevo'. Esta figura de la colecciÃ³n Yamato Guys captura perfectamente la autoridad y sabidurÃ­a del personaje con detalles excepcionales.",
+      "Figura a escala 1/8 de Juzo Okita de Space Battleship Yamato 2199 en excelente estado 'como nuevo'. Esta figura de la coleccion Yamato Guys captura perfectamente la autoridad y sabiduria del personaje con detalles excepcionales.",
     features: [
       'Escala 1/8 - Altura: 24cm',
       'Material: PVC & ABS',
-      'ColecciÃ³n Yamato Guys',
-      'Base temÃ¡tica incluida',
+      'Coleccion Yamato Guys',
+      'Base tematica incluida',
       'Detalles de pintura premium',
-      'Accesorios caracterÃ­sticos',
+      'Accesorios caracteristicos',
       'Estado: Usado - Como nuevo',
     ],
     images: [
@@ -197,12 +197,12 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Modelo de plÃ¡stico 1/100 MG MS-07B-3 Gouf Custom en excelente estado 'como nuevo'. Este kit de Bandai incluye todas las piezas necesarias para construir el Gouf Custom con detalles excepcionales y articulaciÃ³n completa.",
+      "Modelo de plastico 1/100 MG MS-07B-3 Gouf Custom en excelente estado 'como nuevo'. Este kit de Bandai incluye todas las piezas necesarias para construir el Gouf Custom con detalles excepcionales y articulacion completa.",
     features: [
       'Escala 1/100 - Altura: 18cm',
       'Material: Plastic Model Kit',
       'Fabricante: Bandai',
-      'ArticulaciÃ³n completa',
+      'Articulacion completa',
       'Piezas detalladas',
       'Instrucciones incluidas',
       'Estado: Usado - Como nuevo',
@@ -232,12 +232,12 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Modelo de plÃ¡stico 1/100 MG Qubeley en excelente estado 'como nuevo'. Este kit de Bandai incluye todas las piezas necesarias para construir el Qubeley con detalles excepcionales y articulaciÃ³n completa.",
+      "Modelo de plastico 1/100 MG Qubeley en excelente estado 'como nuevo'. Este kit de Bandai incluye todas las piezas necesarias para construir el Qubeley con detalles excepcionales y articulacion completa.",
     features: [
       'Escala 1/100 - Altura: 20cm',
       'Material: Plastic Model Kit',
       'Fabricante: Bandai',
-      'ArticulaciÃ³n completa',
+      'Articulacion completa',
       'Piezas detalladas',
       'Instrucciones incluidas',
       'Estado: Usado - Como nuevo',
@@ -267,14 +267,14 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Set de Nendoroid Petite del B.G.M Festival Vol.0 en excelente estado 'como nuevo'. Esta colecciÃ³n incluye mÃºltiples figuras pequeÃ±as de alta calidad con detalles excepcionales. Perfecta para coleccionistas de Nendoroid Petite y fans del B.G.M Festival.",
+      "Set de Nendoroid Petite del B.G.M Festival Vol.0 en excelente estado 'como nuevo'. Esta coleccion incluye multiples figuras pequenas de alta calidad con detalles excepcionales. Perfecta para coleccionistas de Nendoroid Petite y fans del B.G.M Festival.",
     features: [
       'Escala: Nendoroid Petite - Altura: 6cm',
       'Material: PVC & ABS',
       'Set completo Vol.0',
-      'MÃºltiples figuras incluidas',
+      'Multiples figuras incluidas',
       'Detalles de pintura premium',
-      'Base de exhibiciÃ³n incluida',
+      'Base de exhibicion incluida',
       'Estado: Usado - Como nuevo',
     ],
     images: [
@@ -303,14 +303,14 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/8 de Charlotta de Granblue Fantasy en excelente estado 'como nuevo'. Esta figura de Kotobukiya captura perfectamente la personalidad y diseÃ±o del personaje con detalles excepcionales y pintura de alta calidad. Incluye base temÃ¡tica y accesorios caracterÃ­sticos.",
+      "Figura a escala 1/8 de Charlotta de Granblue Fantasy en excelente estado 'como nuevo'. Esta figura de Kotobukiya captura perfectamente la personalidad y diseno del personaje con detalles excepcionales y pintura de alta calidad. Incluye base tematica y accesorios caracteristicos.",
     features: [
       'Escala 1/8 - Altura: 22cm',
       'Material: PVC & ABS',
       'Fabricante: Kotobukiya',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles de pintura premium',
-      'Accesorios caracterÃ­sticos',
+      'Accesorios caracteristicos',
       'Estado: Usado - Como nuevo',
     ],
     images: [
@@ -339,14 +339,14 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/8 de Gwendolyn de Odin Sphere en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la elegancia y poder de la princesa guerrera con detalles excepcionales y pintura de alta calidad. Incluye base temÃ¡tica y accesorios caracterÃ­sticos del juego.",
+      "Figura a escala 1/8 de Gwendolyn de Odin Sphere en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la elegancia y poder de la princesa guerrera con detalles excepcionales y pintura de alta calidad. Incluye base tematica y accesorios caracteristicos del juego.",
     features: [
       'Escala 1/8 - Altura: 24cm',
       'Material: PVC & ABS',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles de pintura premium',
-      'Accesorios caracterÃ­sticos',
-      'Poses dinÃ¡micas',
+      'Accesorios caracteristicos',
+      'Poses dinamicas',
       'Estado: Usado - Como nuevo',
     ],
     images: [
@@ -376,14 +376,14 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/8 de Mercedes de Odin Sphere en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la gracia y elegancia de la princesa con detalles excepcionales y pintura de alta calidad. Incluye base temÃ¡tica y accesorios caracterÃ­sticos del juego.",
+      "Figura a escala 1/8 de Mercedes de Odin Sphere en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la gracia y elegancia de la princesa con detalles excepcionales y pintura de alta calidad. Incluye base tematica y accesorios caracteristicos del juego.",
     features: [
       'Escala 1/8 - Altura: 23cm',
       'Material: PVC & ABS',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles de pintura premium',
-      'Accesorios caracterÃ­sticos',
-      'Poses dinÃ¡micas',
+      'Accesorios caracteristicos',
+      'Poses dinamicas',
       'Estado: Usado - Como nuevo',
     ],
     images: [
@@ -413,14 +413,14 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/8 de Velvet con Cornelius de Odin Sphere en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la relaciÃ³n entre los personajes con detalles excepcionales y pintura de alta calidad. Incluye base temÃ¡tica y accesorios caracterÃ­sticos del juego.",
+      "Figura a escala 1/8 de Velvet con Cornelius de Odin Sphere en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la relacion entre los personajes con detalles excepcionales y pintura de alta calidad. Incluye base tematica y accesorios caracteristicos del juego.",
     features: [
       'Escala 1/8 - Altura: 25cm',
       'Material: PVC & ABS',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles de pintura premium',
-      'Accesorios caracterÃ­sticos',
-      'Poses dinÃ¡micas',
+      'Accesorios caracteristicos',
+      'Poses dinamicas',
       'Estado: Usado - Como nuevo',
     ],
     images: [
@@ -450,13 +450,13 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/8 de Anastasia de THE iDOLM@STER Cinderella Girls en su versiÃ³n Memories Ver. por Alter en excelente estado 'como nuevo'. Esta figura captura perfectamente la elegancia y personalidad del personaje con detalles excepcionales y pintura de alta calidad.",
+      "Figura a escala 1/8 de Anastasia de THE iDOLM@STER Cinderella Girls en su version Memories Ver. por Alter en excelente estado 'como nuevo'. Esta figura captura perfectamente la elegancia y personalidad del personaje con detalles excepcionales y pintura de alta calidad.",
     features: [
       'Escala 1/8 - Altura: 22cm',
       'Material: PVC & ABS',
       'Fabricante: Alter',
-      'VersiÃ³n Memories Ver.',
-      'Base temÃ¡tica incluida',
+      'Version Memories Ver.',
+      'Base tematica incluida',
       'Detalles de pintura premium',
       'Estado: Usado - Como nuevo',
     ],
@@ -486,13 +486,13 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/8 de Nitta Minami de THE iDOLM@STER Cinderella Girls en su versiÃ³n Memories Ver. por Alter en excelente estado 'como nuevo'. Esta figura captura perfectamente la dulzura y personalidad del personaje con detalles excepcionales.",
+      "Figura a escala 1/8 de Nitta Minami de THE iDOLM@STER Cinderella Girls en su version Memories Ver. por Alter en excelente estado 'como nuevo'. Esta figura captura perfectamente la dulzura y personalidad del personaje con detalles excepcionales.",
     features: [
       'Escala 1/8 - Altura: 21cm',
       'Material: PVC & ABS',
       'Fabricante: Alter',
-      'VersiÃ³n Memories Ver.',
-      'Base temÃ¡tica incluida',
+      'Version Memories Ver.',
+      'Base tematica incluida',
       'Detalles de pintura premium',
       'Estado: Usado - Como nuevo',
     ],
@@ -522,13 +522,13 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/8 de Kanzaki Ranko de THE iDOLM@STER Cinderella Girls en su versiÃ³n Memories Ver. por Alter en excelente estado 'como nuevo'. Esta figura captura perfectamente la personalidad Ãºnica y el estilo del personaje con detalles excepcionales.",
+      "Figura a escala 1/8 de Kanzaki Ranko de THE iDOLM@STER Cinderella Girls en su version Memories Ver. por Alter en excelente estado 'como nuevo'. Esta figura captura perfectamente la personalidad unica y el estilo del personaje con detalles excepcionales.",
     features: [
       'Escala 1/8 - Altura: 23cm',
       'Material: PVC & ABS',
       'Fabricante: Alter',
-      'VersiÃ³n Memories Ver.',
-      'Base temÃ¡tica incluida',
+      'Version Memories Ver.',
+      'Base tematica incluida',
       'Detalles de pintura premium',
       'Estado: Usado - Como nuevo',
     ],
@@ -558,14 +558,14 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/8 de Danua de GRANBLUE FANTASY en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la personalidad y diseÃ±o del personaje con detalles excepcionales y pintura de alta calidad. Incluye base temÃ¡tica y accesorios caracterÃ­sticos del juego.",
+      "Figura a escala 1/8 de Danua de GRANBLUE FANTASY en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la personalidad y diseno del personaje con detalles excepcionales y pintura de alta calidad. Incluye base tematica y accesorios caracteristicos del juego.",
     features: [
       'Escala 1/8 - Altura: 24cm',
       'Material: PVC & ABS',
       'Fabricante: Good Smile Company',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles de pintura premium',
-      'Accesorios caracterÃ­sticos',
+      'Accesorios caracteristicos',
       'Estado: Usado - Como nuevo',
     ],
     images: [
@@ -594,14 +594,14 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/7 de Elphelt Valentine de GUILTY GEAR Xrd -SIGN- en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la personalidad y diseÃ±o del personaje con detalles excepcionales y pintura de alta calidad. Incluye base temÃ¡tica y accesorios caracterÃ­sticos del juego de lucha.",
+      "Figura a escala 1/7 de Elphelt Valentine de GUILTY GEAR Xrd -SIGN- en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la personalidad y diseno del personaje con detalles excepcionales y pintura de alta calidad. Incluye base tematica y accesorios caracteristicos del juego de lucha.",
     features: [
       'Escala 1/7 - Altura: 25cm',
       'Material: PVC & ABS',
       'Fabricante: Good Smile Company',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles de pintura premium',
-      'Accesorios caracterÃ­sticos',
+      'Accesorios caracteristicos',
       'Estado: Usado - Como nuevo',
     ],
     images: [
@@ -631,13 +631,13 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/8 de Masenki Asmodies de la serie Excellent Model Shinra Bansho Choco en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la personalidad y diseÃ±o del personaje con detalles excepcionales y pintura de alta calidad.",
+      "Figura a escala 1/8 de Masenki Asmodies de la serie Excellent Model Shinra Bansho Choco en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la personalidad y diseno del personaje con detalles excepcionales y pintura de alta calidad.",
     features: [
       'Escala 1/8 - Altura: 23cm',
       'Material: PVC & ABS',
       'Fabricante: Good Smile Company',
       'Serie: Excellent Model Shinra Bansho Choco',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles de pintura premium',
       'Estado: Usado - Como nuevo',
     ],
@@ -674,7 +674,7 @@ export const allFigures: Product[] = [
       'Material: PVC & ABS',
       'Fabricante: Good Smile Company',
       'Serie: Excellent Model Shinra Bansho Choco',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles de pintura premium',
       'Estado: Usado - Como nuevo',
     ],
@@ -705,13 +705,13 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/8 de Sachiko Koshimizu de THE iDOLM@STER Cinderella Girls en su versiÃ³n Self-Proclaimed Cute Ver. (Regular Edition) en excelente estado 'como nuevo'. Esta figura captura perfectamente la personalidad adorable del personaje con detalles excepcionales.",
+      "Figura a escala 1/8 de Sachiko Koshimizu de THE iDOLM@STER Cinderella Girls en su version Self-Proclaimed Cute Ver. (Regular Edition) en excelente estado 'como nuevo'. Esta figura captura perfectamente la personalidad adorable del personaje con detalles excepcionales.",
     features: [
       'Escala 1/8 - Altura: 22cm',
       'Material: PVC & ABS',
       'Fabricante: Good Smile Company',
-      'VersiÃ³n: Self-Proclaimed Cute Ver. (Regular Edition)',
-      'Base temÃ¡tica incluida',
+      'Version: Self-Proclaimed Cute Ver. (Regular Edition)',
+      'Base tematica incluida',
       'Detalles de pintura premium',
       'Estado: Usado - Como nuevo',
     ],
@@ -743,7 +743,7 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Nendoroid de Snow Miku Magical Snow 2014 en excelente estado 'como nuevo'. Esta figura coleccionable de la serie Nendoroid captura perfectamente el diseÃ±o invernal y mÃ¡gico de Hatsune Miku con detalles excepcionales y accesorios caracterÃ­sticos.",
+      "Nendoroid de Snow Miku Magical Snow 2014 en excelente estado 'como nuevo'. Esta figura coleccionable de la serie Nendoroid captura perfectamente el diseno invernal y magico de Hatsune Miku con detalles excepcionales y accesorios caracteristicos.",
     features: [
       'Escala: Nendoroid - Altura: 10cm',
       'Material: PVC & ABS',
@@ -779,13 +779,13 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figma de Duke Togo de Golgo 13 (#042) por Max Factory en excelente estado 'como nuevo'. Esta figura articulada de la serie Figma captura perfectamente la presencia y personalidad del personaje con articulaciÃ³n completa y accesorios caracterÃ­sticos.",
+      "Figma de Duke Togo de Golgo 13 (#042) por Max Factory en excelente estado 'como nuevo'. Esta figura articulada de la serie Figma captura perfectamente la presencia y personalidad del personaje con articulacion completa y accesorios caracteristicos.",
     features: [
       'Escala: Figma - Altura: 16cm',
       'Material: PVC & ABS',
       'Fabricante: Max Factory',
       'Serie: Figma #042',
-      'ArticulaciÃ³n completa',
+      'Articulacion completa',
       'Accesorios incluidos',
       'Estado: Usado - Como nuevo',
     ],
@@ -816,14 +816,14 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/8 de Exelica de Triggerheart Exelica en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la personalidad y diseÃ±o del personaje con detalles excepcionales y pintura de alta calidad.",
+      "Figura a escala 1/8 de Exelica de Triggerheart Exelica en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la personalidad y diseno del personaje con detalles excepcionales y pintura de alta calidad.",
     features: [
       'Escala 1/8 - Altura: 25cm',
       'Material: PVC & ABS',
       'Fabricante: Good Smile Company',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles de pintura premium',
-      'Accesorios caracterÃ­sticos',
+      'Accesorios caracteristicos',
       'Estado: Usado - Como nuevo',
     ],
     images: [
@@ -853,14 +853,14 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/7 de Leviathan de Seven Deadly Sins por Orchid Seed en excelente estado 'como nuevo'. Esta figura de PVC captura perfectamente la personalidad y diseÃ±o del personaje con detalles excepcionales.",
+      "Figura a escala 1/7 de Leviathan de Seven Deadly Sins por Orchid Seed en excelente estado 'como nuevo'. Esta figura de PVC captura perfectamente la personalidad y diseno del personaje con detalles excepcionales.",
     features: [
       'Escala 1/7 - Altura: 24cm',
       'Material: PVC',
       'Fabricante: Orchid Seed',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles de pintura premium',
-      'Accesorios caracterÃ­sticos',
+      'Accesorios caracteristicos',
       'Estado: Usado - Como nuevo',
     ],
     images: [
@@ -888,7 +888,7 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Nendoroid de Hatsune Miku Halloween 2014 en excelente estado 'como nuevo'. Esta figura coleccionable de la serie Nendoroid captura perfectamente el diseÃ±o temÃ¡tico de Halloween de Hatsune Miku con detalles excepcionales.",
+      "Nendoroid de Hatsune Miku Halloween 2014 en excelente estado 'como nuevo'. Esta figura coleccionable de la serie Nendoroid captura perfectamente el diseno tematico de Halloween de Hatsune Miku con detalles excepcionales.",
     features: [
       'Escala: Nendoroid - Altura: 10cm',
       'Material: PVC & ABS',
@@ -924,14 +924,14 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/8 de Hatsune Miku en su versiÃ³n 'Tell Your World' en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la energÃ­a y personalidad de Miku con su caracterÃ­stico cabello turquesa y vestimenta colorida. Incluye base temÃ¡tica y un banner colgador exclusivo.",
+      "Figura a escala 1/8 de Hatsune Miku en su version 'Tell Your World' en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la energia y personalidad de Miku con su caracteristico cabello turquesa y vestimenta colorida. Incluye base tematica y un banner colgador exclusivo.",
     features: [
       'Escala 1/8 - Altura: 23cm',
       'Material: PVC & ABS',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Banner colgador exclusivo',
       'Detalles de pintura premium',
-      'Cabello turquesa caracterÃ­stico',
+      'Cabello turquesa caracteristico',
       'Vestimenta colorida detallada',
       'Estado: Usado - Como nuevo',
     ],
@@ -961,14 +961,14 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/8 de Zero de Grimoire of Zero en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la elegancia y misterio del personaje con detalles excepcionales y pintura de alta calidad. Incluye base temÃ¡tica y accesorios caracterÃ­sticos de la serie.",
+      "Figura a escala 1/8 de Zero de Grimoire of Zero en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la elegancia y misterio del personaje con detalles excepcionales y pintura de alta calidad. Incluye base tematica y accesorios caracteristicos de la serie.",
     features: [
       'Escala 1/8 - Altura: 22cm',
       'Material: PVC & ABS',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles de pintura premium',
-      'Accesorios caracterÃ­sticos',
-      'Poses dinÃ¡micas',
+      'Accesorios caracteristicos',
+      'Poses dinamicas',
       'Estado: Usado - Como nuevo',
     ],
     images: [
@@ -998,14 +998,14 @@ export const allFigures: Product[] = [
     isPopular: true,
     stock: 1,
     description:
-      "Figura a escala 1/8 de Riina Tada de THE IDOLM@STER Cinderella Girls en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la personalidad y estilo de la idol con detalles excepcionales y pintura de alta calidad. Incluye base temÃ¡tica y accesorios caracterÃ­sticos.",
+      "Figura a escala 1/8 de Riina Tada de THE IDOLM@STER Cinderella Girls en excelente estado 'como nuevo'. Esta figura completa captura perfectamente la personalidad y estilo de la idol con detalles excepcionales y pintura de alta calidad. Incluye base tematica y accesorios caracteristicos.",
     features: [
       'Escala 1/8 - Altura: 22cm',
       'Material: PVC & ABS',
-      'Base temÃ¡tica incluida',
+      'Base tematica incluida',
       'Detalles de pintura premium',
-      'Accesorios caracterÃ­sticos',
-      'Poses dinÃ¡micas',
+      'Accesorios caracteristicos',
+      'Poses dinamicas',
       'Estado: Usado - Como nuevo',
     ],
     images: [
