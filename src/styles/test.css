@@ -1,0 +1,41 @@
+/* CSS de prueba para verificar que los estilos funcionen */
+body {
+  background-color: #f0f9ff !important;
+  color: #1e293b !important;
+  font-family: Arial, sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0f172a !important;
+  font-weight: bold !important;
+}
+
+.bg-white {
+  background-color: white !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.p-4 {
+  padding: 1rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 1rem !important;
+}
+
+/* Estilos de prueba para botones */
+button {
+  background-color: #10b981 !important;
+  color: white !important;
+  padding: 0.5rem 1rem !important;
+  border: none !important;
+  border-radius: 0.5rem !important;
+  cursor: pointer !important;
+}
+
+button:hover {
+  background-color: #059669 !important;
+}

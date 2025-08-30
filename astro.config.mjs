@@ -9,6 +9,12 @@ export default defineConfig({
     ssr: {
       external: ['svgo'],
     },
+    css: {
+      devSourcemap: true,
+    },
+    build: {
+      cssMinify: false,
+    },
   },
-  compressHTML: true,
+  compressHTML: false,
 });
