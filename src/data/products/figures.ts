@@ -87,7 +87,7 @@ export const allFigures: Product[] = [
     height: '23cm',
     material: 'PVC & ABS',
     image:
-      '/GGGSeriesMobileSuitGundam0083AnavelGato/GGGSeriesMobileSuitGundam0083Anavel Gato1.jpg',
+      '/GGGSeriesMobileSuitGundam0083AnavelGato/GGGSeriesMobileSuitGundam0083AnavelGato1.jpg',
     isNew: false,
     isPopular: true,
     stock: 1,
@@ -103,9 +103,9 @@ export const allFigures: Product[] = [
       'Estado: Usado - Como nuevo',
     ],
     images: [
-      '/GGGSeriesMobileSuitGundam0083AnavelGato/GGGSeriesMobileSuitGundam0083Anavel Gato1.jpg',
-      '/GGGSeriesMobileSuitGundam0083AnavelGato/GGGSeriesMobileSuitGundam0083Anavel Gato2.jpg',
-      '/GGGSeriesMobileSuitGundam0083AnavelGato/GGGSeriesMobileSuitGundam0083Anavel Gato3.jpg',
+      '/GGGSeriesMobileSuitGundam0083AnavelGato/GGGSeriesMobileSuitGundam0083AnavelGato1.jpg',
+      '/GGGSeriesMobileSuitGundam0083AnavelGato/GGGSeriesMobileSuitGundam0083AnavelGato2.jpg',
+      '/GGGSeriesMobileSuitGundam0083AnavelGato/GGGSeriesMobileSuitGundam0083AnavelGato3.jpg',
     ],
     releaseDate: '2018-06-20',
   },
