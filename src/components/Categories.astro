@@ -1,15 +1,12 @@
 ---
 // Categories.astro
 import { allFigures } from '../data/products';
-import { allNendoroids } from '../data/products/nendoroids';
-import { allFigma } from '../data/products/figma';
-import { allPopUpParade } from '../data/products/pop-up-parade';
 
 // Contar productos por categoría
 const scaleFigures = allFigures.filter(p => p.category === 'scale-figures').length;
-const nendoroids = allFigures.filter(p => p.category === 'nendoroid').length + allNendoroids.length;
-const figmas = allFigures.filter(p => p.category === 'figma').length + allFigma.length;
-const popUpParade = allPopUpParade.length;
+const nendoroids = allFigures.filter(p => p.category === 'nendoroid').length;
+const figmas = allFigures.filter(p => p.category === 'figma').length;
+const popUpParade = allFigures.filter(p => p.category === 'pop-up-parade').length;
 const modelKits = allFigures.filter(p => p.category === 'model-kits').length;
 const accessories = 0; // Por ahora no hay accesorios
 ---
