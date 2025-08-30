@@ -5,7 +5,10 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
-  adapter: vercel(),
+  adapter: vercel({
+    includeFiles: ['./public/**'],
+    maxDuration: 30,
+  }),
   outDir: 'dist',
   vite: {
     ssr: {
