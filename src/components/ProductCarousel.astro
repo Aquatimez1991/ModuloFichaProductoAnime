@@ -32,7 +32,8 @@ const carouselProducts = allFigures;
                         src={product.image}
                         alt={product.name}
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        onerror="this.src='/placeholder-figure.svg'; this.onerror=null;"
+                        onerror="this.src='/placeholder-figure.svg'; this.onerror=null; console.log('Error loading image:', this.src);"
+                        onload="console.log('Image loaded successfully:', this.src);"
                       />
                     </div>
                   </a>

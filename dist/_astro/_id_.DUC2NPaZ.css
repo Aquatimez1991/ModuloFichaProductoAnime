@@ -3629,15 +3629,17 @@ section {
 /* ===== ESTILOS DE TARJETAS DE PRODUCTOS ===== */
 .carousel-container {
   display: flex;
-  overflow-x: auto;
+  overflow-x: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  transition: transform 1s ease-in-out;
 }
 
 .carousel-slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
   padding: 0 1rem;
+  min-width: 100%;
 }
 
 .product-card {
@@ -4042,6 +4044,23 @@ section {
   background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
 }
 
+/* Estilos específicos para el carrusel */
+.bg-gradient-to-br {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%) !important;
+}
+
+.from-emerald-50\/50 {
+  background: linear-gradient(135deg, rgba(236, 253, 245, 0.5) 0%, rgba(240, 253, 250, 0.3) 50%, rgba(236, 254, 255, 0.5) 100%) !important;
+}
+
+.via-teal-50\/30 {
+  background: linear-gradient(135deg, rgba(236, 253, 245, 0.5) 0%, rgba(240, 253, 250, 0.3) 50%, rgba(236, 254, 255, 0.5) 100%) !important;
+}
+
+.to-cyan-50\/50 {
+  background: linear-gradient(135deg, rgba(236, 253, 245, 0.5) 0%, rgba(240, 253, 250, 0.3) 50%, rgba(236, 254, 255, 0.5) 100%) !important;
+}
+
 /* Estilos de secciones mejoradas */
 .section-container {
   max-width: 1200px;
@@ -4189,6 +4208,48 @@ section {
 
 .product-card:hover .main-image {
   transform: scale(1.05);
+}
+
+/* Estilos específicos para imágenes del carrusel */
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.carousel-slide img:hover {
+  transform: scale(1.05);
+}
+
+/* Estilos para contenedores de imágenes */
+.w-72 {
+  width: 18rem !important;
+}
+
+.h-72 {
+  height: 18rem !important;
+}
+
+.lg\:w-80 {
+  width: 20rem !important;
+}
+
+.lg\:h-80 {
+  height: 20rem !important;
+}
+
+/* Estilos para manejo de errores de imágenes */
+img[src*="placeholder"] {
+  background-color: #f3f4f6;
+  border: 2px dashed #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 0.875rem;
 }
 
 .thumbnail-images {
