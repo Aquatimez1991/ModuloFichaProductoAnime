@@ -3,13 +3,13 @@
 ---
 
 <!-- Cart Modal -->
-<div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+<div id="cart-modal" class="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 hidden">
   <div class="flex items-center justify-center min-h-screen p-4">
-    <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[80vh] overflow-hidden">
+    <div class="bg-white/95 backdrop-blur-md rounded-3xl shadow-medium max-w-md w-full max-h-[80vh] overflow-hidden border border-white/20">
       <!-- Header -->
       <div class="flex items-center justify-between p-4 border-b">
         <h3 class="text-lg font-semibold">Carrito de Compras</h3>
-        <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+        <button id="close-cart" class="text-muted-foreground hover:text-foreground transition-colors">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
@@ -22,7 +22,7 @@
       </div>
 
       <!-- Empty Cart Message -->
-      <div id="empty-cart" class="p-8 text-center text-gray-500 hidden">
+      <div id="empty-cart" class="p-8 text-center text-muted-foreground hidden">
         <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
         </svg>
@@ -34,13 +34,13 @@
       <div class="border-t p-4">
         <div class="flex items-center justify-between mb-4">
           <span class="font-semibold">Total:</span>
-          <span id="cart-total" class="font-bold text-lg">¥0</span>
+                      <span id="cart-total" class="font-bold text-lg">S/0</span>
         </div>
         <div class="flex gap-2">
-          <button id="clear-cart" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+          <button id="clear-cart" class="flex-1 px-4 py-2 border border-border rounded-xl text-foreground hover:bg-muted transition-colors">
             Vaciar Carrito
           </button>
-          <button id="checkout-cart" class="flex-1 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
+          <button id="checkout-cart" class="flex-1 px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-xl hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 shadow-soft">
             Comprar Ahora
           </button>
         </div>
@@ -59,32 +59,157 @@
   const clearCartBtn = document.getElementById('clear-cart');
   const checkoutCartBtn = document.getElementById('checkout-cart');
 
-  // Figure data for display
+  // Figure data for display - Actualizado con imágenes locales correctas
   const figureData = {
     1: {
-      name: 'Asuka Langley - Evangelion',
-      price: 12800,
-      image: 'https://images.unsplash.com/photo-1667585149954-5beab3e9bdc4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmltZSUyMGNoYXJhY3RlciUyMGZpZ3VyZXxlbnwxfHx8fDE3NTYwODU0NzJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+      name: 'Yotsuba Koiwai',
+      price: 500,
+      image: '/YotsubaActionFigureYotsubaKoiwai/YotsubaActionFigureYotsubaKoiwai1.jpg'
     },
     2: {
-      name: 'Miku Hatsune - Racing 2024',
-      price: 16500,
-      image: 'https://images.unsplash.com/photo-1601382270349-49c15bddf738?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWN0aWJsZSUyMHRveSUyMGZpZ3VyZXxlbnwxfHx8fDE3NTYwODU0NzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+      name: 'GGG Series Mobile Suit Zeta Gundam Haman Karn 1/8',
+      price: 500,
+      image: '/GGGSeriesMobileSuitZetaGundamHamanKarn/GGGSeriesMobileSuitZetaGundamHamanKarn1.jpg'
     },
     3: {
-      name: 'Nezuko Kamado - Demon Slayer',
-      price: 14200,
-      image: 'https://images.unsplash.com/photo-1615592389070-bcc97e05ad01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmltZSUyMGZpZ3VyZSUyMGNvbGxlY3RpYmxlfGVufDF8fHx8MTc1NjAzODgyOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+      name: 'Nendoroid Petite - B.G.M Festival Set Vol.0',
+      price: 100,
+      image: '/Nendoroidpetite/Nendoroidpetite1.jpg'
     },
     4: {
-      name: 'Rem - Re:Zero',
-      price: 15800,
-      image: 'https://images.unsplash.com/photo-1601382270349-49c15bddf738?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWN0aWJsZSUyMHRveSUyMGZpZ3VyZXxlbnwxfHx8fDE3NTYwODU0NzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+      name: 'Granblue Fantasy - Charlotta - 1/8',
+      price: 1000,
+      image: '/GRANBLUEFANTASYCharlotta/GRANBLUEFANTASYCharlotta1.jpg'
     },
     5: {
-      name: 'Zero Two - Darling in the Franxx',
-      price: 17200,
-      image: 'https://images.unsplash.com/photo-1667585149954-5beab3e9bdc4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmltZSUyMGNoYXJhY3RlciUyMGZpZ3VyZXxlbnwxfHx8fDE3NTYwODU0NzJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+      name: 'Odin Sphere - Gwendolyn 1/8 Complete Figure',
+      price: 500,
+      image: '/OdinSphereGwendolyn/OdinSphereGwendolyn1.jpg'
+    },
+    6: {
+      name: 'Odin Sphere - Mercedes 1/8 Complete Figure',
+      price: 500,
+      image: '/OdinSphereMercedes/OdinSphereMercedes1.jpg'
+    },
+    7: {
+      name: 'Odin Sphere - Velvet with Cornelius 1/8 Complete Figure',
+      price: 500,
+      image: '/OdinSphereVelvetwithCornelius/OdinSphereVelvetwithCornelius1.jpg'
+    },
+    8: {
+      name: 'GGG Series Mobile Suit Gundam 0083 STARDUST MEMORY - Anavel Gato 1/8',
+      price: 500,
+      image: '/GGGSeriesMobileSuitGundam0083AnavelGato/GGGSeriesMobileSuitGundam0083Anavel Gato1.jpg'
+    },
+    9: {
+      name: 'Excellent Model RAHDX G.A.NEO Mobile Suit Gundam Ramba Ral 1/8',
+      price: 500,
+      image: '/MobileSuitGundamRambaRal/MobileSuitGundamRambaRal1.jpg'
+    },
+    10: {
+      name: 'Yamato Guys Collection - Space Battleship Yamato 2199: Juzo Okita 1/8 Complete Figure',
+      price: 500,
+      image: '/Yamato2199JuzoOkita/Yamato2199JuzoOkita1.jpg'
+    },
+    11: {
+      name: '1/100 MG MS-07B-3 Gouf Custom',
+      price: 200,
+      image: '/1100MGMSGoufCustom/1100MGMSGoufCustom1.jpg'
+    },
+    12: {
+      name: '1/100 MG Qubeley',
+      price: 300,
+      image: '/1100MGQubeley/1100MGQubeley1.jpg'
+    },
+    13: {
+      name: 'THE iDOLM@STER Cinderella Girls - Anastasia - 1/8 - Memories Ver. (Alter)',
+      price: 500,
+      image: '/CinderellaGirlsAnastasia/CinderellaGirlsAnastasia1.jpg'
+    },
+    14: {
+      name: 'THE iDOLM@STER Cinderella Girls - Nitta Minami - 1/8 - Memories Ver. (Alter)',
+      price: 500,
+      image: '/CinderellaGirlsNittaMinami/CinderellaGirlsNittaMinami1.jpg'
+    },
+    15: {
+      name: 'THE iDOLM@STER Cinderella Girls - Kanzaki Ranko - 1/8 - Memories Ver. (Alter)',
+      price: 500,
+      image: '/CinderellaGirlsKanzakiRanko/CinderellaGirlsKanzakiRanko1.jpg'
+    },
+    16: {
+      name: 'GRANBLUE FANTASY - Danua 1/8 Complete Figure',
+      price: 500,
+      image: '/GRANBLUEFANTASYDanua/GRANBLUEFANTASYDanua1.jpg'
+    },
+    17: {
+      name: 'GUILTY GEAR Xrd -SIGN- Elphelt Valentine 1/7 Complete Figure',
+      price: 500,
+      image: '/GUILTYGEARElpheltValentine/GUILTYGEARElpheltValentine1.jpg'
+    },
+    18: {
+      name: 'Excellent Model Shinra Bansho Choco - Masenki Asmodies 1/8 Complete Figure',
+      price: 500,
+      image: '/ShinraBanshoChocoMasenkiAsmodies/ShinraBanshoChocoMasenkiAsmodies1.jpg'
+    },
+    19: {
+      name: 'Excellent Model - Shinra Bansho Choco: Mashougun Astaroth 1/8 Complete Figure',
+      price: 500,
+      image: '/ShinraBanshoChocoMashougunAstaroth/ShinraBanshoChocoMashougunAstaroth1.jpg'
+    },
+    20: {
+      name: 'THE IDOLM@STER Cinderella Girls - Sachiko Koshimizu Self-Proclaimed Cute Ver. (Regular Edition) 1/8 Complete Figure',
+      price: 300,
+      image: '/CinderellaGirlsSachikoKoshimizu/CinderellaGirlsSachikoKoshimizu1.jpg'
+    },
+    21: {
+      name: 'Nendoroid - Snow Miku Magical Snow 2014',
+      price: 500,
+      image: '/NendoroidSnowMikuMagicalSnow2014/NendoroidSnowMikuMagicalSnow1.jpg'
+    },
+    22: {
+      name: 'Golgo 13 - Duke Togo - Figma (#042) (Max Factory)',
+      price: 500,
+      image: '/figmaGolgo/figmaGolgo1.jpg'
+    },
+    23: {
+      name: 'Triggerheart Exelica - Exelica 1/8 Complete Figure',
+      price: 800,
+      image: '/TriggerheartExelicaExelica/TriggerheartExelicaExelica1.jpg'
+    },
+    24: {
+      name: 'Orchid Seed Seven Deadly Sins Leviathan 1/7 PVC',
+      price: 500,
+      image: '/OrchidSeedSevenDeadlySinsLeviathan/OrchidSeedSevenDeadlySinsLeviathan1.jpg'
+    },
+    25: {
+      name: 'Nendoroid - Hatsune Miku Halloween 2014',
+      price: 500,
+      image: '/NendoroidHatsuneMikuHalloween/NendoroidHatsuneMikuHalloween1.jpg'
+    },
+    26: {
+      name: 'Character Vocal Series 01 Hatsune Miku Tell Your World Ver. 1/8 Complete Figure',
+      price: 750,
+      image: '/HatsuneMikuTellYourWorld/HatsuneMikuTellYourWorld1.jpg'
+    },
+    27: {
+      name: 'Grimoire of Zero - Zero 1/8 Complete Figure',
+      price: 800,
+      image: '/GrimoireofZeroZero/GrimoireofZeroZero1.jpg'
+    },
+    28: {
+      name: 'THE IDOLM@STER Cinderella Girls - Riina Tada 1/8 Complete Figure',
+      price: 500,
+      image: '/THEiDOLMASTERCinderellaGirlsTadaRiina/THEiDOLMASTERCinderellaGirlsTadaRiina1.jpg'
+    },
+    101: {
+      name: 'Nendoroid Hatsune Miku: Sailor Uniform',
+      price: 500,
+      image: '/NendoroidHatsuneMikuSailorUniform/NendoroidHatsuneMikuSailorUniform1.jpg'
+    },
+    102: {
+      name: 'Nendoroid - UTAU: Teto Kasane',
+      price: 500,
+      image: '/NendoroidUTAUTetoKasane/NendoroidUTAUTetoKasane1.jpg'
     }
   };
 
@@ -107,7 +232,7 @@
     if (Object.keys(cart).length === 0) {
       emptyCart?.classList.remove('hidden');
       cartItems?.classList.add('hidden');
-      cartTotal.textContent = '¥0';
+              cartTotal.textContent = 'S/0';
       return;
     }
 
@@ -125,10 +250,10 @@
         
         itemsHTML += `
           <div class="flex items-center gap-3 py-3 border-b last:border-b-0">
-            <img src="${figure.image}" alt="${figure.name}" class="w-16 h-16 object-cover rounded-lg">
+            <img src="${figure.image}" alt="${figure.name}" class="w-16 h-16 object-cover rounded-lg" onerror="this.src='/placeholder-figure.svg'; this.onerror=null;">
             <div class="flex-1">
               <h4 class="font-medium text-sm">${figure.name}</h4>
-              <p class="text-gray-500 text-sm">¥${figure.price.toLocaleString('en-US')}</p>
+              <p class="text-gray-500 text-sm">S/${figure.price.toLocaleString('en-US')}</p>
             </div>
             <div class="flex items-center gap-2">
               <button onclick="updateQuantity(${figureId}, ${quantity - 1})" class="w-6 h-6 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50">
@@ -158,7 +283,7 @@
     }
     
     if (cartTotal) {
-      cartTotal.textContent = `¥${total.toLocaleString('en-US')}`;
+              cartTotal.textContent = `S/${total.toLocaleString('en-US')}`;
     }
   }
 
@@ -214,11 +339,11 @@
       if (figure) {
         const itemTotal = figure.price * quantity;
         total += itemTotal;
-        message += `• ${figure.name} x${quantity} - ¥${itemTotal.toLocaleString('en-US')}\n`;
+        message += `• ${figure.name} x${quantity} - S/${itemTotal.toLocaleString('en-US')}\n`;
       }
     });
 
-    message += `\nTotal: ¥${total.toLocaleString('en-US')}`;
+          message += `\nTotal: S/${total.toLocaleString('en-US')}`;
     
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/51949799869?text=${encodedMessage}`, '_blank');

@@ -57,9 +57,9 @@
   // Figure data for display
   const figureData = {
     1: {
-      name: 'Asuka Langley - Evangelion',
-      price: 12800,
-      image: 'https://images.unsplash.com/photo-1667585149954-5beab3e9bdc4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmltZSUyMGNoYXJhY3RlciUyMGZpZ3VyZXxlbnwxfHx8fDE3NTYwODU0NzJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+      name: 'Yotsuba Koiwai',
+      price: 500,
+      image: 'https://n9.cl/drl3t'
     },
     2: {
       name: 'Miku Hatsune - Racing 2024',
@@ -67,9 +67,9 @@
       image: 'https://images.unsplash.com/photo-1601382270349-49c15bddf738?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWN0aWJsZSUyMHRveSUyMGZpZ3VyZXxlbnwxfHx8fDE3NTYwODU0NzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
     },
     3: {
-      name: 'Nezuko Kamado - Demon Slayer',
-      price: 14200,
-      image: 'https://images.unsplash.com/photo-1615592389070-bcc97e05ad01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmltZSUyMGZpZ3VyZSUyMGNvbGxlY3RpYmxlfGVufDF8fHx8MTc1NjAzODgyOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral'
+      name: 'Nendoroid Petite - B.G.M Festival Set Vol.0',
+      price: 100,
+      image: 'https://acortar.link/nZfZXe'
     },
     4: {
       name: 'Rem - Re:Zero',
@@ -118,7 +118,7 @@
             <img src="${figure.image}" alt="${figure.name}" class="w-16 h-16 object-cover rounded-lg">
             <div class="flex-1">
               <h4 class="font-medium text-sm">${figure.name}</h4>
-              <p class="text-gray-500 text-sm">¥${figure.price.toLocaleString('en-US')}</p>
+                              <p class="text-gray-500 text-sm">S/${figure.price.toLocaleString('en-US')}</p>
             </div>
             <div class="flex items-center gap-2">
               <button onclick="addToCartFromWishlist(${figureId})" class="px-3 py-1 bg-primary text-primary-foreground rounded text-xs hover:bg-primary/90 transition-colors">

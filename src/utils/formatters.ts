@@ -10,7 +10,10 @@ export function formatPrice(price: number): string {
 /**
  * Calcula el porcentaje de descuento
  */
-export function calculateDiscount(originalPrice: number, currentPrice: number): number {
+export function calculateDiscount(
+  originalPrice: number,
+  currentPrice: number
+): number {
   return Math.round(((originalPrice - currentPrice) / originalPrice) * 100);
 }
 
@@ -39,7 +42,7 @@ export function formatReleaseDate(dateString: string): string {
   return date.toLocaleDateString('es-PE', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   });
 }
 

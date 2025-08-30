@@ -2,11 +2,25 @@
 import type { Product } from '../../../types/product';
 
 const { product } = Astro.props;
+
+// Función para obtener la clase CSS del badge basada en el status
+function getBadgeClass(status: string) {
+  switch (status) {
+    case 'Disponible':
+      return 'product-badge--available';
+    case 'Preventa':
+      return 'product-badge--preorder';
+    case 'Agotado':
+      return 'product-badge--soldout';
+    default:
+      return 'product-badge--available';
+  }
+}
 ---
 
 <div class="product-badges">
-  <span class="product-badge product-badge--available">
-    Disponible
+  <span class={`product-badge ${getBadgeClass(product.status)}`}>
+    {product.status}
   </span>
 </div>
 
@@ -21,5 +35,13 @@ const { product } = Astro.props;
   
   .product-badge--available {
     @apply bg-blue-500 text-white;
+  }
+  
+  .product-badge--preorder {
+    @apply bg-orange-500 text-white;
+  }
+  
+  .product-badge--soldout {
+    @apply bg-red-500 text-white;
   }
 </style>

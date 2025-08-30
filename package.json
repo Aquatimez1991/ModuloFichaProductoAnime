@@ -1,21 +1,46 @@
 {
-  "name": "Módulo de Ficha de Producto Anime",
-  "version": "0.1.0",
+  "name": "rabbitvault-anime-store",
+  "version": "1.0.0",
+  "description": "Tienda especializada en figuras anime auténticas - RabbitVault",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "lint": "eslint . --ext .js,.ts",
+    "lint:fix": "eslint . --ext .js,.ts --fix",
+    "format": "prettier --write .",
+    "type-check": "astro check",
+    "clean": "rm -rf dist .astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.4",
     "astro": "3.6.0",
     "clsx": "2.0.0",
-    "tailwind-merge": "2.0.0"
+    "tailwind-merge": "2.0.0",
+    "typescript": "^5.9.2"
   },
   "devDependencies": {
     "@astrojs/tailwind": "5.0.0",
     "@types/node": "20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
     "tailwindcss": "3.3.0"
-  }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "astro",
+    "anime",
+    "figures",
+    "ecommerce",
+    "typescript",
+    "tailwind"
+  ],
+  "author": "RabbitVault Team",
+  "license": "MIT"
 }

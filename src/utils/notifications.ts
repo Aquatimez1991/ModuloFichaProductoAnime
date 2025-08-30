@@ -9,18 +9,18 @@ export interface NotificationOptions {
 const DEFAULT_OPTIONS: Required<NotificationOptions> = {
   type: 'success',
   duration: 3000,
-  position: 'top-right'
+  position: 'top-right',
 };
 
 export function showNotification(
-  message: string, 
+  message: string,
   options: NotificationOptions = {}
 ): void {
   const config = { ...DEFAULT_OPTIONS, ...options };
-  
+
   const notification = document.createElement('div');
   notification.className = `notification notification--${config.type} notification--${config.position}`;
-  
+
   notification.innerHTML = `
     <div class="notification__content">
       <span class="notification__message">${message}</span>
@@ -31,7 +31,7 @@ export function showNotification(
       </button>
     </div>
   `;
-  
+
   // Add styles
   const style = document.createElement('style');
   style.textContent = `
@@ -132,15 +132,15 @@ export function showNotification(
       }
     }
   `;
-  
+
   document.head.appendChild(style);
   document.body.appendChild(notification);
-  
+
   // Auto remove
   const timeout = setTimeout(() => {
     removeNotification(notification);
   }, config.duration);
-  
+
   // Manual close
   const closeBtn = notification.querySelector('.notification__close');
   closeBtn?.addEventListener('click', () => {

@@ -5,6 +5,12 @@ export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
   build: {
-    assets: 'assets'
-  }
+    assets: 'assets',
+  },
+  vite: {
+    ssr: {
+      external: ['svgo'],
+    },
+  },
+  compressHTML: true,
 });

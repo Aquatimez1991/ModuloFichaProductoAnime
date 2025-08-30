@@ -15,7 +15,7 @@ export function getStore(): Store {
   if (typeof window === 'undefined') {
     return { cart: {}, wishlist: [] };
   }
-  
+
   const stored = localStorage.getItem(STORAGE_KEY);
   if (stored) {
     try {

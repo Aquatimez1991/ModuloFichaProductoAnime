@@ -1,0 +1,61 @@
+---
+export interface Props {
+  id?: string;
+  type?: 'success' | 'error' | 'warning' | 'info';
+  message: string;
+  duration?: number;
+}
+
+const { id = 'notification', type = 'success', message, duration = 3000 } = Astro.props;
+
+const typeClasses = {
+  success: 'bg-emerald-500 text-white border-emerald-600',
+  error: 'bg-red-500 text-white border-red-600',
+  warning: 'bg-amber-500 text-white border-amber-600',
+  info: 'bg-blue-500 text-white border-blue-600'
+};
+
+const icons = {
+  success: '✓',
+  error: '✕',
+  warning: '⚠',
+  info: 'ℹ'
+};
+---
+
+<div 
+  id={id}
+  class={`fixed top-20 right-4 z-50 px-4 py-3 rounded-xl shadow-medium border-l-4 transform translate-x-full transition-transform duration-300 ${typeClasses[type]}`}
+  role="alert"
+  aria-live="assertive"
+>
+  <div class="flex items-center gap-3">
+    <span class="text-lg font-bold">{icons[type]}</span>
+    <p class="font-medium">{message}</p>
+    <button 
+      onclick="this.parentElement.parentElement.remove()"
+      class="ml-2 text-white/80 hover:text-white transition-colors"
+      aria-label="Cerrar notificación"
+    >
+      ✕
+    </button>
+  </div>
+</div>
+
+<script>
+  // Auto-hide notification
+  const notification = document.getElementById('{id}');
+  if (notification) {
+    // Show notification
+    setTimeout(() => {
+      notification.classList.remove('translate-x-full');
+    }, 100);
+    
+    // Hide notification after duration
+    setTimeout(() => {
+      notification.classList.add('translate-x-full');
+      setTimeout(() => notification.remove(), 300);
+    }, {duration});
+  }
+</script>
+

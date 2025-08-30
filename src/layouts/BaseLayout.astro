@@ -1,19 +1,12 @@
 ---
-import type { SEOProps } from '../types/common';
-
-interface Props extends SEOProps {
-  showHeader?: boolean;
-  showFooter?: boolean;
-  containerClass?: string;
+export interface Props {
+  title?: string;
+  description?: string;
 }
 
 const {
-  title = 'FigureStore - Figuras Anime de Calidad',
-  description = 'Descubre nuestra colección de figuras anime de alta calidad. Figuras a escala, Nendoroid, Figma y más.',
-  image = '/og-image.jpg',
-  showHeader = true,
-  showFooter = true,
-  containerClass = ''
+  title = 'RabbitVault - Figuras Anime de Calidad',
+  description = 'Tienda especializada en figuras anime auténticas importadas directamente desde Japón'
 } = Astro.props;
 ---
 
@@ -24,32 +17,160 @@ const {
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
-    <!-- SEO -->
+    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="/styles/globals.css" />
   </head>
-  
-  <body class="min-h-screen bg-gray-50">
-    {showHeader && <slot name="header" />}
-    
-    <main class={`min-h-screen ${containerClass}`}>
-      <slot />
-    </main>
-    
-    {showFooter && <slot name="footer" />}
-    
-    <!-- Scripts -->
-    <script src="/scripts/analytics.js" defer></script>
+  <body>
+    <slot />
   </body>
 </html>
+
+<style is:global>
+  :root {
+    /* Colores base más suaves y cálidos */
+    --background: 45 100% 98%;
+    --foreground: 20 14% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 4%;
+    
+    /* Primary más suave y relajante - Verde menta */
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary más suave */
+    --secondary: 45 93% 94%;
+    --secondary-foreground: 20 14% 4%;
+    
+    /* Muted más cálido */
+    --muted: 45 93% 94%;
+    --muted-foreground: 25 10% 27%;
+    
+    /* Accent más suave */
+    --accent: 45 93% 94%;
+    --accent-foreground: 20 14% 4%;
+    
+    /* Destructive más suave */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Border más suave */
+    --border: 45 93% 94%;
+    --input: 45 93% 94%;
+    --ring: 160 84% 39%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 20 14% 4%;
+    --foreground: 45 100% 98%;
+    --card: 20 14% 4%;
+    --card-foreground: 45 100% 98%;
+    --popover: 20 14% 4%;
+    --popover-foreground: 45 100% 98%;
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 25 10% 27%;
+    --secondary-foreground: 45 100% 98%;
+    --muted: 25 10% 27%;
+    --muted-foreground: 45 93% 94%;
+    --accent: 25 10% 27%;
+    --accent-foreground: 45 100% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 45 100% 98%;
+    --border: 25 10% 27%;
+    --input: 25 10% 27%;
+    --ring: 160 84% 39%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    color: hsl(var(--foreground));
+    background: hsl(var(--background));
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+  }
+
+  /* Sombras más suaves */
+  .shadow-soft {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-medium {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Transiciones más suaves */
+  * {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Animaciones personalizadas */
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slide-in-right {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.3s ease-out;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  /* Mejoras de accesibilidad */
+  .focus-visible:focus {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+
+  /* Estados de hover mejorados */
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Loading states */
+  .loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid hsl(var(--primary));
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>

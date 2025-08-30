@@ -1,12 +1,21 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import CartModal from '../components/CartModal.astro';
 
-import { allFigures } from '../data/figures';
+import { allFigures } from '../data/products';
+
+// Obtener parámetros de URL
+const url = new URL(Astro.request.url);
+const categoryFilter = url.searchParams.get('category');
+
+// Filtrar productos por categoría si se especifica
+const filteredFigures = categoryFilter 
+  ? allFigures.filter(figure => figure.category === categoryFilter)
+  : allFigures;
 ---
 
-<Layout title="Todas las Figuras - FigureStore">
+<Layout title="Todas las Figuras - RabbitVault">
   <Header />
   
   <div class="min-h-screen bg-background">
@@ -29,38 +38,57 @@ import { allFigures } from '../data/figures';
     <div class="max-w-7xl mx-auto px-4 py-8">
       <div class="flex flex-col sm:flex-row gap-4 mb-8">
         <!-- Search -->
-        <div class="flex-1">
+        <div class="flex-1 relative">
+          <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
           <input
             type="text"
             id="search-input"
-            placeholder="Buscar figuras..."
-            class="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+            placeholder="Buscar figuras por nombre..."
+            class="w-full pl-10 pr-4 py-3 border border-border rounded-xl bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30"
+            aria-label="Buscar figuras"
           />
         </div>
         
         <!-- Category Filter -->
         <select
           id="category-filter"
-          class="px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+          class="px-4 py-3 border border-border rounded-xl bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 cursor-pointer"
+          aria-label="Filtrar por categoría"
         >
-          <option value="">Todas las categorías</option>
-          <option value="scale-figures">Figuras a Escala</option>
-          <option value="nendoroid">Nendoroid</option>
-          <option value="figma">Figma</option>
+          <option value="">🏷️ Todas las categorías</option>
+          <option value="scale-figures">🎭 Figuras a Escala</option>
+          <option value="nendoroid">🐰 Nendoroid</option>
+          <option value="figma">🤖 Figma</option>
+          <option value="pop-up-parade">🏆 Pop Up Parade</option>
+          <option value="model-kits">🔧 Model Kits</option>
+        </select>
+
+        <!-- Status Filter -->
+        <select
+          id="status-filter"
+          class="px-4 py-3 border border-border rounded-xl bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 cursor-pointer"
+          aria-label="Filtrar por estado"
+        >
+          <option value="">📦 Todos los estados</option>
+          <option value="Disponible">✅ Disponible</option>
+          <option value="Preventa">⏰ Preventa</option>
+          <option value="Agotado">❌ Agotado</option>
         </select>
       </div>
 
       <!-- Results Count -->
       <div class="flex justify-between items-center mb-6">
         <p class="text-muted-foreground">
-          Mostrando <span id="results-count">{allFigures.length}</span> figuras
+          Mostrando <span id="results-count">{filteredFigures.length}</span> figuras
         </p>
       </div>
 
       <!-- Products Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="products-grid">
-        {allFigures.map((figure) => (
-          <div class="group hover:shadow-lg transition-shadow cursor-pointer border border-border rounded-lg overflow-hidden product-card" data-category={figure.category} data-name={figure.name.toLowerCase()} data-figure-id={figure.id} onclick={`window.location.href='/figura/${figure.id}'`}>
+        {filteredFigures.map((figure) => (
+          <div class="group hover:shadow-medium transition-all duration-300 cursor-pointer border border-border rounded-xl overflow-hidden product-card bg-white/50 backdrop-blur-sm hover:bg-white/80" data-category={figure.category} data-name={figure.name.toLowerCase()} data-figure-id={figure.id} data-status={figure.status} onclick={`window.location.href='/figura/${figure.id}'`}>
             <!-- Product Image -->
             <div class="relative aspect-square overflow-hidden">
               <img
@@ -73,10 +101,14 @@ import { allFigures } from '../data/figures';
               
 
               
-              <!-- Available Badge -->
+              <!-- Status Badge -->
               <div class="absolute top-2 left-2">
-                <span class="bg-blue-500 text-white px-2 py-1 rounded text-xs font-medium">
-                  Disponible
+                <span class={`px-2 py-1 rounded text-xs font-medium ${
+                  figure.status === 'Disponible' ? 'bg-blue-500 text-white' :
+                  figure.status === 'Preventa' ? 'bg-orange-500 text-white' :
+                  'bg-red-500 text-white'
+                }`}>
+                  {figure.status}
                 </span>
               </div>
               
@@ -110,17 +142,17 @@ import { allFigures } from '../data/figures';
               <div class="space-y-1">
                 <div class="flex items-center gap-2">
                   <span class="text-lg font-bold text-foreground">
-                    S/. {figure.price.toLocaleString()}
+                    S/{figure.price.toLocaleString()}
                   </span>
                   {figure.originalPrice > figure.price && (
                     <span class="text-sm text-muted-foreground line-through">
-                      S/. {figure.originalPrice.toLocaleString()}
+                      S/{figure.originalPrice.toLocaleString()}
                     </span>
                   )}
                 </div>
                 {figure.originalPrice > figure.price && (
                   <p class="text-sm text-green-600">
-                    Ahorras S/. {(figure.originalPrice - figure.price).toLocaleString()}
+                    Ahorras S/{(figure.originalPrice - figure.price).toLocaleString()}
                   </p>
                 )}
               </div>
@@ -169,45 +201,87 @@ import { allFigures } from '../data/figures';
   // Search and filter functionality
   const searchInput = document.getElementById('search-input');
   const categoryFilter = document.getElementById('category-filter');
+  const statusFilter = document.getElementById('status-filter');
   const productsGrid = document.getElementById('products-grid');
   const resultsCount = document.getElementById('results-count');
   const productCards = document.querySelectorAll('.product-card');
 
   function filterProducts() {
-    const searchTerm = searchInput.value.toLowerCase();
-    const selectedCategory = categoryFilter.value;
+    const searchTerm = searchInput?.value.toLowerCase() || '';
+    const selectedCategory = categoryFilter?.value || '';
+    const selectedStatus = statusFilter?.value || '';
     let visibleCount = 0;
 
     productCards.forEach(card => {
       const name = card.dataset.name;
       const category = card.dataset.category;
+      const status = card.dataset.status;
       
       const matchesSearch = name.includes(searchTerm);
       const matchesCategory = !selectedCategory || category === selectedCategory;
+      const matchesStatus = !selectedStatus || status === selectedStatus;
       
-      if (matchesSearch && matchesCategory) {
+      if (matchesSearch && matchesCategory && matchesStatus) {
         card.style.display = 'block';
+        card.classList.add('animate-fade-in');
         visibleCount++;
       } else {
         card.style.display = 'none';
+        card.classList.remove('animate-fade-in');
       }
     });
 
-    resultsCount.textContent = visibleCount;
+    if (resultsCount) {
+      resultsCount.textContent = visibleCount;
+      
+      // Update results count with animation
+      resultsCount.classList.add('scale-110');
+      setTimeout(() => resultsCount.classList.remove('scale-110'), 200);
+    }
+
+    // Show/hide no results message
+    const noResults = document.getElementById('no-results');
+    if (visibleCount === 0 && searchTerm) {
+      if (!noResults) {
+        const noResultsDiv = document.createElement('div');
+        noResultsDiv.id = 'no-results';
+        noResultsDiv.className = 'col-span-full text-center py-12';
+        noResultsDiv.innerHTML = `
+          <div class="text-muted-foreground">
+            <svg class="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <p class="text-lg font-medium mb-2">No se encontraron resultados</p>
+            <p class="text-sm">Intenta con otros términos de búsqueda o filtros</p>
+          </div>
+        `;
+        productsGrid.appendChild(noResultsDiv);
+      }
+    } else if (noResults) {
+      noResults.remove();
+    }
   }
 
-  searchInput?.addEventListener('input', filterProducts);
-  categoryFilter?.addEventListener('change', filterProducts);
+  // Debounced search
+  let searchTimeout;
+  function debouncedSearch() {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(filterProducts, 300);
+  }
 
-  // Add to cart functionality
+  searchInput?.addEventListener('input', debouncedSearch);
+  categoryFilter?.addEventListener('change', filterProducts);
+  statusFilter?.addEventListener('change', filterProducts);
+
+  // Add to cart functionality with better UX
   function addToCart(figureId) {
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
     store.cart[figureId] = (store.cart[figureId] || 0) + 1;
     localStorage.setItem('figure-store', JSON.stringify(store));
     window.dispatchEvent(new CustomEvent('cartUpdated'));
     
-    // Show notification
-    showNotification('¡Producto agregado al carrito!');
+    // Show enhanced notification
+    showNotification('¡Producto agregado al carrito!', 'success');
   }
 
   // Buy now functionality
@@ -218,21 +292,81 @@ import { allFigures } from '../data/figures';
     localStorage.setItem('figure-store', JSON.stringify(store));
     window.dispatchEvent(new CustomEvent('cartUpdated'));
     
-    // Redirect to WhatsApp
-    window.open('https://wa.me/51949799869', '_blank');
+    // Show notification and redirect
+    showNotification('¡Redirigiendo a WhatsApp...', 'info');
+    setTimeout(() => {
+      window.open('https://wa.me/51949799869', '_blank');
+    }, 1000);
   }
 
-  // Show notification
-  function showNotification(message) {
+  // Enhanced notification system
+  function showNotification(message, type = 'success') {
+    const notificationId = 'notification-' + Date.now();
     const notification = document.createElement('div');
-    notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
-    notification.textContent = message;
+    notification.id = notificationId;
+    notification.className = `fixed top-20 right-4 z-50 px-4 py-3 rounded-xl shadow-medium border-l-4 transform translate-x-full transition-transform duration-300 ${
+      type === 'success' ? 'bg-emerald-500 text-white border-emerald-600' :
+      type === 'error' ? 'bg-red-500 text-white border-red-600' :
+      type === 'warning' ? 'bg-amber-500 text-white border-amber-600' :
+      'bg-blue-500 text-white border-blue-600'
+    }`;
+    notification.innerHTML = `
+      <div class="flex items-center gap-3">
+        <span class="text-lg font-bold">${type === 'success' ? '✓' : type === 'error' ? '✕' : type === 'warning' ? '⚠' : 'ℹ'}</span>
+        <p class="font-medium">${message}</p>
+        <button onclick="this.parentElement.parentElement.remove()" class="ml-2 text-white/80 hover:text-white transition-colors">✕</button>
+      </div>
+    `;
     document.body.appendChild(notification);
     
+    // Show notification
     setTimeout(() => {
-      notification.remove();
-    }, 2000);
+      notification.classList.remove('translate-x-full');
+    }, 100);
+    
+    // Hide notification
+    setTimeout(() => {
+      notification.classList.add('translate-x-full');
+      setTimeout(() => notification.remove(), 300);
+    }, 3000);
   }
+
+  // Set filters from URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const categoryParam = urlParams.get('category');
+  const statusParam = urlParams.get('status');
+  const searchParam = urlParams.get('search');
+
+  if (categoryParam && categoryFilter) {
+    categoryFilter.value = categoryParam;
+  }
+  if (statusParam && statusFilter) {
+    statusFilter.value = statusParam;
+  }
+  if (searchParam && searchInput) {
+    searchInput.value = searchParam;
+  }
+
+  // Apply filters on page load
+  setTimeout(filterProducts, 100);
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', (e) => {
+    // Focus search with Ctrl/Cmd + F
+    if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+      e.preventDefault();
+      searchInput?.focus();
+    }
+    
+    // Clear filters with Ctrl/Cmd + K
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      if (searchInput) searchInput.value = '';
+      if (categoryFilter) categoryFilter.value = '';
+      if (statusFilter) statusFilter.value = '';
+      filterProducts();
+    }
+  });
 
   // Make functions globally available
   window.addToCart = addToCart;

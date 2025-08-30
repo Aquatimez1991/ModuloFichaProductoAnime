@@ -14,8 +14,8 @@ const { product, title, description } = Astro.props;
 
 // Generate SEO data based on product
 const seoTitle = product 
-  ? `${product.name} - ${product.manufacturer} | FigureStore`
-  : title || 'Productos | FigureStore';
+      ? `${product.name} - ${product.manufacturer} | RabbitVault`
+    : title || 'Productos | RabbitVault';
 
 const seoDescription = product
   ? `${product.description.slice(0, 160)}...`

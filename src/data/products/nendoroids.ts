@@ -1,0 +1,78 @@
+import type { Product } from '../../types/product';
+
+// Nendoroids
+export const allNendoroids: Product[] = [
+  {
+    id: 101,
+    name: 'Nendoroid Hatsune Miku: Sailor Uniform',
+    manufacturer: 'Good Smile Company',
+    price: 500,
+    originalPrice: 600,
+    rating: 4.9,
+    reviews: 0,
+    status: 'Disponible',
+    category: 'nendoroid',
+    scale: 'Nendoroid',
+    height: '10cm',
+    material: 'PVC & ABS',
+    image:
+      '/NendoroidHatsuneMikuSailorUniform/NendoroidHatsuneMikuSailorUniform1.jpg',
+    isNew: false,
+    isPopular: true,
+    stock: 1,
+    description:
+      "Nendoroid de Hatsune Miku con uniforme de marinero en excelente estado 'como nuevo'. Incluye múltiples expresiones faciales, accesorios intercambiables y articulaciones para poses dinámicas. La figura presenta el característico cabello turquesa de Miku con su uniforme escolar de marinero azul y blanco. Perfecta para fans de Vocaloid y coleccionistas.",
+    features: [
+      'Altura: 10cm',
+      'Múltiples expresiones faciales',
+      'Accesorios intercambiables',
+      'Articulaciones para poses dinámicas',
+      'Base de exhibición incluida',
+      'Uniforme de marinero azul y blanco',
+      'Cabello turquesa característico',
+      'Estado: Usado - Como nuevo',
+    ],
+    images: [
+      '/NendoroidHatsuneMikuSailorUniform/NendoroidHatsuneMikuSailorUniform1.jpg',
+      '/NendoroidHatsuneMikuSailorUniform/NendoroidHatsuneMikuSailorUniform2.jpg',
+      '/NendoroidHatsuneMikuSailorUniform/NendoroidHatsuneMikuSailorUniform3.jpg',
+    ],
+    releaseDate: '2011-08-25',
+  },
+  {
+    id: 102,
+    name: 'Nendoroid - UTAU: Teto Kasane',
+    manufacturer: 'Good Smile Company',
+    price: 500,
+    originalPrice: 600,
+    rating: 4.7,
+    reviews: 0,
+    status: 'Agotado',
+    category: 'nendoroid',
+    scale: 'Nendoroid',
+    height: '10cm',
+    material: 'PVC & ABS',
+    image: '/NendoroidUTAUTetoKasane/NendoroidUTAUTetoKasane1.jpg',
+    isNew: false,
+    isPopular: false,
+    stock: 0,
+    description:
+      "Nendoroid de Teto Kasane de UTAU en excelente estado 'como nuevo'. Incluye múltiples expresiones faciales, accesorios icónicos como el taladro y el pan francés, y articulaciones para poses dinámicas. La figura presenta el característico cabello rojo en forma de taladros y su uniforme oscuro con detalles rosados. Perfecta para fans de UTAU y coleccionistas.",
+    features: [
+      'Altura: 10cm',
+      'Múltiples expresiones faciales',
+      'Accesorios icónicos (taladro, pan francés)',
+      'Articulaciones para poses dinámicas',
+      'Base de exhibición incluida',
+      'Cabello rojo en forma de taladros',
+      'Uniforme oscuro con detalles rosados',
+      'Estado: Usado - Como nuevo',
+    ],
+    images: [
+      '/NendoroidUTAUTetoKasane/NendoroidUTAUTetoKasane1.jpg',
+      '/NendoroidUTAUTetoKasane/NendoroidUTAUTetoKasane2.jpg',
+      '/NendoroidUTAUTetoKasane/NendoroidUTAUTetoKasane3.jpg',
+    ],
+    releaseDate: '2012-06-28',
+  },
+];

@@ -1,8 +1,8 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import CartModal from '../../components/CartModal.astro';
-import { allFigures } from '../../data/figures';
+import { allFigures } from '../../data/products';
 
 export async function getStaticPaths() {
   return allFigures.map((figure) => ({
@@ -67,8 +67,12 @@ const { figure } = Astro.props;
         <div class="space-y-6">
           <!-- Badges -->
           <div class="flex items-center gap-2">
-            <span class="bg-blue-500 text-white px-2 py-1 rounded text-sm font-medium">
-              Disponible
+            <span class={`px-2 py-1 rounded text-sm font-medium ${
+              figure.status === 'Disponible' ? 'bg-blue-500 text-white' :
+              figure.status === 'Preventa' ? 'bg-orange-500 text-white' :
+              'bg-red-500 text-white'
+            }`}>
+              {figure.status}
             </span>
           </div>
 
@@ -95,17 +99,17 @@ const { figure } = Astro.props;
           <div class="space-y-2">
             <div class="flex items-center gap-3">
               <span class="text-3xl font-bold text-foreground">
-                S/. {figure.price.toLocaleString()}
+                S/{figure.price.toLocaleString()}
               </span>
               {figure.originalPrice > figure.price && (
                 <span class="text-xl text-muted-foreground line-through">
-                  S/. {figure.originalPrice.toLocaleString()}
+                  S/{figure.originalPrice.toLocaleString()}
                 </span>
               )}
             </div>
             {figure.originalPrice > figure.price && (
               <p class="text-green-600 font-medium">
-                Ahorras S/. {(figure.originalPrice - figure.price).toLocaleString()}
+                Ahorras S/{(figure.originalPrice - figure.price).toLocaleString()}
               </p>
             )}
           </div>

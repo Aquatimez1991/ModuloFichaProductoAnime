@@ -23,7 +23,12 @@ export interface Product {
 }
 
 export type ProductStatus = 'Disponible' | 'Preventa' | 'Agotado';
-export type ProductCategory = 'scale-figures' | 'nendoroid' | 'figma' | 'pop-up-parade';
+export type ProductCategory =
+  | 'scale-figures'
+  | 'nendoroid'
+  | 'figma'
+  | 'pop-up-parade'
+  | 'model-kits';
 
 // Props para componentes de producto
 export interface ProductCardProps {

@@ -1,8 +1,20 @@
 ---
 // Categories.astro
+import { allFigures } from '../data/products';
+import { allNendoroids } from '../data/products/nendoroids';
+import { allFigma } from '../data/products/figma';
+import { allPopUpParade } from '../data/products/pop-up-parade';
+
+// Contar productos por categoría
+const scaleFigures = allFigures.filter(p => p.category === 'scale-figures').length;
+const nendoroids = allFigures.filter(p => p.category === 'nendoroid').length + allNendoroids.length;
+const figmas = allFigures.filter(p => p.category === 'figma').length + allFigma.length;
+const popUpParade = allPopUpParade.length;
+const modelKits = allFigures.filter(p => p.category === 'model-kits').length;
+const accessories = 0; // Por ahora no hay accesorios
 ---
 
-<section class="py-16 bg-background">
+<section class="py-20 bg-gradient-to-br from-emerald-50/30 via-teal-50/20 to-cyan-50/30">
   <div class="max-w-7xl mx-auto px-4">
     <div class="text-center mb-12">
       <h2 class="text-3xl font-bold text-foreground mb-4">
@@ -15,98 +27,110 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Figuras a Escala -->
-      <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 p-8 text-white hover:shadow-xl transition-all duration-300">
+      <a href="/figuras?category=scale-figures" class="block">
+        <div class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-400 to-teal-500 p-8 text-white hover:shadow-medium transition-all duration-300 cursor-pointer shadow-soft">
         <div class="relative z-10">
           <h3 class="text-2xl font-bold mb-2">Figuras a Escala</h3>
           <p class="text-blue-100 mb-4">Figuras detalladas en escalas 1/7, 1/8 y más</p>
           <div class="flex items-center justify-between">
-            <span class="text-sm opacity-90">156 productos</span>
+            <span class="text-sm opacity-90">{scaleFigures} productos</span>
             <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </div>
         </div>
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 group-hover:scale-110 transition-transform duration-300"></div>
-      </div>
+                 <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 group-hover:scale-110 transition-transform duration-300"></div>
+        </div>
+      </a>
 
       <!-- Nendoroids -->
-      <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-pink-500 to-red-500 p-8 text-white hover:shadow-xl transition-all duration-300">
+      <a href="/figuras?category=nendoroid" class="block">
+        <div class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-rose-400 to-pink-500 p-8 text-white hover:shadow-medium transition-all duration-300 cursor-pointer shadow-soft">
         <div class="relative z-10">
           <h3 class="text-2xl font-bold mb-2">Nendoroids</h3>
           <p class="text-pink-100 mb-4">Figuras chibi intercambiables y personalizables</p>
           <div class="flex items-center justify-between">
-            <span class="text-sm opacity-90">89 productos</span>
+            <span class="text-sm opacity-90">{nendoroids} productos</span>
             <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </div>
         </div>
         <div class="absolute inset-0 bg-gradient-to-br from-pink-600/20 to-red-600/20 group-hover:scale-110 transition-transform duration-300"></div>
-      </div>
+        </div>
+      </a>
 
       <!-- Figmas -->
-      <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-500 to-teal-500 p-8 text-white hover:shadow-xl transition-all duration-300">
+      <a href="/figuras?category=figma" class="block">
+        <div class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-400 to-teal-500 p-8 text-white hover:shadow-medium transition-all duration-300 cursor-pointer shadow-soft">
         <div class="relative z-10">
           <h3 class="text-2xl font-bold mb-2">Figmas</h3>
           <p class="text-green-100 mb-4">Figuras articuladas con múltiples poses</p>
           <div class="flex items-center justify-between">
-            <span class="text-sm opacity-90">67 productos</span>
+            <span class="text-sm opacity-90">{figmas} productos</span>
             <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </div>
         </div>
         <div class="absolute inset-0 bg-gradient-to-br from-green-600/20 to-teal-600/20 group-hover:scale-110 transition-transform duration-300"></div>
-      </div>
+        </div>
+      </a>
 
       <!-- Prize Figures -->
-      <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-500 to-orange-500 p-8 text-white hover:shadow-xl transition-all duration-300">
+      <a href="/figuras?category=pop-up-parade" class="block">
+        <div class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 p-8 text-white hover:shadow-medium transition-all duration-300 cursor-pointer shadow-soft">
         <div class="relative z-10">
           <h3 class="text-2xl font-bold mb-2">Prize Figures</h3>
           <p class="text-yellow-100 mb-4">Figuras de alta calidad a precios accesibles</p>
           <div class="flex items-center justify-between">
-            <span class="text-sm opacity-90">234 productos</span>
+            <span class="text-sm opacity-90">{popUpParade} productos</span>
             <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </div>
         </div>
         <div class="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-orange-600/20 group-hover:scale-110 transition-transform duration-300"></div>
-      </div>
+        </div>
+      </a>
 
       <!-- Model Kits -->
-      <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-500 to-blue-500 p-8 text-white hover:shadow-xl transition-all duration-300">
+      <a href="/figuras?category=model-kits" class="block">
+        <div class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-400 to-blue-500 p-8 text-white hover:shadow-medium transition-all duration-300 cursor-pointer shadow-soft">
         <div class="relative z-10">
           <h3 class="text-2xl font-bold mb-2">Model Kits</h3>
           <p class="text-indigo-100 mb-4">Kits de montaje para entusiastas del modelismo</p>
           <div class="flex items-center justify-between">
-            <span class="text-sm opacity-90">45 productos</span>
+            <span class="text-sm opacity-90">{modelKits} productos</span>
             <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </div>
         </div>
         <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-blue-600/20 group-hover:scale-110 transition-transform duration-300"></div>
-      </div>
+        </div>
+      </a>
 
       <!-- Accesorios -->
-      <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 p-8 text-white hover:shadow-xl transition-all duration-300">
+      <a href="/figuras?category=accessories" class="block">
+        <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 p-8 text-white hover:shadow-xl transition-all duration-300 cursor-pointer">
         <div class="relative z-10">
           <h3 class="text-2xl font-bold mb-2">Accesorios</h3>
           <p class="text-purple-100 mb-4">Bases, vitrinas y accesorios para tu colección</p>
           <div class="flex items-center justify-between">
-            <span class="text-sm opacity-90">123 productos</span>
+            <span class="text-sm opacity-90">{accessories} productos</span>
             <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </div>
         </div>
         <div class="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-pink-600/20 group-hover:scale-110 transition-transform duration-300"></div>
-      </div>
+        </div>
+      </a>
     </div>
 
     <div class="text-center mt-12">
-      <a href="/figuras" class="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">
+             <a href="/figuras" class="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-8 py-3 rounded-xl font-medium hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 shadow-soft">
         Ver Todas las Categorías
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
