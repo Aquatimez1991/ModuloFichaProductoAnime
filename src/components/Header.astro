@@ -171,17 +171,25 @@
   });
 
   // Search functionality
-  function handleSearch(event: Event) {
-    event.preventDefault();
-    const form = event.target as HTMLFormElement;
-    const searchInput = form.querySelector('input') as HTMLInputElement;
-    const query = searchInput?.value.trim();
+  function handleSearch(e: Event) {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const searchInput = form.querySelector('input[type="search"]') as HTMLInputElement;
+    const searchTerm = searchInput.value.trim();
     
-    if (query) {
-      // Redirect to search results page or filter current page
-      window.location.href = `/figuras?search=${encodeURIComponent(query)}`;
+    if (searchTerm) {
+      window.location.href = `/figuras?search=${encodeURIComponent(searchTerm)}`;
     }
   }
+
+  // Add event listeners after DOM loads
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchForms = document.querySelectorAll('form[onsubmit]');
+    searchForms.forEach(form => {
+      form.removeAttribute('onsubmit');
+      form.addEventListener('submit', handleSearch);
+    });
+  });
 
   // Update cart count
   function updateCounts() {

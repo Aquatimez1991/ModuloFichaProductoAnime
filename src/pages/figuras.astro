@@ -400,4 +400,24 @@ const filteredFigures = categoryFilter
   // Make functions globally available
   window.addToCart = addToCart;
   window.buyNow = buyNow;
+
+  // Add event listeners for buttons
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add to cart buttons
+    document.querySelectorAll('button[data-figure-id]').forEach(btn => {
+      const figureId = btn.getAttribute('data-figure-id');
+      if (!figureId) return;
+      
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const buttonText = btn.textContent?.trim();
+        
+        if (buttonText === 'Comprar') {
+          buyNow(parseInt(figureId));
+        } else if (buttonText === 'Agregar al Carrito') {
+          addToCart(parseInt(figureId));
+        }
+      });
+    });
+  });
 </script>

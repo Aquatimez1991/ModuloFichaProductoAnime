@@ -146,7 +146,7 @@
   </div>
 </header>
 
-<script type="module">const s=document.getElementById("mobile-menu-btn"),n=document.getElementById("mobile-menu");s?.addEventListener("click",()=>{n?.classList.toggle("hidden"),s.classList.toggle("rotate-90")});document.addEventListener("click",e=>{const t=e.target;!n?.contains(t)&&!s?.contains(t)&&(n?.classList.add("hidden"),s?.classList.remove("rotate-90"))});function i(e){e.preventDefault();const a=e.target.querySelector("input")?.value.trim();a&&(window.location.href=`/figuras?search=${encodeURIComponent(a)}`)}function o(){const e=document.getElementById("cart-count"),t=JSON.parse(localStorage.getItem("figure-store")||'{"cart": {}, "wishlist": []}'),c=Object.values(t.cart).reduce((a,d)=>a+d,0);e&&(c>0?(e.textContent=c.toString(),e.classList.remove("hidden"),e.classList.add("animate-pulse"),setTimeout(()=>e.classList.remove("animate-pulse"),1e3)):e.classList.add("hidden"))}o();window.addEventListener("storage",o);window.addEventListener("cartUpdated",o);document.addEventListener("keydown",e=>{e.key==="Escape"&&n&&!n.classList.contains("hidden")&&(n.classList.add("hidden"),s?.classList.remove("rotate-90")),(e.ctrlKey||e.metaKey)&&e.key==="k"&&(e.preventDefault(),(document.getElementById("header-search")||document.getElementById("mobile-search"))?.focus())});window.handleSearch=i;</script>
+<script type="module">const s=document.getElementById("mobile-menu-btn"),n=document.getElementById("mobile-menu");s?.addEventListener("click",()=>{n?.classList.toggle("hidden"),s.classList.toggle("rotate-90")});document.addEventListener("click",e=>{const t=e.target;!n?.contains(t)&&!s?.contains(t)&&(n?.classList.add("hidden"),s?.classList.remove("rotate-90"))});function d(e){e.preventDefault();const a=e.target.querySelector('input[type="search"]').value.trim();a&&(window.location.href=`/figuras?search=${encodeURIComponent(a)}`)}document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll("form[onsubmit]").forEach(t=>{t.removeAttribute("onsubmit"),t.addEventListener("submit",d)})});function c(){const e=document.getElementById("cart-count"),t=JSON.parse(localStorage.getItem("figure-store")||'{"cart": {}, "wishlist": []}'),o=Object.values(t.cart).reduce((a,r)=>a+r,0);e&&(o>0?(e.textContent=o.toString(),e.classList.remove("hidden"),e.classList.add("animate-pulse"),setTimeout(()=>e.classList.remove("animate-pulse"),1e3)):e.classList.add("hidden"))}c();window.addEventListener("storage",c);window.addEventListener("cartUpdated",c);document.addEventListener("keydown",e=>{e.key==="Escape"&&n&&!n.classList.contains("hidden")&&(n.classList.add("hidden"),s?.classList.remove("rotate-90")),(e.ctrlKey||e.metaKey)&&e.key==="k"&&(e.preventDefault(),(document.getElementById("header-search")||document.getElementById("mobile-search"))?.focus())});window.handleSearch=d;</script>
   
   
   <div id="delivery-notification" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-500">
@@ -2333,154 +2333,49 @@
 <script>(function(){const totalSlides = 30;
 
   // Carousel functionality
-  const carousel = document.getElementById('carousel');
-  const prevBtn = document.getElementById('prev-btn');
-  const nextBtn = document.getElementById('next-btn');
-  const dotsContainer = document.getElementById('dots-container');
-  const dotBtns = document.querySelectorAll('.dot-btn');
-
   let currentSlide = 0;
-  let autoPlayInterval;
+  const carousel = document.querySelector('.carousel');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+  const indicators = document.querySelectorAll('.carousel-indicator');
 
-  // Initialize carousel
-  function initCarousel() {
-    updateCarousel();
-    startAutoPlay();
-  }
-
-  // Update carousel position
-  function updateCarousel() {
-    if (carousel) {
-      carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-    updateDots();
-  }
-
-  // Update dots
-  function updateDots() {
-    dotBtns.forEach((dot, index) => {
-      if (index === currentSlide) {
-        dot.classList.add('bg-primary');
-        dot.classList.remove('bg-gray-300', 'hover:bg-gray-400');
-      } else {
-        dot.classList.remove('bg-primary');
-        dot.classList.add('bg-gray-300', 'hover:bg-gray-400');
-      }
+  function showSlide(index) {
+    if (index < 0) index = totalSlides - 1;
+    if (index >= totalSlides) index = 0;
+    
+    currentSlide = index;
+    
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === currentSlide);
+    });
+    
+    indicators.forEach((indicator, i) => {
+      indicator.classList.toggle('active', i === currentSlide);
     });
   }
 
-  // Next slide
   function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateCarousel();
+    showSlide(currentSlide + 1);
   }
 
-  // Previous slide
   function prevSlide() {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    updateCarousel();
-  }
-
-  // Go to specific slide
-  function goToSlide(slideIndex) {
-    currentSlide = slideIndex;
-    updateCarousel();
-  }
-
-  // Start auto play
-  function startAutoPlay() {
-    autoPlayInterval = setInterval(() => {
-      nextSlide();
-    }, 4000); // Change slide every 4 seconds
-  }
-
-  // Stop auto play
-  function stopAutoPlay() {
-    if (autoPlayInterval) {
-      clearInterval(autoPlayInterval);
-    }
+    showSlide(currentSlide - 1);
   }
 
   // Event listeners
-  prevBtn?.addEventListener('click', () => {
-    prevSlide();
-    stopAutoPlay();
-    startAutoPlay();
+  nextBtn?.addEventListener('click', nextSlide);
+  prevBtn?.addEventListener('click', prevSlide);
+
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => showSlide(index));
   });
 
-  nextBtn?.addEventListener('click', () => {
-    nextSlide();
-    stopAutoPlay();
-    startAutoPlay();
-  });
+  // Auto-play
+  setInterval(nextSlide, 5000);
 
-  // Dot navigation
-  dotBtns.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      goToSlide(index);
-      stopAutoPlay();
-      startAutoPlay();
-    });
-  });
-
-  // Pause auto play on hover
-  carousel?.addEventListener('mouseenter', stopAutoPlay);
-  carousel?.addEventListener('mouseleave', startAutoPlay);
-
-  // Add to cart functionality
-  document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const productId = parseInt(btn.getAttribute('data-product-id') || '0');
-      
-      // Get current store
-      const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
-      
-      // Add figure to cart
-      store.cart[productId] = (store.cart[productId] || 0) + 1;
-      
-      // Save to localStorage
-      localStorage.setItem('figure-store', JSON.stringify(store));
-      
-      // Dispatch event to update header
-      window.dispatchEvent(new CustomEvent('cartUpdated'));
-      
-      // Show notification
-      showNotification('¡Producto agregado al carrito!');
-    });
-  });
-
-  // Buy now functionality
-  document.querySelectorAll('.buy-now-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const productId = parseInt(btn.getAttribute('data-product-id') || '0');
-      
-      // Add to cart first
-      const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
-      store.cart[productId] = (store.cart[productId] || 0) + 1;
-      localStorage.setItem('figure-store', JSON.stringify(store));
-      window.dispatchEvent(new CustomEvent('cartUpdated'));
-      
-      // Use the global buyNowGlobal function
-      if (window.buyNowGlobal) {
-        window.buyNowGlobal(productId);
-      }
-    });
-  });
-
-  // Show notification
-  function showNotification(message) {
-    const notification = document.createElement('div');
-    notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
-    notification.textContent = message;
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-      notification.remove();
-    }, 2000);
-  }
-
-  // Initialize carousel when DOM is loaded
-  document.addEventListener('DOMContentLoaded', initCarousel);
+  // Initialize
+  showSlide(0);
 })();</script>
   <section class="py-20 bg-gradient-to-br from-emerald-50/30 via-teal-50/20 to-cyan-50/30">
   <div class="max-w-7xl mx-auto px-4">
@@ -2702,7 +2597,7 @@
   </div>
 </div>
 
-<script type="module" src="/_astro/CartModal.astro_astro_type_script_index_0_lang.BCCeOTNY.js"></script>
+<script type="module" src="/_astro/CartModal.astro_astro_type_script_index_0_lang.DAyjFX77.js"></script>
   <!-- Wishlist Modal --><div id="wishlist-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
   <div class="flex items-center justify-center min-h-screen p-4">
     <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[80vh] overflow-hidden">

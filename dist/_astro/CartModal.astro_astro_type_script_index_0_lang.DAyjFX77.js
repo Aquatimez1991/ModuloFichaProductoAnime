@@ -27,7 +27,7 @@ const a=document.getElementById("cart-modal"),v=document.getElementById("close-c
           </div>
         `}}),m&&(m.innerHTML=s),u&&(u.textContent=`S/${r.toLocaleString("en-US")}`)}function y(t,e){const r=JSON.parse(localStorage.getItem("figure-store")||'{"cart": {}, "wishlist": []}'),s=g[t];e<=0?delete r.cart[t]:s&&e<=s.stock&&(r.cart[t]=e),localStorage.setItem("figure-store",JSON.stringify(r)),window.dispatchEvent(new CustomEvent("cartUpdated")),d()}function x(t){const e=JSON.parse(localStorage.getItem("figure-store")||'{"cart": {}, "wishlist": []}');delete e.cart[t],localStorage.setItem("figure-store",JSON.stringify(e)),window.dispatchEvent(new CustomEvent("cartUpdated")),d()}function E(){const e=JSON.parse(localStorage.getItem("figure-store")||'{"cart": {}, "wishlist": []}').cart;if(Object.keys(e).length===0){alert("Tu carrito está vacío");return}let r=0,s=`¡Hola! Me interesa comprar:
 
-`;Object.entries(e).forEach(([n,o])=>{const l=g[n];if(l){const i=l.price*o;r+=i,s+=`• ${l.name} x${o} - S/${i.toLocaleString("en-US")}
+`;Object.entries(e).forEach(([n,o])=>{const l=g[parseInt(n)];if(l){const i=l.price*o;r+=i,s+=`• ${l.name} x${o} - S/${i.toLocaleString("en-US")}
 `}}),s+=`
 Total: S/${r.toLocaleString("en-US")}
 
