@@ -1725,6 +1725,14 @@ video {
   .sm\:flex-row {
     flex-direction: row;
   }
+
+  .sm\:gap-0 {
+    gap: 0px;
+  }
+
+  .sm\:gap-6 {
+    gap: 1.5rem;
+  }
 }
 @media (min-width: 768px) {
 
@@ -3635,6 +3643,14 @@ video {
 
   .sm\:flex-row {
     flex-direction: row;
+  }
+
+  .sm\:gap-0 {
+    gap: 0px;
+  }
+
+  .sm\:gap-6 {
+    gap: 1.5rem;
   }
 }
 @media (min-width: 768px) {

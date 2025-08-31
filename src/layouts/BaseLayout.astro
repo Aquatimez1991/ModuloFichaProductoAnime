@@ -25,5 +25,43 @@ const {
   </head>
   <body data-figures={JSON.stringify(allFigures)}>
     <slot />
+    <script>
+      window.buyNowGlobal = function(figureId) {
+        const allFiguresData = JSON.parse(document.body.getAttribute('data-figures') || '[]');
+        const figure = allFiguresData.find(f => f.id === figureId);
+        if (figure) {
+          const message = `¡Hola! Me interesa comprar:\n\n` +
+            `*${figure.name}*\n` +
+            `Precio: S/${figure.price.toLocaleString('en-US')}\n` +
+            `Fabricante: ${figure.manufacturer}\n` +
+            `Escala: ${figure.scale}\n` +
+            `Altura: ${figure.height}\n` +
+            `Material: ${figure.material}\n\n` +
+            `¿Podrías darme más información sobre disponibilidad y envío?`;
+          const whatsappUrl = `https://wa.me/51949799869?text=${encodeURIComponent(message)}`;
+          window.open(whatsappUrl, '_blank');
+        }
+      };
+      
+      window.buyNowWithQuantity = function(figureId, quantity) {
+        const allFiguresData = JSON.parse(document.body.getAttribute('data-figures') || '[]');
+        const figure = allFiguresData.find(f => f.id === figureId);
+        if (figure) {
+          const totalPrice = figure.price * quantity;
+          const message = `¡Hola! Me interesa comprar:\n\n` +
+            `*${figure.name}*\n` +
+            `Precio unitario: S/${figure.price.toLocaleString('en-US')}\n` +
+            `Cantidad: ${quantity}\n` +
+            `Precio total: S/${totalPrice.toLocaleString('en-US')}\n` +
+            `Fabricante: ${figure.manufacturer}\n` +
+            `Escala: ${figure.scale}\n` +
+            `Altura: ${figure.height}\n` +
+            `Material: ${figure.material}\n\n` +
+            `¿Podrías darme más información sobre disponibilidad y envío?`;
+          const whatsappUrl = `https://wa.me/51949799869?text=${encodeURIComponent(message)}`;
+          window.open(whatsappUrl, '_blank');
+        }
+      };
+    </script>
   </body>
 </html>

@@ -232,18 +232,10 @@
     localStorage.setItem('figure-store', JSON.stringify(store));
     window.dispatchEvent(new CustomEvent('cartUpdated'));
     
-    // Get product name from the page
-    const productName = document.querySelector('h1')?.textContent || 'Miku Hatsune Racing 2024';
-    
-    // Create WhatsApp message
-    const message = encodeURIComponent(`¡Hola Elias! Estoy interesado en comprar la figura "${productName}"
-
-¿Podrías darme más información sobre disponibilidad, precio y opciones de entrega? 
-
-¡Gracias!`);
-    
-    // Redirect to WhatsApp with personalized message
-    window.open(`https://wa.me/51949799869?text=${message}`, '_blank');
+    // Use the global buyNowGlobal function
+    if (window.buyNowGlobal) {
+      window.buyNowGlobal(2); // ID del producto destacado
+    }
   });
 
   // Show notification
