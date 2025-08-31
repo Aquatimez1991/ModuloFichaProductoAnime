@@ -104,7 +104,7 @@ import { allFigures } from '../data/products';
     let itemsHTML = '';
 
     Object.entries(cart).forEach(([figureId, quantity]) => {
-      const figure = figureData[figureId];
+      const figure = figureData[parseInt(figureId)];
       if (figure) {
         const itemTotal = figure.price * quantity;
         total += itemTotal;

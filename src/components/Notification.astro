@@ -42,9 +42,9 @@ const icons = {
   </div>
 </div>
 
-<script>
+<script define:vars={{ id, duration }}>
   // Auto-hide notification
-  const notification = document.getElementById('{id}');
+  const notification = document.getElementById(id);
   if (notification) {
     // Show notification
     setTimeout(() => {
@@ -55,7 +55,7 @@ const icons = {
     setTimeout(() => {
       notification.classList.add('translate-x-full');
       setTimeout(() => notification.remove(), 300);
-    }, {duration});
+    }, duration);
   }
 </script>
 

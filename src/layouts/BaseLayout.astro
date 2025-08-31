@@ -26,9 +26,9 @@ const {
   <body data-figures={JSON.stringify(allFigures)}>
     <slot />
     <script>
-      window.buyNowGlobal = function(figureId) {
+      window.buyNowGlobal = function(figureId: number) {
         const allFiguresData = JSON.parse(document.body.getAttribute('data-figures') || '[]');
-        const figure = allFiguresData.find(f => f.id === figureId);
+        const figure = allFiguresData.find((f: any) => f.id === figureId);
         if (figure) {
           const message = `¡Hola! Me interesa comprar:\n\n` +
             `*${figure.name}*\n` +
@@ -43,9 +43,9 @@ const {
         }
       };
       
-      window.buyNowWithQuantity = function(figureId, quantity) {
+      window.buyNowWithQuantity = function(figureId: number, quantity: number) {
         const allFiguresData = JSON.parse(document.body.getAttribute('data-figures') || '[]');
-        const figure = allFiguresData.find(f => f.id === figureId);
+        const figure = allFiguresData.find((f: any) => f.id === figureId);
         if (figure) {
           const totalPrice = figure.price * quantity;
           const message = `¡Hola! Me interesa comprar:\n\n` +
