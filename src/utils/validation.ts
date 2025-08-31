@@ -25,18 +25,14 @@ export function validateProduct(product: Partial<Product>): {
 
   if (
     !product.category ||
-    !Object.values(PRODUCT_CATEGORIES).includes(
-      product.category as keyof typeof PRODUCT_CATEGORIES
-    )
+    !Object.keys(PRODUCT_CATEGORIES).includes(product.category)
   ) {
     errors.push('La categoría es requerida y debe ser válida');
   }
 
   if (
     !product.status ||
-    !Object.values(PRODUCT_STATUS).includes(
-      product.status as keyof typeof PRODUCT_STATUS
-    )
+    !Object.keys(PRODUCT_STATUS).includes(product.status)
   ) {
     errors.push('El estado es requerido y debe ser válido');
   }

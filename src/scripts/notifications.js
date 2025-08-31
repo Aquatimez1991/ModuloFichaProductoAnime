@@ -1,25 +1,13 @@
-// Sistema de notificaciones
+// Global notification system
+let activeNotifications = new Set();
 
-export interface NotificationOptions {
-  type?: 'success' | 'error' | 'warning' | 'info';
-  duration?: number;
-  position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
-}
-
-const DEFAULT_OPTIONS: Required<NotificationOptions> = {
-  type: 'success',
-  duration: 3000,
-  position: 'top-right',
-};
-
-// Track active notifications to prevent duplicates
-let activeNotifications = new Set<string>();
-
-export function showNotification(
-  message: string,
-  options: NotificationOptions = {}
-): void {
-  const config = { ...DEFAULT_OPTIONS, ...options };
+function showNotification(message, options = {}) {
+  const config = {
+    type: 'success',
+    duration: 3000,
+    position: 'top-right',
+    ...options,
+  };
 
   // Create a unique key for this notification
   const notificationKey = `${message}-${config.type}-${config.position}`;
@@ -187,7 +175,7 @@ export function showNotification(
   }, config.duration);
 }
 
-function removeNotification(notification: HTMLElement, key: string) {
+function removeNotification(notification, key) {
   notification.style.animation = 'slideOut 0.3s ease-in forwards';
   setTimeout(() => {
     notification.remove();
@@ -196,14 +184,10 @@ function removeNotification(notification: HTMLElement, key: string) {
 }
 
 // Global function for cart notifications (most common use case)
-export function showCartNotification(
-  message: string = '¡Producto agregado al carrito!'
-): void {
+function showCartNotification(message = '¡Producto agregado al carrito!') {
   showNotification(message, { type: 'success', position: 'top-right' });
 }
 
 // Make functions globally available
-if (typeof window !== 'undefined') {
-  (window as any).showNotification = showNotification;
-  (window as any).showCartNotification = showCartNotification;
-}
+window.showNotification = showNotification;
+window.showCartNotification = showCartNotification;

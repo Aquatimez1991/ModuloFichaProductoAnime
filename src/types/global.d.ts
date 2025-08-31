@@ -2,8 +2,10 @@
 
 declare global {
   interface Window {
-    addToCart: (figureId: number) => void;
-    buyNow: (figureId: number) => void;
+    addToCart: (figureId: number | string) => void;
+    buyNow: (figureId: number | string) => void;
+    buyNowGlobal: (figureId: number) => void;
+    buyNowWithQuantity: (figureId: number, quantity: number) => void;
     openCart: () => void;
     openWishlist: () => void;
     removeFromCart: (figureId: number) => void;

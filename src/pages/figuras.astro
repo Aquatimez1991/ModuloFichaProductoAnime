@@ -183,14 +183,12 @@ const filteredFigures = categoryFilter
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
                 <button
-                  onclick="event.stopPropagation(); addToCart(this.dataset.figureId);"
                   data-figure-id={figure.id}
                   class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium"
                 >
                   Agregar al Carrito
                 </button>
                 <button
-                  onclick="event.stopPropagation(); buyNow(this.dataset.figureId);"
                   data-figure-id={figure.id}
                   class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1"
                 >
@@ -212,9 +210,9 @@ const filteredFigures = categoryFilter
 
 <script>
   // Search and filter functionality
-  const searchInput = document.getElementById('search-input');
-  const categoryFilter = document.getElementById('category-filter');
-  const statusFilter = document.getElementById('status-filter');
+  const searchInput = document.getElementById('search-input') as HTMLInputElement;
+  const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
+  const statusFilter = document.getElementById('status-filter') as HTMLSelectElement;
   const productsGrid = document.getElementById('products-grid');
   const resultsCount = document.getElementById('results-count');
   const productCards = document.querySelectorAll('.product-card');
@@ -225,27 +223,28 @@ const filteredFigures = categoryFilter
     const selectedStatus = statusFilter?.value || '';
     let visibleCount = 0;
 
-    productCards.forEach(card => {
-      const name = card.dataset.name;
-      const category = card.dataset.category;
-      const status = card.dataset.status;
+    productCards.forEach((card: Element) => {
+      const htmlCard = card as HTMLElement;
+      const name = htmlCard.dataset.name;
+      const category = htmlCard.dataset.category;
+      const status = htmlCard.dataset.status;
       
-      const matchesSearch = name.includes(searchTerm);
+      const matchesSearch = name?.includes(searchTerm) || false;
       const matchesCategory = !selectedCategory || category === selectedCategory;
       const matchesStatus = !selectedStatus || status === selectedStatus;
       
       if (matchesSearch && matchesCategory && matchesStatus) {
-        card.style.display = 'block';
-        card.classList.add('animate-fade-in');
+        htmlCard.style.display = 'block';
+        htmlCard.classList.add('animate-fade-in');
         visibleCount++;
       } else {
-        card.style.display = 'none';
-        card.classList.remove('animate-fade-in');
+        htmlCard.style.display = 'none';
+        htmlCard.classList.remove('animate-fade-in');
       }
     });
 
     if (resultsCount) {
-      resultsCount.textContent = visibleCount;
+      resultsCount.textContent = visibleCount.toString();
       
       // Update results count with animation
       resultsCount.classList.add('scale-110');
@@ -268,7 +267,7 @@ const filteredFigures = categoryFilter
             <p class="text-sm">Intenta con otros términos de búsqueda o filtros</p>
           </div>
         `;
-        productsGrid.appendChild(noResultsDiv);
+        productsGrid?.appendChild(noResultsDiv);
       }
     } else if (noResults) {
       noResults.remove();
@@ -276,7 +275,7 @@ const filteredFigures = categoryFilter
   }
 
   // Debounced search
-  let searchTimeout;
+  let searchTimeout: NodeJS.Timeout;
   function debouncedSearch() {
     clearTimeout(searchTimeout);
     searchTimeout = setTimeout(filterProducts, 300);
@@ -287,7 +286,7 @@ const filteredFigures = categoryFilter
   statusFilter?.addEventListener('change', filterProducts);
 
   // Add to cart functionality with better UX
-  function addToCart(figureId) {
+  function addToCart(figureId: string | number) {
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
     store.cart[figureId] = (store.cart[figureId] || 0) + 1;
     localStorage.setItem('figure-store', JSON.stringify(store));
@@ -298,9 +297,9 @@ const filteredFigures = categoryFilter
   }
 
   // Buy now functionality
-  function buyNow(figureId) {
+  function buyNow(figureId: string | number) {
     // Convert to number to ensure proper comparison
-    const numericFigureId = parseInt(figureId);
+    const numericFigureId = parseInt(figureId.toString());
     
     // Add to cart first
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
@@ -310,7 +309,7 @@ const filteredFigures = categoryFilter
     
     // Get figure data and create WhatsApp message directly
     const allFiguresData = JSON.parse(document.body.getAttribute('data-figures') || '[]');
-    const figure = allFiguresData.find(f => f.id === numericFigureId);
+    const figure = allFiguresData.find((f: any) => f.id === numericFigureId);
     
     if (figure) {
       const message = `¡Hola! Me interesa comprar:\n\n` +
@@ -328,7 +327,7 @@ const filteredFigures = categoryFilter
   }
 
   // Enhanced notification system
-  function showNotification(message, type = 'success') {
+  function showNotification(message: string, type: 'success' | 'error' | 'warning' | 'info' = 'success') {
     const notificationId = 'notification-' + Date.now();
     const notification = document.createElement('div');
     notification.id = notificationId;
@@ -399,4 +398,24 @@ const filteredFigures = categoryFilter
   // Make functions globally available
   window.addToCart = addToCart;
   window.buyNow = buyNow;
+
+  // Add event listeners for buttons
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add to cart buttons
+    document.querySelectorAll('button[data-figure-id]').forEach(btn => {
+      const figureId = btn.getAttribute('data-figure-id');
+      if (!figureId) return;
+      
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const buttonText = btn.textContent?.trim();
+        
+        if (buttonText === 'Comprar') {
+          buyNow(parseInt(figureId));
+        } else if (buttonText === 'Agregar al Carrito') {
+          addToCart(parseInt(figureId));
+        }
+      });
+    });
+  });
 </script>

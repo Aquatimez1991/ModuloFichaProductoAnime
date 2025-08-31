@@ -278,7 +278,13 @@ const { figure } = Astro.props;
   // Add to cart functionality
   const addToCartBtn = document.getElementById('add-to-cart-btn');
   addToCartBtn?.addEventListener('click', () => {
-    const figureId = parseInt(addToCartBtn.dataset.figureId);
+    const figureIdStr = addToCartBtn.dataset.figureId;
+    if (!figureIdStr) {
+      console.error('figureId not found in dataset');
+      return;
+    }
+    
+    const figureId = parseInt(figureIdStr);
     
     // Get current store
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
@@ -299,7 +305,13 @@ const { figure } = Astro.props;
   // Buy now functionality
   const buyNowBtn = document.getElementById('buy-now-btn');
   buyNowBtn?.addEventListener('click', () => {
-    const figureId = parseInt(buyNowBtn.dataset.figureId);
+    const figureIdStr = buyNowBtn.dataset.figureId;
+    if (!figureIdStr) {
+      console.error('figureId not found in dataset');
+      return;
+    }
+    
+    const figureId = parseInt(figureIdStr);
     
     // Add to cart first
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
@@ -313,15 +325,28 @@ const { figure } = Astro.props;
     }
   });
 
-  // Show notification
-  function showNotification(message) {
+  // Enhanced notification system
+  function showNotification(message: string) {
     const notification = document.createElement('div');
-    notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
-    notification.textContent = message;
+    notification.className = 'fixed top-20 right-4 z-50 bg-emerald-500 text-white px-4 py-3 rounded-xl shadow-lg transform translate-x-full transition-transform duration-300';
+    notification.innerHTML = `
+      <div class="flex items-center gap-3">
+        <span class="text-lg font-bold">✓</span>
+        <p class="font-medium">${message}</p>
+        <button onclick="this.parentElement.parentElement.remove()" class="ml-2 text-white/80 hover:text-white transition-colors">✕</button>
+      </div>
+    `;
     document.body.appendChild(notification);
     
+    // Show notification
     setTimeout(() => {
-      notification.remove();
-    }, 2000);
+      notification.classList.remove('translate-x-full');
+    }, 100);
+    
+    // Hide notification
+    setTimeout(() => {
+      notification.classList.add('translate-x-full');
+      setTimeout(() => notification.remove(), 300);
+    }, 3000);
   }
 </script>

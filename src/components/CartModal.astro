@@ -1,15 +1,15 @@
 ﻿---
 // CartModal.astro
-import { allFigures } from '../data/products';
 ---
 
 <!-- Cart Modal -->
-<div id="cart-modal" class="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 hidden">
-  <div class="flex items-center justify-center min-h-screen p-4">
-    <div class="bg-white/95 backdrop-blur-md rounded-3xl shadow-medium max-w-md w-full max-h-[80vh] overflow-hidden border border-white/20">
+<div id="cart-modal" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+  <div class="absolute right-0 top-0 h-full w-full max-w-md bg-background shadow-2xl transform translate-x-full transition-transform duration-300">
+    <div class="flex flex-col h-full">
       <!-- Header -->
-      <div class="flex items-center justify-between p-4 border-b">
-        <h3 class="text-lg font-semibold">Carrito de Compras</h3>
+      <div class="flex items-center justify-between p-6 border-b border-border">
+        <h2 class="text-xl font-bold">Carrito de Compras</h2>
         <button id="close-cart" class="text-muted-foreground hover:text-foreground transition-colors">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -18,31 +18,32 @@ import { allFigures } from '../data/products';
       </div>
 
       <!-- Cart Items -->
-      <div id="cart-items" class="p-4 max-h-96 overflow-y-auto">
-        <!-- Items will be dynamically inserted here -->
-      </div>
-
-      <!-- Empty Cart Message -->
-      <div id="empty-cart" class="p-8 text-center text-muted-foreground hidden">
-        <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
-        </svg>
-        <p class="text-lg font-medium mb-2">Tu carrito esta vacio</p>
-        <p class="text-sm">Agrega algunos productos para comenzar</p>
+      <div class="flex-1 overflow-y-auto p-6">
+        <div id="empty-cart" class="text-center py-12 hidden">
+          <svg class="w-16 h-16 mx-auto mb-4 text-muted-foreground/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+          </svg>
+          <p class="text-lg font-medium mb-2">Tu carrito está vacío</p>
+          <p class="text-muted-foreground">Agrega algunos productos para comenzar</p>
+        </div>
+        
+        <div id="cart-items" class="space-y-4">
+          <!-- Cart items will be populated here -->
+        </div>
       </div>
 
       <!-- Footer -->
-      <div class="border-t p-4">
+      <div class="border-t border-border p-6">
         <div class="flex items-center justify-between mb-4">
           <span class="font-semibold">Total:</span>
-                      <span id="cart-total" class="font-bold text-lg">S/0</span>
+          <span id="cart-total" class="font-bold text-lg">S/0</span>
         </div>
         <div class="flex gap-2">
-          <button id="clear-cart" class="flex-1 px-4 py-2 border border-border rounded-xl text-foreground hover:bg-muted transition-colors">
-            Vaciar Carrito
-          </button>
-          <button id="checkout-cart" class="flex-1 px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-xl hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 shadow-soft">
+          <button id="checkout-btn" class="flex-1 bg-primary text-primary-foreground py-3 px-4 rounded-lg font-medium hover:bg-primary/90 transition-colors">
             Comprar Ahora
+          </button>
+          <button id="clear-cart" class="px-4 py-3 border border-border rounded-lg hover:bg-muted transition-colors">
+            Limpiar
           </button>
         </div>
       </div>
@@ -54,18 +55,18 @@ import { allFigures } from '../data/products';
   // Cart modal functionality
   const cartModal = document.getElementById('cart-modal');
   const closeCart = document.getElementById('close-cart');
-  const cartItems = document.getElementById('cart-items');
   const emptyCart = document.getElementById('empty-cart');
+  const cartItems = document.getElementById('cart-items');
   const cartTotal = document.getElementById('cart-total');
+  const checkoutBtn = document.getElementById('checkout-btn');
   const clearCartBtn = document.getElementById('clear-cart');
-  const checkoutCartBtn = document.getElementById('checkout-cart');
 
   // Figure data from imported products
-  const figureData = {};
+  const figureData: Record<number, any> = {};
   
   // Populate figure data from imported products
   const allFiguresData = JSON.parse(document.body.getAttribute('data-figures') || '[]');
-  allFiguresData.forEach(figure => {
+  allFiguresData.forEach((figure: any) => {
     figureData[figure.id] = {
       name: figure.name,
       price: figure.price,
@@ -74,26 +75,33 @@ import { allFigures } from '../data/products';
     };
   });
 
-  // Open cart modal
   function openCart() {
-    cartModal?.classList.remove('hidden');
-    updateCartDisplay();
+    if (cartModal) {
+      cartModal.classList.remove('hidden');
+      setTimeout(() => {
+        cartModal.querySelector('.transform')?.classList.remove('translate-x-full');
+      }, 10);
+      updateCartDisplay();
+    }
   }
 
-  // Close cart modal
   function closeCartModal() {
-    cartModal?.classList.add('hidden');
+    if (cartModal) {
+      cartModal.querySelector('.transform')?.classList.add('translate-x-full');
+      setTimeout(() => {
+        cartModal.classList.add('hidden');
+      }, 300);
+    }
   }
 
-  // Update cart display
   function updateCartDisplay() {
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
     const cart = store.cart;
-    
+
     if (Object.keys(cart).length === 0) {
       emptyCart?.classList.remove('hidden');
       cartItems?.classList.add('hidden');
-              cartTotal.textContent = 'S/0';
+      if (cartTotal) cartTotal.textContent = 'S/0';
       return;
     }
 
@@ -104,13 +112,13 @@ import { allFigures } from '../data/products';
     let itemsHTML = '';
 
     Object.entries(cart).forEach(([figureId, quantity]) => {
-      const figure = figureData[figureId];
+      const figure = figureData[parseInt(figureId)];
       if (figure) {
-        const itemTotal = figure.price * quantity;
+        const itemTotal = figure.price * (quantity as number);
         total += itemTotal;
         
         const isStockLimited = figure.stock === 1;
-        const canIncrease = quantity < figure.stock;
+        const canIncrease = (quantity as number) < figure.stock;
         
         itemsHTML += `
           <div class="flex items-center gap-3 py-3 border-b last:border-b-0">
@@ -121,13 +129,13 @@ import { allFigures } from '../data/products';
               ${isStockLimited ? '<p class="text-orange-500 text-xs">Stock limitado: 1 unidad</p>' : ''}
             </div>
             <div class="flex items-center gap-2">
-              <button onclick="updateQuantity(${figureId}, ${quantity - 1})" class="w-6 h-6 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50 ${isStockLimited ? 'opacity-50 cursor-not-allowed' : ''}" ${isStockLimited ? 'disabled' : ''}>
+              <button onclick="updateQuantity(${figureId}, ${(quantity as number) - 1})" class="w-6 h-6 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50 ${isStockLimited ? 'opacity-50 cursor-not-allowed' : ''}" ${isStockLimited ? 'disabled' : ''}>
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
                 </svg>
               </button>
               <span class="w-8 text-center text-sm">${quantity}</span>
-              <button onclick="updateQuantity(${figureId}, ${quantity + 1})" class="w-6 h-6 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50 ${!canIncrease ? 'opacity-50 cursor-not-allowed' : ''}" ${!canIncrease ? 'disabled' : ''}>
+              <button onclick="updateQuantity(${figureId}, ${(quantity as number) + 1})" class="w-6 h-6 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50 ${!canIncrease ? 'opacity-50 cursor-not-allowed' : ''}" ${!canIncrease ? 'disabled' : ''}>
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
@@ -148,26 +156,18 @@ import { allFigures } from '../data/products';
     }
     
     if (cartTotal) {
-              cartTotal.textContent = `S/${total.toLocaleString('en-US')}`;
+      cartTotal.textContent = `S/${total.toLocaleString('en-US')}`;
     }
   }
 
-  // Update quantity
-  function updateQuantity(figureId: number, newQuantity: number) {
+  function updateQuantity(figureId: number, quantity: number) {
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
     const figure = figureData[figureId];
     
-    if (!figure) return;
-    
-    // Check stock limit
-    if (newQuantity > figure.stock) {
-      newQuantity = figure.stock;
-    }
-    
-    if (newQuantity <= 0) {
+    if (quantity <= 0) {
       delete store.cart[figureId];
-    } else {
-      store.cart[figureId] = newQuantity;
+    } else if (figure && quantity <= figure.stock) {
+      store.cart[figureId] = quantity;
     }
     
     localStorage.setItem('figure-store', JSON.stringify(store));
@@ -175,7 +175,6 @@ import { allFigures } from '../data/products';
     updateCartDisplay();
   }
 
-  // Remove from cart
   function removeFromCart(figureId: number) {
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
     delete store.cart[figureId];
@@ -184,7 +183,33 @@ import { allFigures } from '../data/products';
     updateCartDisplay();
   }
 
-  // Clear cart
+  function checkout() {
+    const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
+    const cart = store.cart;
+    
+    if (Object.keys(cart).length === 0) {
+      alert('Tu carrito está vacío');
+      return;
+    }
+
+    let total = 0;
+    let message = '¡Hola! Me interesa comprar:\n\n';
+    
+    Object.entries(cart).forEach(([figureId, quantity]) => {
+      const figure = figureData[parseInt(figureId)];
+      if (figure) {
+        const itemTotal = figure.price * (quantity as number);
+        total += itemTotal;
+        message += `• ${figure.name} x${quantity} - S/${itemTotal.toLocaleString('en-US')}\n`;
+      }
+    });
+    
+    message += `\nTotal: S/${total.toLocaleString('en-US')}\n\n¿Podrías darme más información sobre disponibilidad y envío?`;
+    
+    const whatsappUrl = `https://wa.me/51949799869?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
   function clearCart() {
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
     store.cart = {};
@@ -193,52 +218,21 @@ import { allFigures } from '../data/products';
     updateCartDisplay();
   }
 
-  // Checkout
-  function checkout() {
-    // Redirect to WhatsApp with cart info
-    const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
-    const cart = store.cart;
-    
-    if (Object.keys(cart).length === 0) {
-      alert('Tu carrito esta vacio');
-      return;
-    }
-
-    let message = `¡Hola! Quiero comprar las siguientes figuras anime:\n\n`;
-    let total = 0;
-
-    Object.entries(cart).forEach(([figureId, quantity]) => {
-      const figure = figureData[figureId];
-      if (figure) {
-        const itemTotal = figure.price * quantity;
-        total += itemTotal;
-        message += `• ${figure.name} x${quantity} - S/${itemTotal.toLocaleString('en-US')}\n`;
-      }
-    });
-
-    message += `\nTotal: S/${total.toLocaleString('en-US')}\n\n`;
-    message += `¿Podrías confirmarme disponibilidad y opciones de entrega?\n\n`;
-    message += `¡Gracias!`;
-    
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/51949799869?text=${encodedMessage}`, '_blank');
-    
-    // Clear cart after checkout
-    clearCart();
-    closeCartModal();
-  }
-
   // Event listeners
   closeCart?.addEventListener('click', closeCartModal);
+  checkoutBtn?.addEventListener('click', checkout);
   clearCartBtn?.addEventListener('click', clearCart);
-  checkoutCartBtn?.addEventListener('click', checkout);
 
   // Close modal when clicking outside
   cartModal?.addEventListener('click', (e) => {
-    if (e.target === cartModal) {
+    const target = e.target as HTMLElement;
+    if (target === cartModal || target.classList.contains('bg-black/50')) {
       closeCartModal();
     }
   });
+
+  // Listen for cart updates
+  window.addEventListener('cartUpdated', updateCartDisplay);
 
   // Make functions globally available
   window.openCart = openCart;
