@@ -25,6 +25,7 @@ const {
   </head>
   <body data-figures={JSON.stringify(allFigures)}>
     <slot />
+    <script src="/src/scripts/notifications.js"></script>
     <script>
       window.buyNowGlobal = function(figureId: number) {
         const allFiguresData = JSON.parse(document.body.getAttribute('data-figures') || '[]');

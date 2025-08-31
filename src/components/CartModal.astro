@@ -225,7 +225,8 @@
 
   // Close modal when clicking outside
   cartModal?.addEventListener('click', (e) => {
-    if (e.target === cartModal) {
+    const target = e.target as HTMLElement;
+    if (target === cartModal || target.classList.contains('bg-black/50')) {
       closeCartModal();
     }
   });

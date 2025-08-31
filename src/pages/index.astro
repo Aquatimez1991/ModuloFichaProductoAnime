@@ -5,6 +5,7 @@ import ProductCarousel from '../components/ProductCarousel.astro';
 import Categories from '../components/Categories.astro';
 import CartModal from '../components/CartModal.astro';
 import WishlistModal from '../components/WishlistModal.astro';
+
 ---
 
 <Layout title="RabbitVault - Figuras Anime de Calidad">
@@ -197,33 +198,10 @@ import WishlistModal from '../components/WishlistModal.astro';
     localStorage.setItem('figure-store', JSON.stringify(store));
     window.dispatchEvent(new CustomEvent('cartUpdated'));
     
-    showCartNotification('¡Producto agregado al carrito!');
+    window.showCartNotification('¡Producto agregado al carrito!');
   }
 
-  // Enhanced notification system for cart
-  function showCartNotification(message: string) {
-    const cartNotification = document.createElement('div');
-    cartNotification.className = 'fixed top-20 right-4 z-50 bg-emerald-500 text-white px-4 py-3 rounded-xl shadow-lg transform translate-x-full transition-transform duration-300';
-    cartNotification.innerHTML = `
-      <div class="flex items-center gap-3">
-        <span class="text-lg font-bold">✓</span>
-        <p class="font-medium">${message}</p>
-        <button onclick="this.parentElement.parentElement.remove()" class="ml-2 text-white/80 hover:text-white transition-colors">✕</button>
-      </div>
-    `;
-    document.body.appendChild(cartNotification);
-    
-    // Show notification
-    setTimeout(() => {
-      cartNotification.classList.remove('translate-x-full');
-    }, 100);
-    
-    // Hide notification
-    setTimeout(() => {
-      cartNotification.classList.add('translate-x-full');
-      setTimeout(() => cartNotification.remove(), 300);
-    }, 3000);
-  }
+
 
   // Make functions globally available
   window.addToCart = addToCart;
