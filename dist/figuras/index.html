@@ -56,12 +56,12 @@
 
       <!-- Search bar -->
       <div class="hidden md:flex flex-1 max-w-md mx-8">
-        <form class="w-full" onsubmit="handleSearch(event)">
+        <form class="w-full">
           <div class="relative">
             <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
-            <input type="text" id="header-search" placeholder="Buscar figuras anime..." class="w-full pl-10 pr-4 py-2 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 bg-white/50 backdrop-blur-sm" aria-label="Buscar figuras anime">
+            <input type="search" id="header-search" placeholder="Buscar figuras anime..." class="w-full pl-10 pr-4 py-2 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 bg-white/50 backdrop-blur-sm" aria-label="Buscar figuras anime">
             <button type="submit" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-primary transition-colors" aria-label="Buscar">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -108,12 +108,12 @@
   <div id="mobile-menu" class="lg:hidden border-t bg-background/95 backdrop-blur-sm hidden">
     <div class="px-4 py-6">
       <!-- Mobile search -->
-      <form class="mb-6" onsubmit="handleSearch(event)">
+      <form class="mb-6">
         <div class="relative">
           <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
           </svg>
-          <input type="text" id="mobile-search" placeholder="Buscar figuras anime..." class="w-full pl-10 pr-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 bg-white/50" aria-label="Buscar figuras anime">
+          <input type="search" id="mobile-search" placeholder="Buscar figuras anime..." class="w-full pl-10 pr-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 bg-white/50" aria-label="Buscar figuras anime">
         </div>
       </form>
 
@@ -273,10 +273,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="1" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="1" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="1" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="1" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -353,10 +353,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="2" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="2" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="2" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="2" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -433,10 +433,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="8" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="8" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="8" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="8" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -513,10 +513,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="9" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="9" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="9" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="9" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -593,10 +593,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="10" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="10" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="10" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="10" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -673,10 +673,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="11" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="11" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="11" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="11" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -753,10 +753,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="12" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="12" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="12" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="12" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -833,10 +833,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="3" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="3" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="3" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="3" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -913,10 +913,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="4" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="4" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="4" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="4" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -993,10 +993,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="5" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="5" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="5" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="5" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -1073,10 +1073,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="6" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="6" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="6" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="6" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -1153,10 +1153,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="7" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="7" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="7" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="7" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -1233,10 +1233,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="13" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="13" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="13" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="13" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -1313,10 +1313,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="14" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="14" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="14" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="14" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -1393,10 +1393,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="15" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="15" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="15" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="15" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -1473,10 +1473,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="16" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="16" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="16" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="16" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -1553,10 +1553,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="17" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="17" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="17" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="17" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -1633,10 +1633,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="18" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="18" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="18" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="18" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -1713,10 +1713,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="19" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="19" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="19" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="19" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -1793,10 +1793,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="20" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="20" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="20" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="20" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -1873,10 +1873,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="21" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="21" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="21" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="21" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -1953,10 +1953,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="22" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="22" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="22" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="22" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -2033,10 +2033,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="23" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="23" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="23" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="23" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -2113,10 +2113,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="24" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="24" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="24" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="24" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -2193,10 +2193,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="25" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="25" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="25" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="25" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -2273,10 +2273,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="26" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="26" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="26" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="26" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -2353,10 +2353,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="27" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="27" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="27" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="27" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -2433,10 +2433,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="28" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="28" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="28" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="28" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -2513,10 +2513,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="101" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="101" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="101" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="101" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
@@ -2593,10 +2593,10 @@
 
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
-                <button onclick="event.stopPropagation(); addToCart(this.dataset.figureId);" data-figure-id="102" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
+                <button data-figure-id="102" class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium">
                   Agregar al Carrito
                 </button>
-                <button onclick="event.stopPropagation(); buyNow(this.dataset.figureId);" data-figure-id="102" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
+                <button data-figure-id="102" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>

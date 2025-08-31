@@ -183,14 +183,12 @@ const filteredFigures = categoryFilter
               <!-- Action Buttons -->
               <div class="flex gap-2 pt-2">
                 <button
-                  onclick="event.stopPropagation(); addToCart(this.dataset.figureId);"
                   data-figure-id={figure.id}
                   class="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium"
                 >
                   Agregar al Carrito
                 </button>
                 <button
-                  onclick="event.stopPropagation(); buyNow(this.dataset.figureId);"
                   data-figure-id={figure.id}
                   class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-1"
                 >

@@ -178,7 +178,7 @@
     }
 
     // Add all wishlist items to cart
-    wishlist.forEach(figureId => {
+    wishlist.forEach((figureId: number) => {
       store.cart[figureId] = (store.cart[figureId] || 0) + 1;
     });
     
