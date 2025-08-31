@@ -299,17 +299,32 @@ const filteredFigures = categoryFilter
 
   // Buy now functionality
   function buyNow(figureId) {
+    // Convert to number to ensure proper comparison
+    const numericFigureId = parseInt(figureId);
+    
     // Add to cart first
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
-    store.cart[figureId] = (store.cart[figureId] || 0) + 1;
+    store.cart[numericFigureId] = (store.cart[numericFigureId] || 0) + 1;
     localStorage.setItem('figure-store', JSON.stringify(store));
     window.dispatchEvent(new CustomEvent('cartUpdated'));
     
-    // Show notification and redirect
-    showNotification('¡Redirigiendo a WhatsApp...', 'info');
-    setTimeout(() => {
-      window.open('https://wa.me/51949799869', '_blank');
-    }, 1000);
+    // Get figure data and create WhatsApp message directly
+    const allFiguresData = JSON.parse(document.body.getAttribute('data-figures') || '[]');
+    const figure = allFiguresData.find(f => f.id === numericFigureId);
+    
+    if (figure) {
+      const message = `¡Hola! Me interesa comprar:\n\n` +
+        `*${figure.name}*\n` +
+        `Precio: S/${figure.price.toLocaleString('en-US')}\n` +
+        `Fabricante: ${figure.manufacturer}\n` +
+        `Escala: ${figure.scale}\n` +
+        `Altura: ${figure.height}\n` +
+        `Material: ${figure.material}\n\n` +
+        `¿Podrías darme más información sobre disponibilidad y envío?`;
+      
+      const whatsappUrl = `https://wa.me/51949799869?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    }
   }
 
   // Enhanced notification system
