@@ -153,7 +153,7 @@ import WishlistModal from '../components/WishlistModal.astro';
     notification.classList.add('opacity-0', 'pointer-events-none');
   }
 
-  function showNotification() {
+  function showBannerNotification() {
     if (!notification) return;
     
     notification.classList.remove('opacity-0', 'pointer-events-none');
@@ -174,7 +174,7 @@ import WishlistModal from '../components/WishlistModal.astro';
   });
 
   // Show modal after page loads
-  setTimeout(showNotification, 1000);
+  setTimeout(showBannerNotification, 1000);
 
   // Close with Escape key
   document.addEventListener('keydown', (e) => {
@@ -197,11 +197,11 @@ import WishlistModal from '../components/WishlistModal.astro';
     localStorage.setItem('figure-store', JSON.stringify(store));
     window.dispatchEvent(new CustomEvent('cartUpdated'));
     
-    showNotification('¡Producto agregado al carrito!');
+    showCartNotification('¡Producto agregado al carrito!');
   }
 
   // Enhanced notification system for cart
-  function showNotification(message: string) {
+  function showCartNotification(message: string) {
     const cartNotification = document.createElement('div');
     cartNotification.className = 'fixed top-20 right-4 z-50 bg-emerald-500 text-white px-4 py-3 rounded-xl shadow-lg transform translate-x-full transition-transform duration-300';
     cartNotification.innerHTML = `

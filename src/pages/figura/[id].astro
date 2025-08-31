@@ -278,7 +278,13 @@ const { figure } = Astro.props;
   // Add to cart functionality
   const addToCartBtn = document.getElementById('add-to-cart-btn');
   addToCartBtn?.addEventListener('click', () => {
-    const figureId = parseInt(addToCartBtn.dataset.figureId);
+    const figureIdStr = addToCartBtn.dataset.figureId;
+    if (!figureIdStr) {
+      console.error('figureId not found in dataset');
+      return;
+    }
+    
+    const figureId = parseInt(figureIdStr);
     
     // Get current store
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
@@ -299,7 +305,13 @@ const { figure } = Astro.props;
   // Buy now functionality
   const buyNowBtn = document.getElementById('buy-now-btn');
   buyNowBtn?.addEventListener('click', () => {
-    const figureId = parseInt(buyNowBtn.dataset.figureId);
+    const figureIdStr = buyNowBtn.dataset.figureId;
+    if (!figureIdStr) {
+      console.error('figureId not found in dataset');
+      return;
+    }
+    
+    const figureId = parseInt(figureIdStr);
     
     // Add to cart first
     const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
