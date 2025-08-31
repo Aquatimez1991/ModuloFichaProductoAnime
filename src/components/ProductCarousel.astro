@@ -110,22 +110,22 @@ const carouselProducts = allFigures;
       </div>
 
       <!-- Navigation Arrows -->
-      <button class="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all z-10" id="prev-btn">
+      <button class="carousel-prev absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all z-10">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
         </svg>
       </button>
-      <button class="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all z-10" id="next-btn">
+      <button class="carousel-next absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all z-10">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
         </svg>
       </button>
 
       <!-- Dots Indicator -->
-      <div class="flex justify-center mt-6 mb-4 space-x-2" id="dots-container">
+      <div class="flex justify-center mt-6 mb-4 space-x-2">
         {carouselProducts.map((_, index) => (
           <button
-            class={`w-3 h-3 rounded-full transition-all dot-btn ${index === 0 ? 'bg-primary' : 'bg-gray-300 hover:bg-gray-400'}`}
+            class={`carousel-indicator w-3 h-3 rounded-full transition-all ${index === 0 ? 'bg-primary' : 'bg-gray-300 hover:bg-gray-400'}`}
             data-slide={index}
           ></button>
         ))}
@@ -137,7 +137,7 @@ const carouselProducts = allFigures;
 <script is:inline define:vars={{ totalSlides: carouselProducts.length }}>
   // Carousel functionality
   let currentSlide = 0;
-  const carousel = document.querySelector('.carousel');
+  const carousel = document.querySelector('.carousel-container');
   const slides = document.querySelectorAll('.carousel-slide');
   const prevBtn = document.querySelector('.carousel-prev');
   const nextBtn = document.querySelector('.carousel-next');
@@ -149,12 +149,20 @@ const carouselProducts = allFigures;
     
     currentSlide = index;
     
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === currentSlide);
-    });
+    // Update carousel position
+    if (carousel) {
+      carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
     
+    // Update indicators
     indicators.forEach((indicator, i) => {
-      indicator.classList.toggle('active', i === currentSlide);
+      if (i === currentSlide) {
+        indicator.classList.add('bg-primary');
+        indicator.classList.remove('bg-gray-300', 'hover:bg-gray-400');
+      } else {
+        indicator.classList.remove('bg-primary');
+        indicator.classList.add('bg-gray-300', 'hover:bg-gray-400');
+      }
     });
   }
 
@@ -166,13 +174,81 @@ const carouselProducts = allFigures;
     showSlide(currentSlide - 1);
   }
 
-  // Event listeners
+  // Event listeners for navigation
   nextBtn?.addEventListener('click', nextSlide);
   prevBtn?.addEventListener('click', prevSlide);
 
   indicators.forEach((indicator, index) => {
     indicator.addEventListener('click', () => showSlide(index));
   });
+
+  // Event listeners for action buttons
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add to cart buttons
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const productId = parseInt(btn.getAttribute('data-product-id') || '0');
+        
+        // Get current store
+        const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
+        
+        // Add figure to cart
+        store.cart[productId] = (store.cart[productId] || 0) + 1;
+        
+        // Save to localStorage
+        localStorage.setItem('figure-store', JSON.stringify(store));
+        
+        // Dispatch event to update header
+        window.dispatchEvent(new CustomEvent('cartUpdated'));
+        
+        // Show notification
+        showNotification('¡Producto agregado al carrito!');
+      });
+    });
+
+    // Buy now buttons
+    document.querySelectorAll('.buy-now-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const productId = parseInt(btn.getAttribute('data-product-id') || '0');
+        
+        // Add to cart first
+        const store = JSON.parse(localStorage.getItem('figure-store') || '{"cart": {}, "wishlist": []}');
+        store.cart[productId] = (store.cart[productId] || 0) + 1;
+        localStorage.setItem('figure-store', JSON.stringify(store));
+        window.dispatchEvent(new CustomEvent('cartUpdated'));
+        
+        // Use the global buyNowGlobal function
+        if (window.buyNowGlobal) {
+          window.buyNowGlobal(productId);
+        }
+      });
+    });
+  });
+
+  // Show notification function
+  function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'fixed top-20 right-4 bg-emerald-500 text-white px-4 py-3 rounded-xl shadow-lg transform translate-x-full transition-transform duration-300 z-50';
+    notification.innerHTML = `
+      <div class="flex items-center gap-3">
+        <span class="text-lg font-bold">✓</span>
+        <p class="font-medium">${message}</p>
+        <button onclick="this.parentElement.parentElement.remove()" class="ml-2 text-white/80 hover:text-white transition-colors">✕</button>
+      </div>
+    `;
+    document.body.appendChild(notification);
+    
+    // Show notification
+    setTimeout(() => {
+      notification.classList.remove('translate-x-full');
+    }, 100);
+    
+    // Hide notification
+    setTimeout(() => {
+      notification.classList.add('translate-x-full');
+      setTimeout(() => notification.remove(), 300);
+    }, 3000);
+  }
 
   // Auto-play
   setInterval(nextSlide, 5000);
